@@ -1,0 +1,55 @@
+package by.training;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+
+import static java.math.BigDecimal.ROUND_HALF_UP;
+
+/**
+ * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
+ */
+public class Task_03 {
+
+    private int precision = 150;
+    private MathContext mc = new MathContext(precision);
+    private BigDecimal a;
+    private BigDecimal b;
+    private BigDecimal c;
+
+    public Task_03(Number a, Number b) {
+        this.a = new BigDecimal(a.toString());
+        this.b = new BigDecimal(b.toString());
+        if(!checkPositive()) {
+            throw new IllegalArgumentException("Negative Triangle Side");
+        };
+    }
+
+    public BigDecimal getPeremiter() {
+        getHypotenuse();
+        return a.add(b).add(c).setScale(9, ROUND_HALF_UP);
+    }
+
+
+    public BigDecimal getHypotenuse() {
+        if (c == null) {
+            c = a.pow(2).add(b.pow(2));
+            c = Utils.bigSqrt(c, mc);
+            return c;
+        }
+            return c;
+    }
+
+    public BigDecimal getArea() {
+        getHypotenuse();
+        return a.multiply(b).multiply(new BigDecimal("1.5"));
+    }
+
+    private boolean checkPositive() {
+        if(a.compareTo(BigDecimal.ZERO) > 0 & b.compareTo(BigDecimal.ZERO) > 0) {
+            return true;
+        }
+        return false;
+    }
+
+}
