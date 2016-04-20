@@ -20,6 +20,9 @@ public class Task_06 {
     }
 
     public BigDecimal getSpecialSum() {
+        if (list.size() < 2) {
+            return list.get(0);
+        }
         Collections.sort(list, Collections.reverseOrder());
         return list.get(0).add(list.get(list.size()-1));
     }
