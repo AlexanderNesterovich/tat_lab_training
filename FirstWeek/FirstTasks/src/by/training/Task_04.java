@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class Task_04 {
 
+
     private int checkX;
     private int checkY;
     private List<Rectangle> list = new ArrayList<Rectangle>();

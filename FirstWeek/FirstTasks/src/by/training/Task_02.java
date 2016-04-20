@@ -11,6 +11,7 @@ import static java.math.BigDecimal.ROUND_HALF_UP;
  */
 public class Task_02 {
 
+
     private int precision = 1000;
     private BigDecimal a;
     private BigDecimal b;

@@ -2,7 +2,6 @@ package by.training;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
-import java.math.RoundingMode;
 
 import static java.math.BigDecimal.ROUND_HALF_UP;
 
@@ -10,6 +9,7 @@ import static java.math.BigDecimal.ROUND_HALF_UP;
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
  */
 public class Task_03 {
+
 
     private int precision = 150;
     private MathContext mc = new MathContext(precision);
@@ -22,7 +22,7 @@ public class Task_03 {
         this.b = new BigDecimal(b.toString());
         if(!checkPositive()) {
             throw new IllegalArgumentException("Negative Triangle Side");
-        };
+        }
     }
 
     public BigDecimal getPeremiter() {
@@ -46,10 +46,7 @@ public class Task_03 {
     }
 
     private boolean checkPositive() {
-        if(a.compareTo(BigDecimal.ZERO) > 0 & b.compareTo(BigDecimal.ZERO) > 0) {
-            return true;
-        }
-        return false;
+        return a.compareTo(BigDecimal.ZERO) > 0 & b.compareTo(BigDecimal.ZERO) > 0;
     }
 
 }

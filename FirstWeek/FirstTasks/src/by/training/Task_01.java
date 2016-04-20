@@ -13,6 +13,7 @@ public class Task_01 {
         tmp = tmp.replaceAll("\\D+","");
     }
 
+
     public boolean calculate() {
         if(tmp.length() != 4) {
             return false;
@@ -23,11 +24,8 @@ public class Task_01 {
             num[i] = tmp.charAt(i);
         }
 
-        if(num[0] + num[1] == num[tmp.length()-1] + num[tmp.length()-2]) {
-            return true;
-        }
+        return num[0] + num[1] == num[tmp.length() - 1] + num[tmp.length() - 2];
 
-        return false;
     }
 
 }

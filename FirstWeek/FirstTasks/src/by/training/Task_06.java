@@ -1,7 +1,6 @@
 package by.training;
 
 import java.math.BigDecimal;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,6 +9,7 @@ import java.util.List;
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
  */
 public class Task_06 {
+
 
     List<BigDecimal> list = new LinkedList<BigDecimal>();
 

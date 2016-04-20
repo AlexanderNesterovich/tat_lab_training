@@ -2,8 +2,6 @@ package by.training;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import static java.math.BigDecimal.ROUND_HALF_UP;
 
@@ -41,7 +39,7 @@ public class Task_07 {
     }
 
     private BigDecimal calculate(BigDecimal arg) {
-
+        return new BigDecimal(0);
     }
 
 

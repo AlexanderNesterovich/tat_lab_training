@@ -13,6 +13,7 @@ public class Utils {
 
     private static BigDecimal epsilon; // based on desired precision
     private static BigDecimal natural_e;
+
     private static BigDecimal pi = new BigDecimal(3.14159265358979323846);
     private static BigDecimal twopi;
     private static BigDecimal halfpi;
