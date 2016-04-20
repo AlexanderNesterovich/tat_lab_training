@@ -15,27 +15,26 @@ public class Task_07 {
     private BigDecimal step;
 
     public Task_07(Number min, Number max, Number step) {
+
         this.min = new BigDecimal(min.toString());
         this.max = new BigDecimal(max.toString());
         this.step = new BigDecimal(step.toString());
+
+        if (this.max.compareTo(this.min) > 0) {
+            throw new IllegalArgumentException("Negative Triangle Side");
+        }
     }
 
-    public void printTable() {
+    public String[][] printTable() {
         BigDecimal tmp = min;
-        if (max.compareTo(min) > 0) {
-            Object[][] table = new String[max.subtract(min).divide(step, RoundingMode.HALF_UP).add(new BigDecimal(2)).abs().intValue()][];
+        String[][] table = new String[max.subtract(min).divide(step, RoundingMode.HALF_UP).add(new BigDecimal(2)).abs().intValue()][];
             table[0] = new String[] { "argument", "result"};
             for (int count = 0; tmp.compareTo(max) <= 0;) {
                 count = count + 1;
                 table[count] = new String[] { tmp.setScale(6, ROUND_HALF_UP).toString(), calculate(tmp).setScale(6, ROUND_HALF_UP).toString()};
                 tmp = tmp.add(step);
             }
-            for (final Object[] row : table) {
-                System.out.format("%15s%15s\n", row);
-            }
-        }
-
-
+        return table;
     }
 
     private BigDecimal calculate(BigDecimal arg) {

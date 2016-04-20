@@ -1,5 +1,7 @@
 package by.training;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -30,5 +32,8 @@ public class Main {
 
         Task_08 task8 = new Task_08(new int[]{2, 4, 6, 3, 3, 3}, 2);
         System.out.println("Task_06: sum of multi: " + task8.getSpecialSum());
+
+        Task_10 task10 = new Task_10(6);
+        System.out.println(Arrays.deepToString(task10.generateMatrix()));
     }
 }
