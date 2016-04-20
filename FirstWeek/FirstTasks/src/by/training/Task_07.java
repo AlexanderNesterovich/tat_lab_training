@@ -41,7 +41,7 @@ public class Task_07 {
     }
 
     private BigDecimal calculate(BigDecimal arg) {
-        return arg.add(new BigDecimal(1));
+
     }
 
 

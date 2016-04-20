@@ -24,7 +24,7 @@ public class Main {
         Task_06 task6 = new Task_06(-2, -4, 3);
         System.out.println("Task_06: sum of max and min: " + task6.getSpecialSum());
 
-        Task_07 task7 = new Task_07(-3, 6, 3);
+        Task_07 task7 = new Task_07(0, 0.1, 0.01);
         System.out.println("Task_07: formula calc within range: ");
         task7.printTable();
 
