@@ -15,6 +15,7 @@ public class Task_02 {
     private int precision = 1000;
     private BigDecimal a;
     private BigDecimal b;
+
     private BigDecimal c;
 
     public Task_02(Number a, Number b, Number c) {
