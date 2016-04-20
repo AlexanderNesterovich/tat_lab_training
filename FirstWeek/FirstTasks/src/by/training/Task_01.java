@@ -13,7 +13,6 @@ public class Task_01 {
         tmp = tmp.replaceAll("\\D+","");
     }
 
-
     public boolean calculate() {
         if(tmp.length() != 4) {
             return false;

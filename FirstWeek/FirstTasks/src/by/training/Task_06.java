@@ -10,7 +10,6 @@ import java.util.List;
  */
 public class Task_06 {
 
-
     List<BigDecimal> list = new LinkedList<BigDecimal>();
 
     public Task_06(Number... args) {

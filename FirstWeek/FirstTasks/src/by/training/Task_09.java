@@ -6,5 +6,4 @@ package by.training;
 public class Task_09 {
 
 
-
 }

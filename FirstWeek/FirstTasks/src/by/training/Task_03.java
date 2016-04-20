@@ -10,7 +10,6 @@ import static java.math.BigDecimal.ROUND_HALF_UP;
  */
 public class Task_03 {
 
-
     private int precision = 150;
     private MathContext mc = new MathContext(precision);
     private BigDecimal a;
