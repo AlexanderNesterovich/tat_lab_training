@@ -4,9 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         Task_01 task = new Task_01(-111.1);
-
         System.out.println("Task_01: sum of first and last two digits: " + task.calculate());
-
 
         Task_02 task2 = new Task_02(-123123_1231, 1.23232, 1.32323);
         System.out.println("Task_02: formula calc: " + task2.calculate());
