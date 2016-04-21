@@ -15,12 +15,12 @@ public class Task_10 {
 
     }
 
-    public int[][] generateMatrix() {
-        int[][] tmp = new int[n][n];
+    public String[][] generateMatrix() {
+        String[][] tmp = new String[n][n];
         for (int k = 0; k < n; k = k + 2) {
             for (int l = 0; l < n; l++) {
-                tmp[k][l] = l + 1;
-                tmp[k + 1][l] = n - l;
+                tmp[k][l] = Integer.toString(l + 1);
+                tmp[k + 1][l] = Integer.toString(n - l);
             }
         }
         return tmp;

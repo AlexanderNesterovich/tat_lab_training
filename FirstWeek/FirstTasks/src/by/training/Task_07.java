@@ -2,6 +2,9 @@ package by.training;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Arrays;
 
 import static java.math.BigDecimal.ROUND_HALF_UP;
 
@@ -10,35 +13,43 @@ import static java.math.BigDecimal.ROUND_HALF_UP;
  */
 public class Task_07 {
 
-    private BigDecimal min;
-    private BigDecimal max;
-    private BigDecimal step;
+    private Double min;
+    private Double max;
+    private Double step;
 
-    public Task_07(Number min, Number max, Number step) {
+    public Task_07(Double min, Double max, Double step) {
 
-        this.min = new BigDecimal(min.toString());
-        this.max = new BigDecimal(max.toString());
-        this.step = new BigDecimal(step.toString());
+        this.min = min;
+        this.max = max;
+        this.step = step;
 
-        if (this.max.compareTo(this.min) > 0) {
-            throw new IllegalArgumentException("Negative Triangle Side");
+        if (max < min) {
+            throw new IllegalArgumentException("Negative Range");
         }
     }
 
-    public String[][] printTable() {
-        BigDecimal tmp = min;
-        String[][] table = new String[max.subtract(min).divide(step, RoundingMode.HALF_UP).add(new BigDecimal(2)).abs().intValue()][];
-            table[0] = new String[] { "argument", "result"};
-            for (int count = 0; tmp.compareTo(max) <= 0;) {
+    public String[][] getTable() {
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        Double size = max-min/step;
+        Double tmp = min;
+        String[][] table = new String[size.intValue() - 3][];
+        table[0] = new String[] { "argument", "result"};
+            for (int count = 0; tmp <= max; tmp = tmp + step) {
                 count = count + 1;
-                table[count] = new String[] { tmp.setScale(6, ROUND_HALF_UP).toString(), calculate(tmp).setScale(6, ROUND_HALF_UP).toString()};
-                tmp = tmp.add(step);
+                table[count] = new String[] { Double.toString(tmp), calculate(tmp)};
             }
         return table;
     }
 
-    private BigDecimal calculate(BigDecimal arg) {
-        return new BigDecimal(0);
+    private String calculate(double arg) {
+        double result;
+        result = Math.sin(Math.toRadians(arg));
+        result = Math.pow(result, 2);
+        result = result - Math.cos(Math.toRadians(arg)*2);
+        DecimalFormat df=new DecimalFormat("0.00");
+        String formate = df.format(result);
+        result = Double.parseDouble(formate);
+        return Double.toString(result);
     }
 
 

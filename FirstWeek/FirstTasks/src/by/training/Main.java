@@ -26,14 +26,19 @@ public class Main {
         Task_06 task6 = new Task_06(-2, -4, 3);
         System.out.println("Task_06: sum of max and min: " + task6.getSpecialSum());
 
-        Task_07 task7 = new Task_07(0, 0.1, 0.01);
+        Task_07 task7 = new Task_07(0d, 10d, 2d);
         System.out.println("Task_07: formula calc within range: ");
-        task7.printTable();
+        Utils.arrayPrinter(task7.getTable(), 7);
 
-        Task_08 task8 = new Task_08(new int[]{2, 4, 6, 3, 3, 3}, 2);
-        System.out.println("Task_06: sum of multi: " + task8.getSpecialSum());
+
+        Task_08 task8 = new Task_08(2, 2, 4, 6, 3, 3, 3);
+        System.out.println("Task_08: sum of multi: " + task8.getSpecialSum());
+
+        Task_09 task9 = new Task_09(new int[] {1,1,1,1,1,1,1,1,1}, new int[] {3}, 3);
+        System.out.println("Task_09: array: " + Arrays.toString(task9.merge()));
 
         Task_10 task10 = new Task_10(6);
-        System.out.println(Arrays.deepToString(task10.generateMatrix()));
+        System.out.println("Task_10: matrix");
+        Utils.arrayPrinter(task10.generateMatrix(), 3);
     }
 }

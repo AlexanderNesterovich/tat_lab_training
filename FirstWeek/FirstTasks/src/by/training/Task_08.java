@@ -10,7 +10,7 @@ public class Task_08 {
     private int[] array;
     private int multiplier;
 
-    public Task_08(int[] arr, int multiplier) {
+    public Task_08(int multiplier, int... arr ) {
         this.array = arr;
         this.multiplier = multiplier;
     }
