@@ -23,9 +23,13 @@ public class CommandsInvoker {
     }
 
     public Response execute(Request request) {
-        String commandName = request.getCommandName();
-        Command command = commandMap.get(request.getCommandName());
-        Response response = command.execute(request);
+        if (commandMap.containsKey(request.getCommandName())) {
+            Command command = commandMap.get(request.getCommandName());
+            Response response = command.execute(request);
+            return response;
+        }
+        Response response = new Response();
+        response.setErrorMessage("Unsupported Command: " + request.getCommandName());
         return response;
     }
 }
