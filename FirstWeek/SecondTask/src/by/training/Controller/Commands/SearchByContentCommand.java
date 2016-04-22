@@ -1,7 +1,7 @@
-package by.training.Controller.Commands;
+package by.training.controller.commands;
 
-import by.training.Model.Request;
-import by.training.Model.Response;
+import by.training.model.Request;
+import by.training.model.Response;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.

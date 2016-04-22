@@ -1,8 +1,8 @@
 package by.training;
 
-import by.training.Controller.CommandsInvoker;
-import by.training.Model.Request;
-import by.training.Model.Response;
+import by.training.controller.CommandsInvoker;
+import by.training.model.Request;
+import by.training.model.Response;
 
 public class Main {
 

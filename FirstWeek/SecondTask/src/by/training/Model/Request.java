@@ -1,4 +1,4 @@
-package by.training.Model;
+package by.training.model;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.

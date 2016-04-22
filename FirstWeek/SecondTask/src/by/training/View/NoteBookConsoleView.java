@@ -1,7 +1,7 @@
-package by.training.View;
+package by.training.view;
 
-import by.training.Model.Note;
-import by.training.Model.NoteBook;
+import by.training.model.Note;
+import by.training.model.NoteBook;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package by.training.Service;
+package by.training.service;
 
-import by.training.Controller.NoteBookProvider;
-import by.training.Model.Note;
+import by.training.controller.NoteBookProvider;
+import by.training.model.Note;
 
 import java.util.ArrayList;
 import java.util.Date;

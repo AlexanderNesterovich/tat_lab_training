@@ -1,8 +1,8 @@
-package by.training.Controller;
+package by.training.controller;
 
-import by.training.Controller.Commands.*;
-import by.training.Model.Request;
-import by.training.Model.Response;
+import by.training.controller.commands.*;
+import by.training.model.Request;
+import by.training.model.Response;
 
 import java.util.Map;
 

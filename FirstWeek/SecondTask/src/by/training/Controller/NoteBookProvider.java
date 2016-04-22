@@ -1,6 +1,6 @@
-package by.training.Controller;
+package by.training.controller;
 
-import by.training.Model.NoteBook;
+import by.training.model.NoteBook;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.

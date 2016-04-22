@@ -1,4 +1,4 @@
-package by.training.Model;
+package by.training.model;
 
 import java.util.Date;
 
