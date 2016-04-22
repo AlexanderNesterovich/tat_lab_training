@@ -14,6 +14,7 @@ public class Main {
         System.out.println("actual double: " + new BigDecimal(same).toString());
         System.out.println("sysout double: " + same);
 
+        
         System.out.println("difference: " + (max - (long)same));
 
         System.out.println();
