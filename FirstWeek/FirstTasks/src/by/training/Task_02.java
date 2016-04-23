@@ -26,6 +26,7 @@ public class Task_02 {
         MathContext mc = new MathContext(precision);
         BigDecimal top = new BigDecimal(4).multiply(a).multiply(c);
         top = top.add(b.pow(2));
+
         try {
             top = Utils.bigSqrt(top, mc);
         } catch (ArithmeticException e) {

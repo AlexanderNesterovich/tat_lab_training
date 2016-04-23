@@ -8,20 +8,20 @@ import java.util.List;
  */
 public class Task_04 {
 
-    private int checkX;
-    private int checkY;
+    private int x;
+    private int y;
     private List<Rectangle> list = new ArrayList<Rectangle>();
 
     public Task_04(int x, int y) {
-        checkX = x;
-        checkY = y;
+        this.x = x;
+        this.y = y;
         list.add(new Rectangle(-2, 2, 0, 4));
         list.add(new Rectangle(-4, 4, 0, -3));
     }
 
     public boolean check() {
         for(Rectangle r: list) {
-            if ((checkX >= r.getX1() && checkX <= r.getX2()) && (checkY >= r.getY1() && checkY <= r.getY2())) {
+            if ((x >= r.getX1() && x <= r.getX2()) && (y >= r.getY1() && y <= r.getY2())) {
                 return true;
             }
         }

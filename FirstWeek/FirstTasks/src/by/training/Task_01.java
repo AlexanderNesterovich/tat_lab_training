@@ -10,7 +10,6 @@ public class Task_01 {
 
     public Task_01(Number number) {
         tmp = number.toString();
-        tmp = tmp.replaceAll("\\D+","");
     }
 
 
@@ -19,6 +18,7 @@ public class Task_01 {
             return false;
         }
 
+        tmp = tmp.replaceAll("\\D+", "");
         num = new int[tmp.length()];
         for (int i = 0; i < tmp.length(); i++){
             num[i] = tmp.charAt(i);
