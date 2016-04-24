@@ -6,6 +6,12 @@ import java.util.List;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
  */
+
+// Для данных областей составить линейную программу,
+// которая печатает true,
+// если точка с координатами (х, у) принадлежит закрашенной области,
+// и false — в противном случае:
+
 public class Task_04 {
 
     private int x;

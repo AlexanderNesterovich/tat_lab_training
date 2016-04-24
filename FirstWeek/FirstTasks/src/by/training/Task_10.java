@@ -3,6 +3,9 @@ package by.training;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
  */
+
+// Сформировать квадратную матрицу порядка n по заданному образцу(n - четное):
+
 public class Task_10 {
 
     private int n;

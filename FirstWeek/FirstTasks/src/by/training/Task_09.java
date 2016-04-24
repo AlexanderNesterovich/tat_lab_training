@@ -1,10 +1,12 @@
 package by.training;
 
-import java.util.Arrays;
-
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
  */
+
+//Заданы два одномерных массива с различным количеством элементов и натуральное число k.
+// Объединить их в один массив, включив второй массив между k-м и (k+1) - м элементами первого.
+
 public class Task_09 {
 
     private int[] arr1;

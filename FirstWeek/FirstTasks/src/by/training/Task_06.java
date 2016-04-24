@@ -8,6 +8,9 @@ import java.util.List;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
  */
+
+// Написать программу нахождения суммы большего и меньшего из трех чисел.
+
 public class Task_06 {
 
     List<BigDecimal> list = new LinkedList<BigDecimal>();

@@ -5,6 +5,10 @@ import java.math.BigInteger;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
  */
+
+// В массив A [N] занесены натуральные числа.
+// Найти сумму тех элементов, которые кратны данному К.
+
 public class Task_08 {
 
     private int[] array;

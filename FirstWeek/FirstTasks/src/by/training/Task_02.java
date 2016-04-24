@@ -9,6 +9,8 @@ import static java.math.BigDecimal.ROUND_HALF_UP;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
  */
+
+// Вычислить значение выражения по формуле (все переменные принимают действительные значения):
 public class Task_02 {
 
     private int precision = 1000;

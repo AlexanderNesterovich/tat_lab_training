@@ -1,16 +1,17 @@
 package by.training;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.Arrays;
-
-import static java.math.BigDecimal.ROUND_HALF_UP;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
  */
+
+//Составить программу для вычисления значений функции  F(x) на отрезке [а, b] с шагом h.
+// Результат представить в виде таблицы,
+// первый столбец которой – значения  аргумента,
+// второй - соот­ветствующие значения функции:
+
 public class Task_07 {
 
     private Double min;

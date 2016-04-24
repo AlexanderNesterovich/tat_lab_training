@@ -11,6 +11,7 @@ import java.util.Map;
  */
 public class CommandsInvoker {
 
+    Response response;
     private Map<String, Command> commandMap;
 
     public CommandsInvoker() {
@@ -23,12 +24,14 @@ public class CommandsInvoker {
     }
 
     public Response execute(Request request) {
+
         if (commandMap.containsKey(request.getCommandName())) {
             Command command = commandMap.get(request.getCommandName());
-            Response response = command.execute(request);
+            response = command.execute(request);
             return response;
         }
-        Response response = new Response();
+
+        response = new Response();
         response.setErrorMessage("Unsupported Command: " + request.getCommandName());
         return response;
     }

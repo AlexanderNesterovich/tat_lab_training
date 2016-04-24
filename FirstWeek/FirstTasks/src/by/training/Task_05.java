@@ -5,6 +5,12 @@ import java.math.BigDecimal;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
  */
+
+// Даны три действительных числа.
+// Возвести в квадрат те из них,
+// значения которых неотрицательны,
+// и в четвертую степень — отрицательные.
+
 public class Task_05 {
 
     private BigDecimal a;

@@ -8,6 +8,9 @@ import static java.math.BigDecimal.ROUND_HALF_UP;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
  */
+
+// Вычислить периметр и площадь прямоугольного треугольника по длинам а и b  двух катетов.
+
 public class Task_03 {
 
     private int precision = 150;
