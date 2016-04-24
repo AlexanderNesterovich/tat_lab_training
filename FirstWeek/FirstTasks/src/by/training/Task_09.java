@@ -24,7 +24,6 @@ public class Task_09 {
 
 //public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
 public Object[] merge() {
-    position = position;
     Object[] arr3 = new Object[arr1.length + arr2.length];
         System.arraycopy(arr1, 0, arr3, 0, position);
         System.arraycopy(arr2, 0, arr3, position, arr2.length);
