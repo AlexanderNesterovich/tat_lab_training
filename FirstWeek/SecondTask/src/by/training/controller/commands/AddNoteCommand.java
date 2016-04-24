@@ -1,5 +1,7 @@
 package by.training.controller.commands;
 
+import by.training.controller.NoteBookProvider;
+import by.training.model.Note;
 import by.training.model.Request;
 import by.training.model.Response;
 
@@ -10,6 +12,9 @@ public class AddNoteCommand implements Command {
 
     @Override
     public Response execute(Request req) {
-        return null;
+        NoteBookProvider.getInstance().addNote(new Note(req.getContent()));
+        Response response = new Response();
+        response.setMessage("Added");
+        return response;
     }
 }

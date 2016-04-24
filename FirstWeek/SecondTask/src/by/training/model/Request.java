@@ -8,15 +8,19 @@ public class Request {
     private String content;
     private String commandName;
 
-    public void setContent(String content) {
-        this.content = content;
+    public String getCommandName() {
+        return commandName;
     }
 
     public void setCommandName(String commandName) {
         this.commandName = commandName;
     }
 
-    public String getCommandName() {
-        return commandName;
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

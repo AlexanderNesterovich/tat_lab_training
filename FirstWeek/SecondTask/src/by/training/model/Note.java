@@ -1,6 +1,7 @@
 package by.training.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
@@ -40,23 +41,17 @@ public class Note {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Note note1 = (Note) o;
-
-        if (note != null ? !note.equals(note1.note) : note1.note != null) return false;
-        return date != null ? date.equals(note1.date) : note1.date == null;
-
+        return Objects.equals(note, note1.note) &&
+                Objects.equals(date, note1.date);
     }
 
     @Override
     public int hashCode() {
-        int result = note != null ? note.hashCode() : 0;
-        result = 31 * result + (date != null ? date.hashCode() : 0);
-        return result;
+        return Objects.hash(note, date);
     }
 
     @Override
-
     public String toString() {
         return "Note{" +
                 "note='" + note + '\'' +
