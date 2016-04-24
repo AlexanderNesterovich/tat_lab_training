@@ -34,7 +34,7 @@ public class Main {
         Task_08 task8 = new Task_08(2, 2, 4, 6, 3, 3, 3);
         System.out.println("Task_08: sum of multi: " + task8.getSpecialSum());
 
-        Task_09 task9 = new Task_09(new int[] {1,1,1,1,1,1,1,1,1}, new int[] {3}, 3);
+        Task_09 task9 = new Task_09(new Integer[]{1, 1, 1, 1, 1, 1, 1, 1, 1}, new Integer[]{3}, 3);
         System.out.println("Task_09: array: " + Arrays.toString(task9.merge()));
 
         Task_10 task10 = new Task_10(6);

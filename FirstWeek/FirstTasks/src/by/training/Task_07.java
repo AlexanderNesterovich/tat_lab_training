@@ -47,10 +47,8 @@ public class Task_07 {
         result = Math.sin(Math.toRadians(arg));
         result = Math.pow(result, 2);
         result = result - Math.cos(Math.toRadians(arg)*2);
-        DecimalFormat df=new DecimalFormat("0.00");
-        String formate = df.format(result);
-        result = Double.parseDouble(formate);
-        return Double.toString(result);
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(result);
     }
 
 
