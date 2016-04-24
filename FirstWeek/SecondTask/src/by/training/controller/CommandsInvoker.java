@@ -4,6 +4,7 @@ import by.training.controller.commands.*;
 import by.training.model.Request;
 import by.training.model.Response;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Map;
 public class CommandsInvoker {
 
     Response response;
-    private Map<String, Command> commandMap;
+    private Map<String, Command> commandMap = new HashMap<>();
 
     public CommandsInvoker() {
         commandMap.put("ADD_NOTE", new AddNoteCommand());

@@ -11,13 +11,23 @@ public class Main {
         request.setCommandName("ADD_NOTE");
         request.setContent("blablablabla");
 
+        Request request2 = new Request();
+        request2.setCommandName("SHOW_NOTEBOOK");
+
         CommandsInvoker invoker = new CommandsInvoker();
         Response response = invoker.execute(request);
+        Response response2 = invoker.execute(request2);
 
-        if(response.getErrorMessage() != null){
+        if (response.getErrorMessage() == null) {
             System.out.println(response.getMessage());
         }else{
             System.out.println(response.getErrorMessage());
+        }
+
+        if (response2.getErrorMessage() == null) {
+            System.out.println(response2.getMessage());
+        } else {
+            System.out.println(response2.getErrorMessage());
         }
     }
 }
