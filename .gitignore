@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But not these files...
+!/src/**
+!/doc/**
+!/pom.xml
+!/.gitignore
+# etc...
+
+# ...even if they are in subdirectories
+!*/
