@@ -13,7 +13,7 @@ public class Main {
 
         Task_03 task3 = new Task_03(5, 10);
         System.out.println("Task_03: Triangle area: " + task3.getArea());
-        System.out.println("Task_03: Triangle peremiter: " + task3.getPeremiter());
+        System.out.println("Task_03: Triangle perimeter: " + task3.getPeremiter());
 
         Task_04 task4 = new Task_04(-2, 0);
         System.out.println("Task_04: check range of coordinates: " + task4.check());
