@@ -11,8 +11,8 @@ public class Task_10 {
     private int n;
 
     public Task_10(int n) {
-        if (n < 0 && n % 2 != 0) {
-            throw new IllegalArgumentException("odd or less than 0");
+        if (n < 0 | n % 2 != 0) {
+            throw new IllegalArgumentException("order is odd or less than 0");
         }
         this.n = n;
 
