@@ -1,5 +1,6 @@
 package by.training.controller;
 
+import by.training.model.Note;
 import by.training.model.NoteBook;
 
 /**
@@ -21,6 +22,10 @@ public class NoteBookProvider {
     public static NoteBook getNew() {
         instance = new NoteBook();
         return instance;
+    }
+
+    public static void setNew(NoteBook nb) {
+        instance = nb;
     }
 
 }

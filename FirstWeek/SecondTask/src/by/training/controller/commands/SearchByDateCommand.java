@@ -32,7 +32,7 @@ public class SearchByDateCommand implements Command {
             response.setMessage(NoteBookConsoleView.print(list));
             return response;
         }else{
-            response.setMessage("not found");
+            response.setErrorMessage("not found");
             return response;
         }
     }

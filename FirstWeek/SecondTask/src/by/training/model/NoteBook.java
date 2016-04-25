@@ -1,5 +1,6 @@
 package by.training.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -7,7 +8,7 @@ import java.util.Objects;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
-public class NoteBook {
+public class NoteBook implements Serializable {
 
     List<Note> bookList = new ArrayList<Note>();
 
