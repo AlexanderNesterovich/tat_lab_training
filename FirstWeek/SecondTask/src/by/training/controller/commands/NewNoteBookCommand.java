@@ -1,5 +1,6 @@
 package by.training.controller.commands;
 
+import by.training.controller.NoteBookProvider;
 import by.training.model.Request;
 import by.training.model.Response;
 
@@ -10,6 +11,9 @@ public class NewNoteBookCommand implements Command {
 
     @Override
     public Response execute(Request req) {
-        return null;
+        NoteBookProvider.getNew();
+        Response response = new Response();
+        response.setMessage("Notebook created successfully");
+        return response;
     }
 }

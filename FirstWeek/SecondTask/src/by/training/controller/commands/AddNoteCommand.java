@@ -14,7 +14,7 @@ public class AddNoteCommand implements Command {
     public Response execute(Request req) {
         NoteBookProvider.getInstance().addNote(new Note(req.getContent()));
         Response response = new Response();
-        response.setMessage("Added");
+        response.setMessage("Note added successfully");
         return response;
     }
 }

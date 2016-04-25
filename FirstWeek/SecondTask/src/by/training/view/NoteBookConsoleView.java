@@ -10,18 +10,23 @@ import java.util.List;
  */
 public class NoteBookConsoleView {
 
-    public static void print(Note n) {
-        System.out.println(n.toString());
+    public static String print(Note n) {
+        StringBuffer tmp = new StringBuffer();
+        tmp.append("content: " + n.getNote() + "\n");
+        tmp.append("date: " + n.getDate() + "\n");
+        return tmp.toString();
     }
 
-    public static void print(NoteBook nb) {
-        print(nb.getNotes());
+    public static String print(NoteBook nb) {
+        return print(nb.getNotes());
     }
 
-    public static void print(List<Note> list) {
+    public static String print(List<Note> list) {
+        StringBuffer tmp = new StringBuffer();
         for(Note n: list) {
-            print(n);
+            tmp.append(print(n));
         }
+        return tmp.toString();
     }
 
 }

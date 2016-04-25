@@ -9,10 +9,11 @@ public class Main {
     public static void main(String[] args) {
         Request request = new Request();
         request.setCommandName("ADD_NOTE");
-        request.setContent("blablablabla");
+        request.setContent("blabla");
 
         Request request2 = new Request();
-        request2.setCommandName("SHOW_NOTEBOOK");
+        request2.setCommandName("SEARCH_BY_CONTENT");
+        request2.setContent("blabla");
 
         CommandsInvoker invoker = new CommandsInvoker();
         Response response = invoker.execute(request);
