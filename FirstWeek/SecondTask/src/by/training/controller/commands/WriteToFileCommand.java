@@ -4,6 +4,7 @@ import by.training.controller.NoteBookProvider;
 import by.training.model.Request;
 import by.training.model.Response;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -27,6 +28,7 @@ public class WriteToFileCommand implements Command {
             return response;
         }catch(IOException i)
         {
+            System.out.println(i.toString());
             response.setErrorMessage("Serialization is failed");
             return response;
         }

@@ -12,12 +12,17 @@ public class Main {
         request.setContent("blabla");
 
         Request request2 = new Request();
-        request2.setCommandName("SEARCH_BY_CONTENT");
-        request2.setContent("blabla");
+        request2.setCommandName("WRITE_TO_FILE");
+        request2.setContent("C:/tmp/tmp.ser");
+
+        Request request3 = new Request();
+        request3.setCommandName("READ_FROM_FILE");
+        request3.setContent("C:/tmp/tmp.ser");
 
         CommandsInvoker invoker = new CommandsInvoker();
         Response response = invoker.execute(request);
         Response response2 = invoker.execute(request2);
+        Response response3 = invoker.execute(request3);
 
         if (response.getErrorMessage() == null) {
             System.out.println(response.getMessage());
@@ -29,6 +34,12 @@ public class Main {
             System.out.println(response2.getMessage());
         } else {
             System.out.println(response2.getErrorMessage());
+        }
+
+        if (response3.getErrorMessage() == null) {
+            System.out.println(response3.getMessage());
+        } else {
+            System.out.println(response3.getErrorMessage());
         }
     }
 }

@@ -1,12 +1,13 @@
 package by.training.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
-public class Note {
+public class Note implements Serializable{
 
     private String note;
     private Date date;

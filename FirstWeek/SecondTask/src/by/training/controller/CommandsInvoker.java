@@ -22,6 +22,7 @@ public class CommandsInvoker {
         commandMap.put("SEARCH_BY_DATE", new SearchByDateCommand());
         commandMap.put("SHOW_NOTEBOOK", new ShowNoteBookCommand());
         commandMap.put("NEW_NOTEBOOK", new NewNoteBookCommand());
+        commandMap.put("WRITE_TO_FILE", new WriteToFileCommand());
     }
 
     public Response execute(Request request) {
