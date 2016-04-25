@@ -10,13 +10,6 @@ import java.util.List;
  */
 public class NoteBookConsoleView {
 
-    public static String print(Note n) {
-        StringBuffer tmp = new StringBuffer();
-        tmp.append("content: " + n.getNote() + "\n");
-        tmp.append("date: " + n.getDate() + "\n");
-        return tmp.toString();
-    }
-
     public static String print(NoteBook nb) {
         return print(nb.getNotes());
     }
@@ -26,6 +19,13 @@ public class NoteBookConsoleView {
         for(Note n: list) {
             tmp.append(print(n));
         }
+        return tmp.toString();
+    }
+
+    public static String print(Note n) {
+        StringBuffer tmp = new StringBuffer();
+        tmp.append("content: " + n.getNote() + "\n");
+        tmp.append("date: " + n.getDate() + "\n");
         return tmp.toString();
     }
 

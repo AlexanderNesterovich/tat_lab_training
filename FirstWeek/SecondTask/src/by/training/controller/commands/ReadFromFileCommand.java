@@ -4,6 +4,7 @@ import by.training.controller.NoteBookProvider;
 import by.training.model.NoteBook;
 import by.training.model.Request;
 import by.training.model.Response;
+import by.training.service.ServiceFactory;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,24 +17,18 @@ public class ReadFromFileCommand implements Command {
 
     @Override
     public Response execute(Request req) {
-
-        NoteBook noteBook;
         Response response = new Response();
         try {
-            FileInputStream fileIn = new FileInputStream(req.getContent());
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            noteBook = (NoteBook) in.readObject();
-            in.close();
-            fileIn.close();
-            NoteBookProvider.setNew(noteBook);
-            response.setMessage("Serialized data is read from: " + req.getContent());
+            ServiceFactory.getNoteBookService().readFromFile(req.getContent());
+            response.setMessage("File was succesfully read!");
             return response;
-        } catch (IOException i) {
-            response.setErrorMessage("Cannot read from file: " + req.getContent());
+        } catch (IOException e) {
+            response.setErrorMessage("Cannot read file!");
             return response;
         } catch (ClassNotFoundException e) {
-            response.setErrorMessage("Class not found");
+            response.setErrorMessage("Cannot find class!");
             return response;
         }
+
     }
 }

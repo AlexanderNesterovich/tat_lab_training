@@ -4,6 +4,8 @@ import by.training.controller.NoteBookProvider;
 import by.training.model.Note;
 import by.training.model.Request;
 import by.training.model.Response;
+import by.training.service.NoteBookService;
+import by.training.view.NoteBookConsoleView;
 
 import java.util.List;
 
@@ -15,13 +17,8 @@ public class ShowNoteBookCommand implements Command {
     @Override
     public Response execute(Request req) {
         Response response = new Response();
-        List<Note> list = NoteBookProvider.getInstance().getNotes();
-        StringBuffer tmp = new StringBuffer();
-        for (Note n : list) {
-            tmp.append("content: " + n.getNote() + "\n");
-            tmp.append("date: " + n.getDate() + "\n");
-        }
-        response.setMessage(tmp.toString());
+        NoteBookService service = new NoteBookService();
+        response.setMessage(NoteBookConsoleView.print(service.getCatalog()));
         return response;
     }
 }

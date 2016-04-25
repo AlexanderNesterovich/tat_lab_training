@@ -24,7 +24,7 @@ public class SearchByContentCommand implements Command {
             response.setMessage(NoteBookConsoleView.print(list));
             return response;
         }else{
-            response.setMessage("not found");
+            response.setMessage("Not found!");
             return response;
         }
     }

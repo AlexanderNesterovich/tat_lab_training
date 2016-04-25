@@ -23,16 +23,15 @@ public class SearchByDateCommand implements Command {
         try {
             list = service.searchByDate(req.getContent());
         } catch (ParseException e) {
-            response.setMessage("Incorrect Date Input");
+            response.setMessage("Incorrect Date Input!");
             return response;
         }
 
         if (list.size() > 0) {
-            StringBuffer tmp = new StringBuffer();
             response.setMessage(NoteBookConsoleView.print(list));
             return response;
         }else{
-            response.setErrorMessage("not found");
+            response.setErrorMessage("Not found!");
             return response;
         }
     }
