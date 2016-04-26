@@ -26,16 +26,8 @@ public class Note implements Serializable{
         return note;
     }
 
-    public void setNote(String note) {
-        this.note = note;
-    }
-
     public Date getDate() {
         return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     @Override

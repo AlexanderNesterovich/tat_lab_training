@@ -10,14 +10,10 @@ import java.util.Objects;
  */
 public class NoteBook implements Serializable {
 
-    List<Note> bookList = new ArrayList<Note>();
+    private List<Note> bookList = new ArrayList<Note>();
 
     public void addNote(Note note) {
         bookList.add(note);
-    }
-
-    public void removeNote(Note note) {
-        bookList.remove(note);
     }
 
     public List<Note> getNotes() {
