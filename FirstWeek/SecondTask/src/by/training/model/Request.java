@@ -1,5 +1,7 @@
 package by.training.model;
 
+import java.util.Arrays;
+
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
@@ -18,7 +20,7 @@ public class Request {
     }
 
     public String[] getArguments() {
-        return args;
+        return Arrays.copyOfRange(args, 1, args.length);
     }
 
 }

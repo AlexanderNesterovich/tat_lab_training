@@ -43,7 +43,7 @@ public class NoteBookService {
     }
 
     public void addNote(String content, Date date) {
-        NoteBookProvider.getInstance().addNote(new Note(content));
+        NoteBookProvider.getInstance().addNote(new Note(content, date));
     }
 
     public void newNoteBook() {

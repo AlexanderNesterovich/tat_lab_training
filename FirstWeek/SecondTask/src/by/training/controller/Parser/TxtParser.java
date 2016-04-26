@@ -79,17 +79,16 @@ public class TxtParser implements Parser{
             list.add(temp);
         }
 
+        Request tmp;
         if (list.size() > 0)
         {
-            Request tmp = new Request(line, list.toArray(new String[0]));
+            tmp = new Request(line, list.toArray(new String[0]));
             commandList.add(tmp);
         }
     }
 
     public List<Request> getRequestList() {
-
         return commandList;
-
     }
 
 }

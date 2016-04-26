@@ -5,7 +5,7 @@ package by.training.model;
  */
 public class Response {
 
-    private String errorMessage;
+    private String errorMessage = "";
     private String message;
 
     public String getErrorMessage() {

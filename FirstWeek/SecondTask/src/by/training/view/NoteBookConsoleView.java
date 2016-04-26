@@ -3,6 +3,9 @@ package by.training.view;
 import by.training.model.Note;
 import by.training.model.NoteBook;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,7 +28,8 @@ public class NoteBookConsoleView {
     public static String print(Note n) {
         StringBuffer tmp = new StringBuffer();
         tmp.append("content: " + n.getNote() + "\n");
-        tmp.append("date: " + n.getDate() + "\n");
+        DateFormat outputFormatter = new SimpleDateFormat("yyyy/MM/dd");
+        tmp.append("date: " + outputFormatter.format(n.getDate()) + "\n");
         return tmp.toString();
     }
 

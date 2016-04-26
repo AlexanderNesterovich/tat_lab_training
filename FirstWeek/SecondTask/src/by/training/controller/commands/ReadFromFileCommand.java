@@ -14,9 +14,15 @@ public class ReadFromFileCommand implements Command {
     @Override
     public Response execute(Request req) {
         Response response = new Response();
+
+        if(req.getArguments().length == 0) {
+            response.setErrorMessage("Not enough arguments!");
+            return response;
+        }
+
         try {
-            ServiceFactory.getInstance().getNoteBookService().readFromFile(req.getArguments()[1]);
-            response.setMessage("File was succesfully read!");
+            ServiceFactory.getInstance().getNoteBookService().readFromFile(req.getArguments()[0]);
+            response.setMessage("File was successfully read!");
             return response;
         } catch (IOException e) {
             response.setErrorMessage("Cannot read file!");

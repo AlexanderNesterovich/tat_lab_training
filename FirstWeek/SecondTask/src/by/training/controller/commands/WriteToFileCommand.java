@@ -14,9 +14,15 @@ public class WriteToFileCommand implements Command {
     @Override
     public Response execute(Request req) {
         Response response = new Response();
+
+        if(req.getArguments().length == 0) {
+            response.setErrorMessage("Not enough arguments!");
+            return response;
+        }
+
         try {
-            ServiceFactory.getInstance().getNoteBookService().writeToFile(req.getArguments()[1]);
-            response.setMessage("File was succesfully written!");
+            ServiceFactory.getInstance().getNoteBookService().writeToFile(req.getArguments()[0]);
+            response.setMessage("File was successfully written!");
             return response;
         } catch (FileNotFoundException e) {
             response.setErrorMessage("File not found!");

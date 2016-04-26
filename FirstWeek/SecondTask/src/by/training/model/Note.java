@@ -12,11 +12,6 @@ public class Note implements Serializable{
     private String note;
     private Date date;
 
-    public Note(String note) {
-        this.note = note;
-        this.date = new Date();
-    }
-
     public Note(String note, Date date) {
         this.note = note;
         this.date = date;

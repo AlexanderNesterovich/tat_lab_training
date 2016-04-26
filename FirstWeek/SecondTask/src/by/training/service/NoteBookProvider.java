@@ -1,6 +1,5 @@
 package by.training.service;
 
-import by.training.model.Note;
 import by.training.model.NoteBook;
 
 /**

@@ -16,10 +16,10 @@ public class Main {
         Response response;
         for(Request req: parser.getRequestList()) {
             response = invoker.execute(req);
-            if (response.getErrorMessage() == null) {
-                System.out.println(response.getMessage());
+            if (response.getMessage() == null) {
+                System.out.println(response.getErrorMessage());
             }else{
-                System.err.println(response.getErrorMessage());
+                System.out.println(response.getMessage() + " " + response.getErrorMessage());
             }
         }
 
