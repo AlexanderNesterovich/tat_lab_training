@@ -5,22 +5,20 @@ package by.training.model;
  */
 public class Request {
 
-    private String content;
-    private String commandName;
+    private String originalLine;
+    private String[] args;
+
+    public Request(String originalLine, String... args) {
+        this.originalLine = originalLine;
+        this.args = args;
+    }
 
     public String getCommandName() {
-        return commandName;
+        return args[0];
     }
 
-    public void setCommandName(String commandName) {
-        this.commandName = commandName;
+    public String[] getArguments() {
+        return args;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
 }

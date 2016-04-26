@@ -1,9 +1,8 @@
 package by.training.service;
 
-import by.training.controller.NoteBookProvider;
+import by.training.dao.FilesDao;
+import by.training.dao.WindowsFilesDao;
 import by.training.model.Note;
-import by.training.model.NoteBook;
-import by.training.model.Response;
 
 import java.io.*;
 import java.text.DateFormat;
@@ -19,6 +18,8 @@ import java.util.Locale;
  */
 public class NoteBookService {
 
+    private FilesDao filesDao = new WindowsFilesDao();
+
     public List<Note> searchByContent(String s) {
         List<Note> tmp = new ArrayList<>();
         for(Note n: getCatalog()) {
@@ -30,11 +31,11 @@ public class NoteBookService {
     }
 
     public List<Note> searchByDate(String s) throws ParseException {
-        DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date d = format.parse(s);
         List<Note> tmp = new ArrayList<>();
         for(Note n: getCatalog()) {
-            if (n.getDate().compareTo(d) == 0) {
+            if (format.parse(format.format(n.getDate())).compareTo(d) == 0) {
                 tmp.add(n);
             }
         }
@@ -49,20 +50,12 @@ public class NoteBookService {
         NoteBookProvider.getNew();
     }
 
-    public void readFromFile(String path) throws IOException, ClassNotFoundException {
-        try(FileInputStream fileIn = new FileInputStream(path);
-            ObjectInputStream in = new ObjectInputStream(fileIn)) {
-            NoteBook noteBook;
-            noteBook = (NoteBook) in.readObject();
-            NoteBookProvider.setNew(noteBook);
-        }
+    public void readFromFile(String name) throws IOException, ClassNotFoundException {
+        NoteBookProvider.setNew(filesDao.readFromFile(name));
     }
 
-    public void writeToFile(String path) throws IOException {
-        try(FileOutputStream fileOut = new FileOutputStream(path);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
-            out.writeObject(NoteBookProvider.getInstance());
-        }
+    public void writeToFile(String name) throws IOException {
+        filesDao.writeToFile(name);
     }
 
     public List<Note> getCatalog() {

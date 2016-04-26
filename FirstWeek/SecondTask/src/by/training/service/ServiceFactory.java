@@ -5,11 +5,18 @@ package by.training.service;
  */
 public class ServiceFactory {
 
-    private static NoteBookService noteBookService = new NoteBookService();
+    private static final ServiceFactory factory = new ServiceFactory();
+
+    private final NoteBookService noteBookService = new NoteBookService();
 
     private ServiceFactory(){}
 
-    public static NoteBookService getNoteBookService(){
+
+    public static ServiceFactory getInstance(){
+        return factory;
+    }
+
+    public NoteBookService getNoteBookService(){
         return noteBookService;
     }
 

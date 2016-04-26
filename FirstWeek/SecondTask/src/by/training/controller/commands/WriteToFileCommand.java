@@ -1,6 +1,5 @@
 package by.training.controller.commands;
 
-import by.training.controller.NoteBookProvider;
 import by.training.model.Request;
 import by.training.model.Response;
 import by.training.service.ServiceFactory;
@@ -16,7 +15,7 @@ public class WriteToFileCommand implements Command {
     public Response execute(Request req) {
         Response response = new Response();
         try {
-            ServiceFactory.getNoteBookService().writeToFile(req.getContent());
+            ServiceFactory.getInstance().getNoteBookService().writeToFile(req.getArguments()[1]);
             response.setMessage("File was succesfully written!");
             return response;
         } catch (FileNotFoundException e) {

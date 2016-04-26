@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Task_06 {
 
-    List<BigDecimal> list = new LinkedList<BigDecimal>();
+    List<BigDecimal> list = new LinkedList<>();
 
     public Task_06(Number... args) {
         for(Number n: args) {
@@ -23,7 +23,7 @@ public class Task_06 {
 
     public BigDecimal getSpecialSum() {
         if (list.size() < 2) {
-            return list.get(0);
+            throw new IllegalArgumentException("Not enough arguments!");
         }
         Collections.sort(list, Collections.reverseOrder());
         return list.get(0).add(list.get(list.size()-1));

@@ -15,8 +15,8 @@ public class AddNoteCommand implements Command {
     @Override
     public Response execute(Request req) {
         Response response = new Response();
-        NoteBookService service = ServiceFactory.getNoteBookService();
-        service.addNote(req.getContent(), new Date());
+        NoteBookService service = ServiceFactory.getInstance().getNoteBookService();
+        service.addNote(req.getArguments()[1], new Date());
         response.setMessage("Note added successfully!");
         return response;
     }

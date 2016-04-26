@@ -1,10 +1,10 @@
 package by.training.controller.commands;
 
-import by.training.controller.NoteBookProvider;
 import by.training.model.Note;
 import by.training.model.Request;
 import by.training.model.Response;
 import by.training.service.NoteBookService;
+import by.training.service.ServiceFactory;
 import by.training.view.NoteBookConsoleView;
 
 import java.util.List;
@@ -17,8 +17,7 @@ public class SearchByContentCommand implements Command {
     @Override
     public Response execute(Request req) {
         Response response = new Response();
-        NoteBookService service = new NoteBookService();
-        List<Note> list = service.searchByContent(req.getContent());
+        List<Note> list = ServiceFactory.getInstance().getNoteBookService().searchByContent(req.getArguments()[1]);
         if (list.size() > 0) {
             StringBuffer tmp = new StringBuffer();
             response.setMessage(NoteBookConsoleView.print(list));
