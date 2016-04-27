@@ -128,13 +128,13 @@ public class NoteBookServiceTest {
     }
 
     @Test
-    public void testReadFromFile() throws Exception {
-
-    }
-
-    @Test
-    public void testWriteToFile() throws Exception {
-
+    public void testReadWriteFromFile() throws Exception {
+        NoteBook noteBook = NoteBookProvider.getInstance();
+        noteBookService.writeToFile("test3");
+        NoteBookProvider.getNew();
+        assertEquals(NoteBookProvider.getInstance(), new NoteBook());
+        noteBookService.readFromFile("test3");
+        assertEquals(NoteBookProvider.getInstance(), noteBook);
     }
 
     @Test
