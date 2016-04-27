@@ -3,15 +3,15 @@ package by.training.service;
 import by.training.dao.FilesDao;
 import by.training.dao.WindowsFilesDao;
 import by.training.model.Note;
+import by.training.model.NoteBook;
 
-import java.io.*;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
@@ -60,6 +60,10 @@ public class NoteBookService {
 
     public List<Note> getCatalog() {
         return NoteBookProvider.getInstance().getNotes();
+    }
+
+    public NoteBook getNotebook() {
+        return NoteBookProvider.getInstance();
     }
 
 }

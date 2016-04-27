@@ -48,6 +48,7 @@ public class Task_03 {
     }
 
     private boolean checkPositive() {
+
         return a.compareTo(BigDecimal.ZERO) > 0 & b.compareTo(BigDecimal.ZERO) > 0;
     }
 

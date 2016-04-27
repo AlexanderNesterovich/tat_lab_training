@@ -1,7 +1,7 @@
 package by.training.dao;
 
 import by.training.model.NoteBook;
-import by.training.service.NoteBookProvider;
+import by.training.service.ServiceFactory;
 
 import java.io.*;
 
@@ -23,7 +23,7 @@ public class WindowsFilesDao implements FilesDao{
     public void writeToFile(String name) throws IOException {
         try(FileOutputStream fileOut = new FileOutputStream(path + name + ext);
             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
-            out.writeObject(NoteBookProvider.getInstance());
+            out.writeObject(ServiceFactory.getInstance().getNoteBookService().getNotebook());
         }
     }
 

@@ -20,11 +20,10 @@ public class Task_01 {
 
 
     public boolean calculate() {
+        tmp = tmp.replaceAll("\\D+", "");
         if(tmp.length() != 4) {
             return false;
         }
-
-        tmp = tmp.replaceAll("\\D+", "");
         num = new int[tmp.length()];
         for (int i = 0; i < tmp.length(); i++){
             num[i] = tmp.charAt(i);
