@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Task_06 {
 
-    List<BigDecimal> list = new LinkedList<>();
+    private List<BigDecimal> list = new LinkedList<>();
 
     public Task_06(Number... args) {
         for(Number n: args) {

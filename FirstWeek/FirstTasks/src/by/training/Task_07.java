@@ -1,7 +1,6 @@
 package by.training;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
@@ -30,7 +29,6 @@ public class Task_07 {
     }
 
     public String[][] getTable() {
-        NumberFormat formatter = new DecimalFormat("#0.00");
         Double size = max-min/step;
         Double tmp = min;
         String[][] table = new String[size.intValue() - 3][];

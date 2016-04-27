@@ -15,7 +15,6 @@ public class Task_10 {
             throw new IllegalArgumentException("order is odd or less than 0");
         }
         this.n = n;
-
     }
 
     public String[][] generateMatrix() {

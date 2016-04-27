@@ -15,7 +15,7 @@ public class Task_09 {
 
     public Task_09(Object[] arr1, Object[] arr2, int position) {
         if (position < 0) {
-            throw new IllegalArgumentException("negative index");
+            throw new IllegalArgumentException("Negative index!");
         }
         this.arr1 = arr1;
         this.arr2 = arr2;
