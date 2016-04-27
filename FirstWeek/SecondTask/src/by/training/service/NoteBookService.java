@@ -23,7 +23,7 @@ public class NoteBookService {
     public List<Note> searchByContent(String s) {
         List<Note> tmp = new ArrayList<>();
         for(Note n: getCatalog()) {
-            if (n.getNote().equals(s)) {
+            if (n.getNote().contains(s)) {
                 tmp.add(n);
             }
         }
