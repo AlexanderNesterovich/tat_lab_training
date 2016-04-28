@@ -27,19 +27,19 @@ public class Task_03 {
         }
     }
 
-    public BigDecimal getPeremiter(Number a, Number b) {
+    public BigDecimal getPeremiter() {
         getHypotenuse();
         return a.add(b).add(c).setScale(9, ROUND_HALF_UP);
     }
 
 
-    private BigDecimal getHypotenuse() {
+    public BigDecimal getHypotenuse() {
         if (c == null) {
             c = a.pow(2).add(b.pow(2));
             c = Utils.bigSqrt(c, mc);
             return c;
         }
-            return c;
+        return c;
     }
 
     public BigDecimal getArea() {

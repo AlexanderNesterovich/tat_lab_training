@@ -57,5 +57,32 @@ public class Tasks {
 
     }
 
+    public BigDecimal getPeremiterTask03(Number numA, Number numB) {
+
+        BigDecimal a = new BigDecimal(numA.toString());
+        BigDecimal b = new BigDecimal(numB.toString());
+        if (checkPositive(a) && checkPositive(b)) ;
+        BigDecimal c = getHypotenuse(a, b);
+        return a.add(b).add(c).setScale(9, ROUND_HALF_UP);
+    }
+
+
+    private BigDecimal getHypotenuse(BigDecimal a, BigDecimal b) {
+        BigDecimal c;
+        c = a.pow(2).add(b.pow(2));
+        c = Utils.bigSqrt(c, new MathContext(150));
+        return c;
+    }
+
+    public BigDecimal getAreaTask03(Number numA, Number numB) {
+        BigDecimal a = new BigDecimal(numA.toString());
+        BigDecimal b = new BigDecimal(numB.toString());
+        return a.multiply(b).multiply(new BigDecimal("1.5"));
+    }
+
+    private boolean checkPositive(BigDecimal a) {
+        return a.compareTo(BigDecimal.ZERO) > 0;
+    }
+
 
 }

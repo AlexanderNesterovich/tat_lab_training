@@ -25,7 +25,7 @@ public class TxtParser implements Parser {
 
         FileInputStream fis;
         BufferedReader br;
-        String line = null;
+        String line;
 
         try {
             File file = new File(path);

@@ -11,6 +11,26 @@ package by.training;
 
 public class Task_01 {
 
+    private int[] num;
+    private String tmp;
 
+    public Task_01(Number number) {
+        tmp = number.toString();
+    }
+
+
+    public boolean calculate() {
+        tmp = tmp.replaceAll("\\D+", "");
+        if (tmp.length() != 4) {
+            return false;
+        }
+        num = new int[tmp.length()];
+        for (int i = 0; i < tmp.length(); i++) {
+            num[i] = tmp.charAt(i);
+        }
+
+        return num[0] + num[1] == num[tmp.length() - 1] + num[tmp.length() - 2];
+
+    }
 
 }

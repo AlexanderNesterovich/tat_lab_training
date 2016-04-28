@@ -11,18 +11,15 @@ import java.io.*;
  */
 public class LocalFilesDao implements FilesDao {
 
-    private String path = "C:/tmp/";
-    private String ext = ".ser";
-
-    public NoteBook readFromFile(String name) throws IOException, ClassNotFoundException {
-        try(FileInputStream fileIn = new FileInputStream(path + name + ext);
+    public NoteBook readFromFile(String path) throws IOException, ClassNotFoundException {
+        try (FileInputStream fileIn = new FileInputStream(path);
             ObjectInputStream in = new ObjectInputStream(fileIn)) {
             return (NoteBook) in.readObject();
         }
     }
 
-    public void writeToFile(String name) throws IOException {
-        try(FileOutputStream fileOut = new FileOutputStream(path + name + ext);
+    public void writeToFile(String path) throws IOException {
+        try (FileOutputStream fileOut = new FileOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(ServiceFactory.getInstance().getNoteBookService().getNotebook());
         }
