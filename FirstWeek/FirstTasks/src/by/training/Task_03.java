@@ -22,7 +22,7 @@ public class Task_03 {
     }
 
 
-    public BigDecimal getHypotenuse(BigDecimal numA, BigDecimal numB) {
+    public BigDecimal getHypotenuse(Number numA, Number numB) {
         BigDecimal a = new BigDecimal(numA.toString());
         BigDecimal b = new BigDecimal(numB.toString());
         checkPositive(a, b);
@@ -31,7 +31,7 @@ public class Task_03 {
         return c;
     }
 
-    public BigDecimal getArea(BigDecimal numA, BigDecimal numB) {
+    public BigDecimal getArea(Number numA, Number numB) {
         BigDecimal a = new BigDecimal(numA.toString());
         BigDecimal b = new BigDecimal(numB.toString());
         checkPositive(a, b);
