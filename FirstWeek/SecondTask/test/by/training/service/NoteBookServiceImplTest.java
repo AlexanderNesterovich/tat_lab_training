@@ -1,5 +1,6 @@
 package by.training.service;
 
+import by.training.dao.NoteBookProvider;
 import by.training.model.Note;
 import by.training.model.NoteBook;
 import by.training.service.impl.NoteBookServiceImpl;

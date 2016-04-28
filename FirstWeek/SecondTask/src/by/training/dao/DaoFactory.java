@@ -1,7 +1,7 @@
 package by.training.dao;
 
-import by.training.dao.local_persistance.FilesDao;
-import by.training.dao.local_persistance.impl.LocalFilesDao;
+import by.training.dao.localdisk_persistance.FilesDao;
+import by.training.dao.localdisk_persistance.impl.LocalFilesDao;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/28/2016.

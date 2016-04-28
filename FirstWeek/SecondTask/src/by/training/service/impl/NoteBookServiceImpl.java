@@ -1,10 +1,10 @@
 package by.training.service.impl;
 
 import by.training.dao.DaoFactory;
-import by.training.dao.local_persistance.FilesDao;
+import by.training.dao.NoteBookProvider;
+import by.training.dao.localdisk_persistance.FilesDao;
 import by.training.model.Note;
 import by.training.model.NoteBook;
-import by.training.service.NoteBookProvider;
 import by.training.service.NoteBookService;
 
 import java.io.IOException;
