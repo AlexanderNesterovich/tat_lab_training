@@ -1,15 +1,15 @@
 package by.training;
 
 import by.training.controller.CommandsInvoker;
-import by.training.dao.DaoFactory;
-import by.training.dao.parser.Parser;
 import by.training.model.Request;
 import by.training.model.Response;
+import by.training.view.parser.Parser;
+import by.training.view.parser.impl.TxtParser;
 
 public class Main {
 
     public static void main(String[] args) {
-        Parser parser = DaoFactory.getInstance().getTxtParser();
+        Parser parser = new TxtParser();
         parser.parseByPath("C:/tmp/script.txt");
 
         CommandsInvoker invoker = new CommandsInvoker();

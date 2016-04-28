@@ -1,7 +1,7 @@
-package by.training.dao.parser.impl;
+package by.training.view.parser.impl;
 
-import by.training.dao.parser.Parser;
 import by.training.model.Request;
+import by.training.view.parser.Parser;
 
 import java.io.*;
 import java.util.ArrayList;
