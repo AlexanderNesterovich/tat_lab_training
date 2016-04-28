@@ -9,7 +9,7 @@ public class ServiceFactory {
 
     private static final ServiceFactory factory = new ServiceFactory();
 
-    private final NoteBookServiceImpl noteBookService = new NoteBookServiceImpl();
+    private final NoteBookService noteBookService = new NoteBookServiceImpl();
 
     private ServiceFactory(){}
 
@@ -18,7 +18,7 @@ public class ServiceFactory {
         return factory;
     }
 
-    public NoteBookServiceImpl getNoteBookService() {
+    public NoteBookService getNoteBookService() {
         return noteBookService;
     }
 

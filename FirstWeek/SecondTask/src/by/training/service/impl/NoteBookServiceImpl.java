@@ -1,7 +1,7 @@
 package by.training.service.impl;
 
+import by.training.dao.DaoFactory;
 import by.training.dao.local_persistance.FilesDao;
-import by.training.dao.local_persistance.impl.LocalFilesDao;
 import by.training.model.Note;
 import by.training.model.NoteBook;
 import by.training.service.NoteBookProvider;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class NoteBookServiceImpl implements NoteBookService {
 
-    private FilesDao filesDao = new LocalFilesDao();
+    private FilesDao filesDao = DaoFactory.getInstance().getLocalFilesDao();
 
     @Override
     public List<Note> searchByContent(String s) {

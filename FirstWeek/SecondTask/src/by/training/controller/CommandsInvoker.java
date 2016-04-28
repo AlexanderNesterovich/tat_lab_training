@@ -16,8 +16,16 @@ public class CommandsInvoker {
 
     public Response execute(Request request) {
         String commandName = request.getCommandName();
-        Command command = helper.getCommand(commandName);
-        Response response = command.execute(request);
+        Command command;
+        Response response;
+        try {
+            command = helper.getCommand(commandName);
+        } catch (UnsupportedCommandException e) {
+            response = new Response();
+            response.setErrorMessage("Unsupported Command!");
+            return response;
+        }
+        response = command.execute(request);
         return response;
     }
 }
