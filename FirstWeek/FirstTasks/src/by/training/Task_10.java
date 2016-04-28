@@ -8,16 +8,10 @@ package by.training;
 
 public class Task_10 {
 
-    private int n;
-
-    public Task_10(int n) {
+    public String[][] generateMatrix(int n) {
         if (n < 0 | n % 2 != 0) {
             throw new IllegalArgumentException("order is odd or less than 0");
         }
-        this.n = n;
-    }
-
-    public String[][] generateMatrix() {
         String[][] tmp = new String[n][n];
         for (int k = 0; k < n; k = k + 2) {
             for (int l = 0; l < n; l++) {

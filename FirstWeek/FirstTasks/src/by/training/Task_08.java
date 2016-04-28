@@ -11,15 +11,7 @@ import java.math.BigInteger;
 
 public class Task_08 {
 
-    private int[] array;
-    private int multiplier;
-
-    public Task_08(int multiplier, int... arr ) {
-        this.array = arr;
-        this.multiplier = multiplier;
-    }
-
-    public BigInteger getSpecialSum() {
+    public BigInteger getSpecialSum(int multiplier, int... array) {
         BigInteger sum = BigInteger.ZERO;
         for (int k: array) {
             if (k % multiplier == 0) {

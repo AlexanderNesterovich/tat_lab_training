@@ -13,19 +13,11 @@ import static java.math.BigDecimal.ROUND_HALF_UP;
 // Вычислить значение выражения по формуле (все переменные принимают действительные значения):
 public class Task_02 {
 
-    private int precision = 1000;
-    private BigDecimal a;
-    private BigDecimal b;
-    private BigDecimal c;
-
-    public Task_02(Number a, Number b, Number c) {
-        this.a = new BigDecimal(a.toString());
-        this.b = new BigDecimal(b.toString());
-        this.c = new BigDecimal(c.toString());
-    }
-
-    public String calculate() {
-        MathContext mc = new MathContext(precision);
+    public String calculate(Number numA, Number numB, Number numC) {
+        BigDecimal a = new BigDecimal(numA.toString());
+        BigDecimal b = new BigDecimal(numB.toString());
+        BigDecimal c = new BigDecimal(numC.toString());
+        MathContext mc = new MathContext(150);
         BigDecimal top = new BigDecimal(4).multiply(a).multiply(c);
         top = top.add(b.pow(2));
 

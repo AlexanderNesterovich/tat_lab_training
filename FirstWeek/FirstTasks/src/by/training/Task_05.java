@@ -13,23 +13,18 @@ import java.math.BigDecimal;
 
 public class Task_05 {
 
-    private BigDecimal a;
-    private BigDecimal b;
-    private BigDecimal c;
-
-    public Task_05(Number a, Number b, Number c) {
-        this.a = new BigDecimal(a.toString());
-        this.b = new BigDecimal(b.toString());
-        this.c = new BigDecimal(c.toString());
-    }
-
-    public BigDecimal getPowA() {
+    public BigDecimal getPowA(Number numA) {
+        BigDecimal a = new BigDecimal(numA.toString());
         return calculate(a);
     }
-    public BigDecimal getPowB() {
+
+    public BigDecimal getPowB(Number numB) {
+        BigDecimal b = new BigDecimal(numB.toString());
         return calculate(b);
     }
-    public BigDecimal getPowC() {
+
+    public BigDecimal getPowC(Number numC) {
+        BigDecimal c = new BigDecimal(numC.toString());
         return calculate(c);
     }
 

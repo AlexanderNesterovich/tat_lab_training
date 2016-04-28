@@ -1,8 +1,5 @@
 package by.training;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/19/2016.
  */
@@ -14,19 +11,8 @@ import java.util.List;
 
 public class Task_04 {
 
-    private int x;
-    private int y;
-    private List<Rectangle> list = new ArrayList<Rectangle>();
-
-    public Task_04(int x, int y) {
-        this.x = x;
-        this.y = y;
-        list.add(new Rectangle(-2, 2, 0, 4));
-        list.add(new Rectangle(-4, 4, 0, -3));
-    }
-
-    public boolean check() {
-        for(Rectangle r: list) {
+    public boolean check(int x, int y, Rectangle... arr) {
+        for (Rectangle r : arr) {
             if ((x >= r.getX1() && x <= r.getX2()) && (y >= r.getY1() && y <= r.getY2())) {
                 return true;
             }

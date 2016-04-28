@@ -13,22 +13,10 @@ import java.text.DecimalFormat;
 
 public class Task_07 {
 
-    private Double min;
-    private Double max;
-    private Double step;
-
-    public Task_07(Double min, Double max, Double step) {
-
-        this.min = min;
-        this.max = max;
-        this.step = step;
-
+    public String[][] getTable(Double min, Double max, Double step) {
         if (max < min) {
             throw new IllegalArgumentException("Negative Range");
         }
-    }
-
-    public String[][] getTable() {
         Double size = max-min/step;
         Double tmp = min;
         String[][] table = new String[size.intValue() - 3][];

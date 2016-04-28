@@ -13,15 +13,11 @@ import java.util.List;
 
 public class Task_06 {
 
-    private List<BigDecimal> list = new LinkedList<>();
-
-    public Task_06(Number... args) {
+    public BigDecimal getSpecialSum(Number... args) {
+        List<BigDecimal> list = new LinkedList<>();
         for(Number n: args) {
             list.add(new BigDecimal(n.toString()));
         }
-    }
-
-    public BigDecimal getSpecialSum() {
         if (list.size() < 2) {
             throw new IllegalArgumentException("Not enough arguments!");
         }

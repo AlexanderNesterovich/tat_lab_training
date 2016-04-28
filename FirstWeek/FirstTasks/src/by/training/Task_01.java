@@ -11,15 +11,10 @@ package by.training;
 
 public class Task_01 {
 
-    private int[] num;
-    private String tmp;
-
-    public Task_01(Number number) {
+    public boolean calculate(Number number) {
+        int[] num;
+        String tmp;
         tmp = number.toString();
-    }
-
-
-    public boolean calculate() {
         tmp = tmp.replaceAll("\\D+", "");
         if (tmp.length() != 4) {
             return false;

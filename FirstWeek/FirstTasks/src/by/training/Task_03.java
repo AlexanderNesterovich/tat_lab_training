@@ -13,43 +13,37 @@ import static java.math.BigDecimal.ROUND_HALF_UP;
 
 public class Task_03 {
 
-    private int precision = 150;
-    private MathContext mc = new MathContext(precision);
-    private BigDecimal a;
-    private BigDecimal b;
-    private BigDecimal c;
-
-    public Task_03(Number a, Number b) {
-        this.a = new BigDecimal(a.toString());
-        this.b = new BigDecimal(b.toString());
-        if(!checkPositive()) {
-            throw new IllegalArgumentException("Negative Triangle Side");
-        }
-    }
-
-    public BigDecimal getPeremiter() {
-        getHypotenuse();
+    public BigDecimal getPeremiter(Number numA, Number numB) {
+        BigDecimal a = new BigDecimal(numA.toString());
+        BigDecimal b = new BigDecimal(numB.toString());
+        checkPositive(a, b);
+        BigDecimal c = getHypotenuse(a, b);
         return a.add(b).add(c).setScale(9, ROUND_HALF_UP);
     }
 
 
-    public BigDecimal getHypotenuse() {
-        if (c == null) {
-            c = a.pow(2).add(b.pow(2));
-            c = Utils.bigSqrt(c, mc);
-            return c;
-        }
+    public BigDecimal getHypotenuse(BigDecimal numA, BigDecimal numB) {
+        BigDecimal a = new BigDecimal(numA.toString());
+        BigDecimal b = new BigDecimal(numB.toString());
+        checkPositive(a, b);
+        BigDecimal c = a.pow(2).add(b.pow(2));
+        c = Utils.bigSqrt(c, new MathContext(150));
         return c;
     }
 
-    public BigDecimal getArea() {
-        getHypotenuse();
+    public BigDecimal getArea(BigDecimal numA, BigDecimal numB) {
+        BigDecimal a = new BigDecimal(numA.toString());
+        BigDecimal b = new BigDecimal(numB.toString());
+        checkPositive(a, b);
         return a.multiply(b).multiply(new BigDecimal("1.5"));
     }
 
-    private boolean checkPositive() {
+    private void checkPositive(BigDecimal a, BigDecimal b) {
+        if (a.compareTo(BigDecimal.ZERO) > 0 & b.compareTo(BigDecimal.ZERO) > 0) {
 
-        return a.compareTo(BigDecimal.ZERO) > 0 & b.compareTo(BigDecimal.ZERO) > 0;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
 }
