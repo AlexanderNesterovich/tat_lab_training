@@ -1,5 +1,6 @@
-package by.training.controller.command;
+package by.training.controller.command.impl;
 
+import by.training.controller.command.Command;
 import by.training.model.Note;
 import by.training.model.Request;
 import by.training.model.Response;

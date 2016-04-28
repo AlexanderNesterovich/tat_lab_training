@@ -1,9 +1,10 @@
-package by.training.controller.command;
+package by.training.controller.command.impl;
 
+import by.training.controller.command.Command;
 import by.training.model.Request;
 import by.training.model.Response;
 import by.training.service.ServiceFactory;
-import by.training.service.impl.NoteBookService;
+import by.training.service.impl.NoteBookServiceImpl;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -34,7 +35,7 @@ public class AddNoteCommand implements Command {
             }
         }
 
-        NoteBookService service = ServiceFactory.getInstance().getNoteBookService();
+        NoteBookServiceImpl service = ServiceFactory.getInstance().getNoteBookService();
         service.addNote(req.getArguments()[0], date);
         response.setMessage("Note added successfully!");
         return response;

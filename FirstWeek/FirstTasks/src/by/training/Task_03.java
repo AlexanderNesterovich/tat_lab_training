@@ -27,13 +27,13 @@ public class Task_03 {
         }
     }
 
-    public BigDecimal getPeremiter() {
+    public BigDecimal getPeremiter(Number a, Number b) {
         getHypotenuse();
         return a.add(b).add(c).setScale(9, ROUND_HALF_UP);
     }
 
 
-    public BigDecimal getHypotenuse() {
+    private BigDecimal getHypotenuse() {
         if (c == null) {
             c = a.pow(2).add(b.pow(2));
             c = Utils.bigSqrt(c, mc);

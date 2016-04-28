@@ -2,7 +2,7 @@ package by.training.service;
 
 import by.training.model.Note;
 import by.training.model.NoteBook;
-import by.training.service.impl.NoteBookService;
+import by.training.service.impl.NoteBookServiceImpl;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -18,9 +18,9 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/26/2016.
  */
-public class NoteBookServiceTest {
+public class NoteBookServiceImplTest {
 
-    private NoteBookService noteBookService = new NoteBookService();
+    private NoteBookServiceImpl noteBookService = new NoteBookServiceImpl();
 
     @BeforeTest
     public void setUp() {

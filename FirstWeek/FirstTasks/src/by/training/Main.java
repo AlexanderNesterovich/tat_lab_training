@@ -5,11 +5,9 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        Task_01 task = new Task_01(-111.1);
-        System.out.println("Task_01: sum of first and last two digits: " + task.calculate() + "\n");
-
-        Task_02 task2 = new Task_02(-123123_1231, 1.23232, 1.32323);
-        System.out.println("Task_02: formula calc: " + task2.calculate() + "\n");
+        Tasks tasks = new Tasks();
+        System.out.println("Task_01: sum of first and last two digits: " + tasks.calculateTask01(1234) + "\n");
+        System.out.println("Task_02: formula calc: " + tasks.calculateTask02(-123123_1231, 1.23232, 1.32323) + "\n");
 
         Task_03 task3 = new Task_03(5, 10);
         System.out.println("Task_03: Triangle area: " + task3.getArea());

@@ -39,13 +39,10 @@ public class TxtParser implements Parser {
             br.close();
         } catch (UnsupportedEncodingException e) {
             System.err.println("Unsupported coding. UTF-8 required");
-            System.exit(0);
         } catch (FileNotFoundException e) {
             System.err.println("File Not Found!");
-            System.exit(0);
         } catch (IOException e) {
             System.err.println("Can't read from the source file");
-            System.exit(0);
         }
 
     }
