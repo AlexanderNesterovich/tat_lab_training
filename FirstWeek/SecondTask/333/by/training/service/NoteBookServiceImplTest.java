@@ -29,8 +29,8 @@ public class NoteBookServiceImplTest {
         noteBook.addNote(new Note("something tested Wow", new Date("1900/12/15")));
         noteBook.addNote(new Note("something Tested wow", new Date("1854/01/01")));
         noteBook.addNote(new Note("something tested wow", new Date("1854/01/02")));
-        noteBook.addNote(new Note("Какой-то тестовый текст", new Date(1915,15,15)));
-        noteBook.addNote(new Note("Some text wow", new Date(1915,1900,15)));
+        noteBook.addNote(new Note("Какой-то тестовый текст", new Date(1915, 15, 15)));
+        noteBook.addNote(new Note("Some text wow", new Date(1915, 1900, 15)));
         NoteBookProvider.setNew(noteBook);
     }
 
@@ -40,8 +40,8 @@ public class NoteBookServiceImplTest {
     }
 
     @DataProvider(name = "PositiveSearchByContentProvider")
-    public  Object[][] PositiveContentData() {
-        return new Object[][] {
+    public Object[][] PositiveContentData() {
+        return new Object[][]{
                 {"some", 0, 4},
                 {"Some", 5, 6},
                 {"Какой-то", 4, 5},
@@ -60,8 +60,8 @@ public class NoteBookServiceImplTest {
     }
 
     @DataProvider(name = "NegativeSearchByContentProvider")
-    public  Object[][] NegativeContentData() {
-        return new Object[][] {
+    public Object[][] NegativeContentData() {
+        return new Object[][]{
                 {"Тестовый"},
                 {"somethingelse"},
                 {"123123123"},
@@ -78,8 +78,8 @@ public class NoteBookServiceImplTest {
 
 
     @DataProvider(name = "PositiveTestSearchByDateProvider")
-    public  Object[][] PositiveDateData() {
-        return new Object[][] {
+    public Object[][] PositiveDateData() {
+        return new Object[][]{
                 {"1900-12-15", 0, 2},
                 {"1854-01-01", 2, 3},
                 {"1854-01-02", 3, 4},
@@ -95,8 +95,8 @@ public class NoteBookServiceImplTest {
     }
 
     @DataProvider(name = "NegativeTestSearchByDateProvider")
-    public  Object[][] NegativeDateData() {
-        return new Object[][] {
+    public Object[][] NegativeDateData() {
+        return new Object[][]{
                 {"some"},
                 {""},
                 {" "},
@@ -111,8 +111,8 @@ public class NoteBookServiceImplTest {
     }
 
     @DataProvider(name = "addNoteProvider")
-    public  Object[][] AddData() {
-        return new Object[][] {
+    public Object[][] AddData() {
+        return new Object[][]{
                 {"some", new Date()},
                 {"asdasd", new Date()},
                 {"какакафваы", new Date()},
@@ -122,7 +122,7 @@ public class NoteBookServiceImplTest {
     @Test(dataProvider = "addNoteProvider")
     public void testAddNote(String s, Date d) throws Exception {
         Note note = new Note(s, d);
-        noteBookService.addNote(s,d);
+        noteBookService.addNote(s, d);
         assertEquals(note, NoteBookProvider.getInstance().getNotes().get(NoteBookProvider.getInstance().getNotes().size() - 1));
     }
 
