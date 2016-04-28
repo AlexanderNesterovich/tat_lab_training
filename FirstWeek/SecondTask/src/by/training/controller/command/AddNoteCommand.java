@@ -1,6 +1,5 @@
-package by.training.controller.commands;
+package by.training.controller.command;
 
-import by.training.model.Note;
 import by.training.model.Request;
 import by.training.model.Response;
 import by.training.service.NoteBookService;
@@ -9,9 +8,7 @@ import by.training.service.ServiceFactory;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.

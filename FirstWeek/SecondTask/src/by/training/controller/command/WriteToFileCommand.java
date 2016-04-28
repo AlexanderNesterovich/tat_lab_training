@@ -1,10 +1,11 @@
-package by.training.controller.commands;
+package by.training.controller.command;
 
 import by.training.model.Request;
 import by.training.model.Response;
 import by.training.service.ServiceFactory;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.

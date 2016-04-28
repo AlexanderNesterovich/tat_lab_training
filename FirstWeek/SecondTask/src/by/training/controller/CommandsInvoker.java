@@ -1,6 +1,6 @@
 package by.training.controller;
 
-import by.training.controller.commands.*;
+import by.training.controller.command.*;
 import by.training.model.Request;
 import by.training.model.Response;
 

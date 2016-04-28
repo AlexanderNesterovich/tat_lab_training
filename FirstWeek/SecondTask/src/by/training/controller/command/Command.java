@@ -1,4 +1,4 @@
-package by.training.controller.commands;
+package by.training.controller.command;
 
 import by.training.model.Request;
 import by.training.model.Response;
