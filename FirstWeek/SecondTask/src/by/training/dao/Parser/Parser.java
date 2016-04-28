@@ -1,4 +1,4 @@
-package by.training.controller.Parser;
+package by.training.dao.parser;
 
 import by.training.model.Request;
 

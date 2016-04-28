@@ -1,5 +1,7 @@
 package by.training.service;
 
+import by.training.service.impl.NoteBookService;
+
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/25/2016.
  */

@@ -1,8 +1,8 @@
 package by.training;
 
 import by.training.controller.CommandsInvoker;
-import by.training.controller.Parser.Parser;
-import by.training.controller.Parser.TxtParser;
+import by.training.dao.parser.Parser;
+import by.training.dao.parser.impl.TxtParser;
 import by.training.model.Request;
 import by.training.model.Response;
 

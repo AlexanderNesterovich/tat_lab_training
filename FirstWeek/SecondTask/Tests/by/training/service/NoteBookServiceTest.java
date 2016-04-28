@@ -2,13 +2,18 @@ package by.training.service;
 
 import by.training.model.Note;
 import by.training.model.NoteBook;
-import org.testng.annotations.*;
+import by.training.service.impl.NoteBookService;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/26/2016.

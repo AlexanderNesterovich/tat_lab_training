@@ -1,5 +1,6 @@
-package by.training.dao;
+package by.training.dao.local_persistance.impl;
 
+import by.training.dao.local_persistance.FilesDao;
 import by.training.model.NoteBook;
 import by.training.service.ServiceFactory;
 
@@ -8,7 +9,7 @@ import java.io.*;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/26/2016.
  */
-public class WindowsFilesDao implements FilesDao{
+public class LocalFilesDao implements FilesDao {
 
     private String path = "C:/tmp/";
     private String ext = ".ser";

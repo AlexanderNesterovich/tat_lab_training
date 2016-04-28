@@ -2,8 +2,8 @@ package by.training.controller.command;
 
 import by.training.model.Request;
 import by.training.model.Response;
-import by.training.service.NoteBookService;
 import by.training.service.ServiceFactory;
+import by.training.service.impl.NoteBookService;
 
 import java.text.DateFormat;
 import java.text.ParseException;

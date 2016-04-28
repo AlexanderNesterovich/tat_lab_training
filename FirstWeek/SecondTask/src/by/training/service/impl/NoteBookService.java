@@ -1,9 +1,11 @@
-package by.training.service;
+package by.training.service.impl;
 
-import by.training.dao.FilesDao;
-import by.training.dao.WindowsFilesDao;
+import by.training.dao.local_persistance.FilesDao;
+import by.training.dao.local_persistance.impl.LocalFilesDao;
 import by.training.model.Note;
 import by.training.model.NoteBook;
+import by.training.service.NoteBookProvider;
+import by.training.service.NoteBookServicei;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -16,9 +18,9 @@ import java.util.List;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
-public class NoteBookService {
+public class NoteBookService implements NoteBookServicei {
 
-    private FilesDao filesDao = new WindowsFilesDao();
+    private FilesDao filesDao = new LocalFilesDao();
 
     public List<Note> searchByContent(String s) {
         List<Note> tmp = new ArrayList<>();

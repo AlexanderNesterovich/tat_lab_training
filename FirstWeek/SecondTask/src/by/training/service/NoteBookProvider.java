@@ -5,7 +5,7 @@ import by.training.model.NoteBook;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
-class NoteBookProvider {
+public class NoteBookProvider {
 
     private static NoteBook instance = null;
 

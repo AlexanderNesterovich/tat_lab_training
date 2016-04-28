@@ -1,4 +1,4 @@
-package by.training.dao;
+package by.training.dao.local_persistance;
 
 import by.training.model.NoteBook;
 
