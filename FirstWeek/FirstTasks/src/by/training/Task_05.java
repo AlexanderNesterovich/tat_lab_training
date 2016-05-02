@@ -13,22 +13,8 @@ import java.math.BigDecimal;
 
 public class Task_05 {
 
-    public BigDecimal getPowA(Number numA) {
-        BigDecimal a = new BigDecimal(numA.toString());
-        return calculate(a);
-    }
-
-    public BigDecimal getPowB(Number numB) {
-        BigDecimal b = new BigDecimal(numB.toString());
-        return calculate(b);
-    }
-
-    public BigDecimal getPowC(Number numC) {
-        BigDecimal c = new BigDecimal(numC.toString());
-        return calculate(c);
-    }
-
-    private BigDecimal calculate(BigDecimal tmp) {
+    public BigDecimal calculate(Number numB) {
+        BigDecimal tmp = new BigDecimal(numB.toString());
         if (tmp.compareTo(BigDecimal.ZERO) > 0) {
             return tmp.pow(2);
         }else if(tmp.compareTo(BigDecimal.ZERO) < 0) {

@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Task_06 {
 
-    public BigDecimal getSpecialSum(Number... args) {
+    public BigDecimal calculateSum(Number... args) {
         List<BigDecimal> list = new LinkedList<>();
         for(Number n: args) {
             list.add(new BigDecimal(n.toString()));

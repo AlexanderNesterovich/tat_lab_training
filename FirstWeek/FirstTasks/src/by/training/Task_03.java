@@ -13,16 +13,16 @@ import static java.math.BigDecimal.ROUND_HALF_UP;
 
 public class Task_03 {
 
-    public BigDecimal getPeremiter(Number numA, Number numB) {
+    public BigDecimal calculatePeremiter(Number numA, Number numB) {
         BigDecimal a = new BigDecimal(numA.toString());
         BigDecimal b = new BigDecimal(numB.toString());
         checkPositive(a, b);
-        BigDecimal c = getHypotenuse(a, b);
+        BigDecimal c = calculateHypotenuse(a, b);
         return a.add(b).add(c).setScale(9, ROUND_HALF_UP);
     }
 
 
-    public BigDecimal getHypotenuse(Number numA, Number numB) {
+    public BigDecimal calculateHypotenuse(Number numA, Number numB) {
         BigDecimal a = new BigDecimal(numA.toString());
         BigDecimal b = new BigDecimal(numB.toString());
         checkPositive(a, b);
@@ -31,7 +31,7 @@ public class Task_03 {
         return c;
     }
 
-    public BigDecimal getArea(Number numA, Number numB) {
+    public BigDecimal calculateArea(Number numA, Number numB) {
         BigDecimal a = new BigDecimal(numA.toString());
         BigDecimal b = new BigDecimal(numB.toString());
         checkPositive(a, b);
