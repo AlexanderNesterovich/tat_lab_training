@@ -1,4 +1,4 @@
-package by.training.service;
+package training;
 
 import by.training.dao.NoteBookProvider;
 import by.training.model.Note;
