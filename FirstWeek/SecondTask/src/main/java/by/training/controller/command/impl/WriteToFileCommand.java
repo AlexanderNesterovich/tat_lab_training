@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
  */
 public class WriteToFileCommand implements Command {
 
-    public static final Logger logger = LogManager.getLogger(WriteToFileCommand.class.getName());
+    private static final Logger logger = LogManager.getLogger(WriteToFileCommand.class.getName());
 
     @Override
     public Response execute(Request req) {
@@ -21,6 +21,7 @@ public class WriteToFileCommand implements Command {
 
         if (req.getArguments().length == 0) {
             response.setErrorMessage("Not enough arguments!");
+            logger.error("Not enough arguments for this command");
             return response;
         }
 

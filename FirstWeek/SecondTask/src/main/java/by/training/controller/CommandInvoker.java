@@ -25,9 +25,9 @@ public class CommandInvoker {
         try {
             command = helper.getCommand(commandName);
         } catch (UnsupportedCommandException e) {
+            logger.error("Unsupported command");
             response = new Response();
             response.setErrorMessage("Unsupported Command!");
-            logger.error("Unsupported command");
             return response;
         }
         response = command.execute(request);
