@@ -4,9 +4,7 @@ import by.training.controller.command.Command;
 import by.training.model.Request;
 import by.training.model.Response;
 import by.training.service.ServiceFactory;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import by.training.service.exception.ServiceException;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
@@ -26,11 +24,8 @@ public class WriteToFileCommand implements Command {
             ServiceFactory.getInstance().getNoteBookService().writeToFile(req.getArguments()[0]);
             response.setMessage("File was successfully written!");
             return response;
-        } catch (FileNotFoundException e) {
+        } catch (ServiceException e) {
             response.setErrorMessage("File not found!");
-            return response;
-        } catch (IOException e) {
-            response.setErrorMessage("Cannot write to file!");
             return response;
         }
     }

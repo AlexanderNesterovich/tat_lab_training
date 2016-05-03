@@ -2,9 +2,8 @@ package by.training.service;
 
 import by.training.model.Note;
 import by.training.model.NoteBook;
+import by.training.service.exception.ServiceException;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -14,15 +13,15 @@ import java.util.List;
 public interface NoteBookService {
     List<Note> searchByContent(String s);
 
-    List<Note> searchByDate(String s) throws ParseException;
+    List<Note> searchByDate(String s) throws ServiceException;
 
     void addNote(String content, Date date);
 
     void newNoteBook();
 
-    void readFromFile(String name) throws IOException, ClassNotFoundException;
+    void readFromFile(String name) throws ServiceException;
 
-    void writeToFile(String name) throws IOException;
+    void writeToFile(String name) throws ServiceException;
 
     List<Note> getCatalog();
 

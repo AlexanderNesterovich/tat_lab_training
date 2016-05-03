@@ -1,17 +1,16 @@
 package by.training.dao.localdisk_persistance;
 
+import by.training.dao.exception.DAOException;
 import by.training.model.NoteBook;
-
-import java.io.IOException;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/26/2016.
  */
 public interface FilesDao {
 
-    public NoteBook readFromFile(String name) throws IOException, ClassNotFoundException;
+    NoteBook readFromFile(String name) throws DAOException;
 
-    public void writeToFile(String name) throws IOException;
+    void writeToFile(String name) throws DAOException;
 
 
 }

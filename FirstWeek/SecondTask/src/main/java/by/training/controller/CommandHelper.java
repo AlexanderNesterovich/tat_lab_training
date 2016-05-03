@@ -2,6 +2,7 @@ package by.training.controller;
 
 import by.training.controller.command.Command;
 import by.training.controller.command.impl.*;
+import by.training.controller.exception.UnsupportedCommandException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +10,7 @@ import java.util.Map;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/28/2016.
  */
-public class CommandHelper {
+class CommandHelper {
     private Map<CommandName, Command> commandList = new HashMap<>();
 
     public CommandHelper() {
@@ -27,7 +28,7 @@ public class CommandHelper {
         try {
             commandEnum = CommandName.valueOf(commandName);
         } catch (IllegalArgumentException e) {
-            throw new UnsupportedCommandException();
+            throw new UnsupportedCommandException("Malformed command string!", e);
         }
         Command command = commandList.get(commandEnum);
         return command;

@@ -4,8 +4,7 @@ import by.training.controller.command.Command;
 import by.training.model.Request;
 import by.training.model.Response;
 import by.training.service.ServiceFactory;
-
-import java.io.IOException;
+import by.training.service.exception.ServiceException;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
@@ -25,11 +24,8 @@ public class ReadFromFileCommand implements Command {
             ServiceFactory.getInstance().getNoteBookService().readFromFile(req.getArguments()[0]);
             response.setMessage("File was successfully read!");
             return response;
-        } catch (IOException e) {
+        } catch (ServiceException e) {
             response.setErrorMessage("Cannot read file!");
-            return response;
-        } catch (ClassNotFoundException e) {
-            response.setErrorMessage("Cannot find class!");
             return response;
         }
 

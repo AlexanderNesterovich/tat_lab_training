@@ -1,17 +1,18 @@
 package by.training.controller;
 
 import by.training.controller.command.Command;
+import by.training.controller.exception.UnsupportedCommandException;
 import by.training.model.Request;
 import by.training.model.Response;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
-public class CommandsInvoker {
+public class CommandInvoker {
     private CommandHelper helper = new CommandHelper();
 
 
-    public CommandsInvoker() {
+    public CommandInvoker() {
     }
 
     public Response execute(Request request) {

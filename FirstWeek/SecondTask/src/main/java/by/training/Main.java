@@ -1,6 +1,6 @@
 package by.training;
 
-import by.training.controller.CommandsInvoker;
+import by.training.controller.CommandInvoker;
 import by.training.model.Request;
 import by.training.model.Response;
 import by.training.view.parser.Parser;
@@ -12,7 +12,7 @@ public class Main {
         Parser parser = new TxtParser();
         parser.parseByPath("C:/tmp/script.txt");
 
-        CommandsInvoker invoker = new CommandsInvoker();
+        CommandInvoker invoker = new CommandInvoker();
         Response response;
         for (Request req : parser.getRequestList()) {
             response = invoker.execute(req);

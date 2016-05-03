@@ -8,6 +8,6 @@ import by.training.model.Response;
  */
 public interface Command {
 
-    public Response execute(Request req);
+    Response execute(Request req);
 
 }

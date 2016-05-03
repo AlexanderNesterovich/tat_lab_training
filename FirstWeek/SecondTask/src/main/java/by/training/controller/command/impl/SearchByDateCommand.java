@@ -5,9 +5,9 @@ import by.training.model.Note;
 import by.training.model.Request;
 import by.training.model.Response;
 import by.training.service.ServiceFactory;
+import by.training.service.exception.ServiceException;
 import by.training.view.NoteBookConsoleView;
 
-import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -27,7 +27,7 @@ public class SearchByDateCommand implements Command {
         List<Note> list;
         try {
             list = ServiceFactory.getInstance().getNoteBookService().searchByDate(req.getArguments()[0]);
-        } catch (ParseException e) {
+        } catch (ServiceException e) {
             response.setMessage("Incorrect Date Input!");
             return response;
         }

@@ -2,12 +2,13 @@ package by.training.service.impl;
 
 import by.training.dao.DaoFactory;
 import by.training.dao.NoteBookProvider;
+import by.training.dao.exception.DAOException;
 import by.training.dao.localdisk_persistance.FilesDao;
 import by.training.model.Note;
 import by.training.model.NoteBook;
 import by.training.service.NoteBookService;
+import by.training.service.exception.ServiceException;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,16 +35,21 @@ public class NoteBookServiceImpl implements NoteBookService {
     }
 
     @Override
-    public List<Note> searchByDate(String s) throws ParseException {
+    public List<Note> searchByDate(String s) throws ServiceException {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date d = format.parse(s);
-        List<Note> tmp = new ArrayList<>();
-        for (Note n : getCatalog()) {
-            if (format.parse(format.format(n.getDate())).compareTo(d) == 0) {
-                tmp.add(n);
+        try {
+            Date d = format.parse(s);
+            List<Note> tmp = new ArrayList<>();
+            for (Note n : getCatalog()) {
+                if (format.parse(format.format(n.getDate())).compareTo(d) == 0) {
+                    tmp.add(n);
+                }
             }
+            return tmp;
+        } catch (ParseException e) {
+            throw new ServiceException("Failed Search by date! Incorrect date format!", e);
         }
-        return tmp;
+
     }
 
     @Override
@@ -57,13 +63,21 @@ public class NoteBookServiceImpl implements NoteBookService {
     }
 
     @Override
-    public void readFromFile(String name) throws IOException, ClassNotFoundException {
-        NoteBookProvider.setNew(filesDao.readFromFile(name));
+    public void readFromFile(String name) throws ServiceException {
+        try {
+            NoteBookProvider.setNew(filesDao.readFromFile(name));
+        } catch (DAOException e) {
+            throw new ServiceException("Cannot read from file!", e);
+        }
     }
 
     @Override
-    public void writeToFile(String name) throws IOException {
-        filesDao.writeToFile(name);
+    public void writeToFile(String name) throws ServiceException {
+        try {
+            filesDao.writeToFile(name);
+        } catch (DAOException e) {
+            throw new ServiceException("Cannot write to file!", e);
+        }
     }
 
     @Override
