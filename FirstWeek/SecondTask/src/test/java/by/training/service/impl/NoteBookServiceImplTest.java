@@ -122,7 +122,7 @@ public class NoteBookServiceImplTest {
     @Test(dataProvider = "addNoteProvider")
     public void testAddNote(String s, Date d) throws Exception {
         Note note = new Note(s, d);
-        noteBookService.addNote(s, d);
+        noteBookService.addNote(s, d.toString());
         assertEquals(note, NoteBookProvider.getInstance().getNotes().get(NoteBookProvider.getInstance().getNotes().size() - 1));
     }
 

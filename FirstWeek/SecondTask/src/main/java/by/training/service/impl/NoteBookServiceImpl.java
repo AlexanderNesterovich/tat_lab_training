@@ -53,8 +53,20 @@ public class NoteBookServiceImpl implements NoteBookService {
     }
 
     @Override
-    public void addNote(String content, Date date) {
-        NoteBookProvider.getInstance().addNote(new Note(content, date));
+    public void addNote(String content, String strDate) throws ServiceException {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date = format.parse(strDate);
+            NoteBookProvider.getInstance().addNote(new Note(content, date));
+        } catch (ParseException e) {
+            throw new ServiceException("Failed to parse date!", e);
+        }
+
+    }
+
+    @Override
+    public void addNote(String content) {
+        NoteBookProvider.getInstance().addNote(new Note(content, new Date()));
     }
 
     @Override

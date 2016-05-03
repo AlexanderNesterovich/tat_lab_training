@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
 public class ReadFromFileCommand implements Command {
-    private static final Logger logger = LogManager.getLogger(WriteToFileCommand.class.getName());
+    private static final Logger logger = LogManager.getLogger(ReadFromFileCommand.class.getName());
     @Override
     public Response execute(Request req) {
         Response response = new Response();

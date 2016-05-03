@@ -4,7 +4,6 @@ import by.training.model.Note;
 import by.training.model.NoteBook;
 import by.training.service.exception.ServiceException;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,7 +14,9 @@ public interface NoteBookService {
 
     List<Note> searchByDate(String s) throws ServiceException;
 
-    void addNote(String content, Date date);
+    void addNote(String content, String strDate) throws ServiceException;
+
+    void addNote(String content);
 
     void newNoteBook();
 
