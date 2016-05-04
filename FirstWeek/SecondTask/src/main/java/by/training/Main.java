@@ -16,11 +16,11 @@ public class Main {
         Response response;
         for (Request req : parser.getRequestList()) {
             response = invoker.execute(req);
-/*            if (response.getMessage() == null) {
+            if (response.getMessage() == null) {
                 System.out.println(response.getErrorMessage());
             } else {
                 System.out.println(response.getMessage() + " " + response.getErrorMessage());
-            }*/
+            }
         }
 
     }
