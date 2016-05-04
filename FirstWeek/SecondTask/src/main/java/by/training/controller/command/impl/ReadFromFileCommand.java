@@ -8,17 +8,20 @@ import by.training.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.invoke.MethodHandles;
+
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
 public class ReadFromFileCommand implements Command {
-    private static final Logger logger = LogManager.getLogger(ReadFromFileCommand.class.getName());
+    private static final Logger LOG = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     @Override
     public Response execute(Request req) {
-        Response response = new Response();
+        LOG.trace(">> execute(Request req)");
 
+        Response response = new Response();
         if (req.getArguments().length == 0) {
-            logger.error("Not enough arguments for this command");
+            LOG.warn("Not enough arguments for this command");
             response.setErrorMessage("Not enough arguments!");
             return response;
         }
@@ -26,12 +29,14 @@ public class ReadFromFileCommand implements Command {
         try {
             ServiceFactory.getInstance().getNoteBookService().readFromFile(req.getArguments()[0]);
             response.setMessage("File was successfully read!");
+            LOG.trace("<< execute(Request req)");
             return response;
         } catch (ServiceException e) {
-            logger.error("Catching ServiceException", e);
-            response.setErrorMessage("Cannot read file!");
+            LOG.error("Cannot read file!", e);
+            response.setErrorMessage(e.getMessage());
             return response;
         }
+
 
     }
 }

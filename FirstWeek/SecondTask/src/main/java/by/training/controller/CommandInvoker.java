@@ -7,30 +7,34 @@ import by.training.model.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.invoke.MethodHandles;
+
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
 public class CommandInvoker {
 
-    public static final Logger logger = LogManager.getLogger(CommandInvoker.class.getName());
+    private static final Logger LOG = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private CommandHelper helper = new CommandHelper();
 
     public CommandInvoker() {
     }
 
     public Response execute(Request request) {
+        LOG.trace(">> execute(Request request)");
         String commandName = request.getCommandName();
         Command command;
         Response response;
         try {
             command = helper.getCommand(commandName);
         } catch (UnsupportedCommandException e) {
-            logger.error("Unsupported command");
+            LOG.error("Unsupported command", e);
             response = new Response();
-            response.setErrorMessage("Unsupported Command!");
+            response.setErrorMessage(e.getMessage());
             return response;
         }
         response = command.execute(request);
+        LOG.trace("<< execute(Request request)");
         return response;
     }
 }

@@ -9,18 +9,22 @@ import by.training.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.invoke.MethodHandles;
+
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
 public class AddNoteCommand implements Command {
-    private static final Logger logger = LogManager.getLogger(AddNoteCommand.class.getName());
+    private static final Logger LOG = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+
     @Override
     public Response execute(Request req) {
+        LOG.trace(">> execute(Request req)");
         Response response = new Response();
         NoteBookService service = ServiceFactory.getInstance().getNoteBookService();
 
         if (req.getArguments().length == 0) {
-            logger.error("Not enough arguments for this command");
+            LOG.warn("Not enough arguments for this command");
             response.setErrorMessage("Not enough arguments!");
             return response;
         }
@@ -33,13 +37,14 @@ public class AddNoteCommand implements Command {
             try {
                 service.addNote(req.getArguments()[0], req.getArguments()[1]);
             } catch (ServiceException e) {
-                logger.error("Malformed date", e);
-                response.setErrorMessage("Malformed date!");
+                LOG.error("Cannot add note!", e);
+                response.setErrorMessage(e.getMessage());
                 return response;
             }
         }
 
         response.setMessage("Note added successfully!");
+        LOG.trace("<< execute(Request req)");
         return response;
     }
 }
