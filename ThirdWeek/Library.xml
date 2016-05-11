@@ -23,6 +23,22 @@
 
     <lib:Book>
 
+      <lib:Title>Existentialism Is a Humanism</lib:Title>
+      <lib:Author>Jean-Paul Sartre</lib:Author>
+      <lib:Genre>Philosophy</lib:Genre>
+      <lib:PublicationDate>1953-01-01</lib:PublicationDate>
+      <lib:EditionDate>2007-07-24</lib:EditionDate>
+      <lib:ISBN>0300115466</lib:ISBN>
+      <lib:Language>English</lib:Language>
+      <lib:PageCount>128</lib:PageCount>
+
+      <lib:Paragraphs>
+      </lib:Paragraphs>
+
+    </lib:Book>
+
+    <lib:Book>
+
       <lib:Title>American Gods</lib:Title>
       <lib:Author>Neil Gaiman</lib:Author>
       <lib:Genre>Fantasy</lib:Genre>
@@ -35,7 +51,21 @@
       <lib:Paragraphs>
       </lib:Paragraphs>
 
-    </lib:Book>
+    </lib:Book>    <lib:Book>
+
+    <lib:Title>The Colour of Magic</lib:Title>
+    <lib:Author>Terry Pratchett</lib:Author>
+    <lib:Genre>Fantasy</lib:Genre>
+    <lib:PublicationDate>1983-01-01</lib:PublicationDate>
+    <lib:EditionDate>2012-06-21</lib:EditionDate>
+    <lib:ISBN>0380789035</lib:ISBN>
+    <lib:Language>English</lib:Language>
+    <lib:PageCount>288</lib:PageCount>
+
+    <lib:Paragraphs>
+    </lib:Paragraphs>
+
+  </lib:Book>
 
     <lib:Book>
 

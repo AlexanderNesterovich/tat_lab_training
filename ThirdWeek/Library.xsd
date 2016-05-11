@@ -30,6 +30,7 @@
             <xsd:enumeration value="Sci-Fi"/>
             <xsd:enumeration value="Memoir"/>
             <xsd:enumeration value="Biography"/>
+            <xsd:enumeration value="Philosophy"/>
         </xsd:restriction>
     </xsd:simpleType>
 
