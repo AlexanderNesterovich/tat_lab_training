@@ -1,0 +1,161 @@
+<lib:Library xmlns:lib="http://www.training.by/Library">
+
+  <lib:Name>string</lib:Name>
+  <lib:Date>2008-09-29</lib:Date>
+
+  <lib:Books>
+
+    <lib:Book>
+
+      <lib:Name>The Colour of Magic</lib:Name>
+      <lib:Author>Terry Pratchett</lib:Author>
+      <lib:Genre>Fantasy</lib:Genre>
+      <lib:PublicationDate>1983-01-01</lib:PublicationDate>
+      <lib:EditionDate>2012-06-21</lib:EditionDate>
+      <lib:ISBN>0380789035</lib:ISBN>
+      <lib:Language>English</lib:Language>
+      <lib:PageCount>288</lib:PageCount>
+
+      <lib:Paragraphs>
+      </lib:Paragraphs>
+
+    </lib:Book>
+
+    <lib:Book>
+
+      <lib:Name>American Gods</lib:Name>
+      <lib:Author>Neil Gaiman</lib:Author>
+      <lib:Genre>Fantasy</lib:Genre>
+      <lib:PublicationDate>2001-01-01</lib:PublicationDate>
+      <lib:EditionDate>2002-04-30</lib:EditionDate>
+      <lib:ISBN>0380789035</lib:ISBN>
+      <lib:Language>English</lib:Language>
+      <lib:PageCount>624</lib:PageCount>
+
+      <lib:Paragraphs>
+      </lib:Paragraphs>
+
+    </lib:Book>
+
+    <lib:Book>
+
+      <lib:Name>Solaris</lib:Name>
+      <lib:Author>Stanislaw Lem</lib:Author>
+      <lib:Genre>Sci-Fi</lib:Genre>
+      <lib:PublicationDate>1961-01-01</lib:PublicationDate>
+      <lib:EditionDate>2002-11-20</lib:EditionDate>
+      <lib:ISBN>0156027607</lib:ISBN>
+      <lib:Language>English</lib:Language>
+      <lib:PageCount>224</lib:PageCount>
+
+      <lib:Paragraphs>
+
+        <lib:Paragraph>
+          <lib:Name>The Arrival</lib:Name>
+          <lib:PageNumber>1</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>The Solarists</lib:Name>
+          <lib:PageNumber>12</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>The Visitors</lib:Name>
+          <lib:PageNumber>29</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>Sartorius</lib:Name>
+          <lib:PageNumber>38</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>Rheya</lib:Name>
+          <lib:PageNumber>52</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>"The Little Apocrypha"</lib:Name>
+          <lib:PageNumber>66</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>The Conference</lib:Name>
+          <lib:PageNumber>90</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>The Monsters</lib:Name>
+          <lib:PageNumber>106</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>The Liquid Oxygen</lib:Name>
+          <lib:PageNumber>132</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>Conversation</lib:Name>
+          <lib:PageNumber>147</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>The Thinkers</lib:Name>
+          <lib:PageNumber>158</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>The Dreams</lib:Name>
+          <lib:PageNumber>176</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>Victory</lib:Name>
+          <lib:PageNumber>186</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>The Old Mimoid</lib:Name>
+          <lib:PageNumber>195</lib:PageNumber>
+        </lib:Paragraph>
+
+      </lib:Paragraphs>
+
+    </lib:Book>
+
+    <lib:Book>
+
+      <lib:Name>The Moon is a Harsh Mistress</lib:Name>
+      <lib:Author>Robert A. Heinlein</lib:Author>
+      <lib:Genre>Sci-Fi</lib:Genre>
+      <lib:PublicationDate>1966-01-01</lib:PublicationDate>
+      <lib:EditionDate>2015-06-23</lib:EditionDate>
+      <lib:ISBN>1473616123</lib:ISBN>
+      <lib:Language>English</lib:Language>
+      <lib:PageCount>416</lib:PageCount>
+
+      <lib:Paragraphs>
+
+        <lib:Paragraph>
+          <lib:Name>That Dinkum Thinkum</lib:Name>
+          <lib:PageNumber>9</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>A Rabble in Arms</lib:Name>
+          <lib:PageNumber>185</lib:PageNumber>
+        </lib:Paragraph>
+
+        <lib:Paragraph>
+          <lib:Name>"TANSTAAFL!"</lib:Name>
+          <lib:PageNumber>305</lib:PageNumber>
+        </lib:Paragraph>
+
+      </lib:Paragraphs>
+
+    </lib:Book>
+
+  </lib:Books>
+
+</lib:Library>
