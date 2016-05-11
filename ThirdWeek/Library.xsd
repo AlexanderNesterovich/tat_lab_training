@@ -54,7 +54,6 @@
         </xsd:sequence>
     </xsd:complexType>
 
-
     <xsd:complexType name="LibraryType">
         <xsd:sequence>
             <xsd:element name="Name" type="xsd:string" />
