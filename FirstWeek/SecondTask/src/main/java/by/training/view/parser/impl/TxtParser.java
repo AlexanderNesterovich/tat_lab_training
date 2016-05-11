@@ -6,8 +6,6 @@ import by.training.view.parser.Parser;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/26/2016.
@@ -53,31 +51,20 @@ public class TxtParser implements Parser {
      * @param line representing one line of file.
      */
     private void parseLine(String line) {
-
-        List<String> list = new ArrayList<>();
-        /*Pattern for dividing string for words with spaces or quoted sentences*/
-        Matcher m = Pattern.compile("(['\"])((?:\\\\\\1|.)+?)\\1|([^\\s\"']+)").matcher(line);
-        while (m.find()) {
-            /*Sanitize string for blank chars like \uFEFF*/
-            String temp = m.group(0).replaceAll("[\uFEFF-\uFFFF]", "");
-
-			/*escape quotes by -QUOT- for difficult queries*/
-            temp = temp.replaceAll("-QUOT-", "\"");
-			/*Delete quotes by sides*/
-            if (temp.length() >= 2
-                    && temp.charAt(0) == '"'
-                    && temp.charAt(temp.length() - 1) == '"') {
-                list.add(temp.substring(1, temp.length() - 1));
-                continue;
+        Request request = new Request(line);
+        String[] parts = line.split(" ", 2);
+        request.setCommandName(parts[0]);
+        if (parts.length > 1) {
+            for (String param : parts[1].split(" | ")) {
+                String[] pair = param.split("=");
+                if (pair.length == 2) {
+                    request.addArgument(pair[0], pair[1]);
+                }
             }
-            list.add(temp);
+            commandList.add(request);
         }
 
-        Request tmp;
-        if (list.size() > 0) {
-            tmp = new Request(line, list.toArray(new String[0]));
-            commandList.add(tmp);
-        }
+        System.out.println(request);
     }
 
     public List<Request> getRequestList() {

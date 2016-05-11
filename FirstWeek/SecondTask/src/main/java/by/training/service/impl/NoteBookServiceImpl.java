@@ -4,8 +4,8 @@ import by.training.dao.DaoFactory;
 import by.training.dao.NoteBookProvider;
 import by.training.dao.exception.DAOException;
 import by.training.dao.localdisk_persistance.FilesDao;
-import by.training.model.Note;
-import by.training.model.NoteBook;
+import by.training.model.Book;
+import by.training.model.Library;
 import by.training.service.NoteBookService;
 import by.training.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
@@ -28,12 +29,12 @@ public class NoteBookServiceImpl implements NoteBookService {
     private FilesDao filesDao = DaoFactory.getInstance().getLocalFilesDao();
 
     @Override
-    public List<Note> searchByContent(String s) {
+    public List<Book> searchByContent(Map<String, String> args) {
         LOG.trace(">> searchByContent(String s)");
-        LOG.debug("Argument: " + s);
-        List<Note> tmp = new ArrayList<>();
-        for (Note n : getCatalog()) {
-            if (n.getNote().contains(s)) {
+        LOG.debug("Argument: " + args.get("path"));
+        List<Book> tmp = new ArrayList<>();
+        for (Book n : getCatalog()) {
+            if (n.getTitle().contains(args.get("path"))) {
                 tmp.add(n);
             }
         }
@@ -42,15 +43,15 @@ public class NoteBookServiceImpl implements NoteBookService {
     }
 
     @Override
-    public List<Note> searchByDate(String s) throws ServiceException {
+    public List<Book> searchByDate(Map<String, String> args) throws ServiceException {
         LOG.trace(">> searchByDate(String s)");
-        LOG.debug("Argument: " + s);
+        LOG.debug("Argument: " + args.get("path"));
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date d = format.parse(s);
-            List<Note> tmp = new ArrayList<>();
-            for (Note n : getCatalog()) {
-                if (format.parse(format.format(n.getDate())).compareTo(d) == 0) {
+            Date d = format.parse(args.get("path"));
+            List<Book> tmp = new ArrayList<>();
+            for (Book n : getCatalog()) {
+                if (format.parse(format.format(n.getPublicationDate())).compareTo(d) == 0) {
                     tmp.add(n);
                 }
             }
@@ -63,26 +64,11 @@ public class NoteBookServiceImpl implements NoteBookService {
     }
 
     @Override
-    public void addNote(String content, String strDate) throws ServiceException {
-        LOG.trace(">> addNote(String content, String strDate)");
-        LOG.debug("Argument1: " + content + "\n" + "Argument2: " + strDate);
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date date = format.parse(strDate);
-            NoteBookProvider.getInstance().addNote(new Note(content, date));
-        } catch (ParseException e) {
-            throw new ServiceException("Failed to parse date!", e);
-        }
-        LOG.trace("<< addNote(String content, String strDate)");
-
-    }
-
-    @Override
-    public void addNote(String content) {
-        LOG.trace(">> addNote(String content)");
-        LOG.debug("Argument: " + content);
-        NoteBookProvider.getInstance().addNote(new Note(content, new Date()));
-        LOG.trace("<< addNote(String content)");
+    public void addBook(Map<String, String> args) {
+        LOG.trace(">> addBook(String content)");
+        LOG.debug("Argument: " + args);
+        NoteBookProvider.getInstance().addNote(new Book.Builder().build());
+        LOG.trace("<< addBook(String content)");
     }
 
     @Override
@@ -93,11 +79,11 @@ public class NoteBookServiceImpl implements NoteBookService {
     }
 
     @Override
-    public void readFromFile(String name) throws ServiceException {
+    public void readFromFile(Map<String, String> args) throws ServiceException {
         LOG.trace(">> readFromFile(String name)");
-        LOG.debug("Argument: " + name);
+        LOG.debug("Argument: " + args.get("path"));
         try {
-            NoteBookProvider.setNew(filesDao.readFromFile(name));
+            NoteBookProvider.setNew(filesDao.readFromFile(args.get("path")));
         } catch (DAOException e) {
             throw new ServiceException(e.getMessage(), e);
         }
@@ -105,11 +91,11 @@ public class NoteBookServiceImpl implements NoteBookService {
     }
 
     @Override
-    public void writeToFile(String name) throws ServiceException {
+    public void writeToFile(Map<String, String> args) throws ServiceException {
         LOG.trace(">> writeToFile(String name)");
-        LOG.debug("Argument: " + name);
+        LOG.debug("Argument: " + args.get("path"));
         try {
-            filesDao.writeToFile(name);
+            filesDao.writeToFile(args.get("path"));
         } catch (DAOException e) {
             throw new ServiceException(e.getMessage(), e);
         }
@@ -117,19 +103,19 @@ public class NoteBookServiceImpl implements NoteBookService {
     }
 
     @Override
-    public List<Note> getCatalog() {
+    public List<Book> getCatalog() {
         LOG.trace(">> getCatalog()");
-        List<Note> result = NoteBookProvider.getInstance().getNotes();
+        List<Book> result = NoteBookProvider.getInstance().getNotes();
         LOG.trace("<< getCatalog()");
         return result;
     }
 
     @Override
-    public NoteBook getNotebook() {
+    public Library getNotebook() {
         LOG.trace(">> getNotebook()");
-        NoteBook noteBook = NoteBookProvider.getInstance();
+        Library library = NoteBookProvider.getInstance();
         LOG.trace("<< getNotebook()");
-        return noteBook;
+        return library;
     }
 
 }

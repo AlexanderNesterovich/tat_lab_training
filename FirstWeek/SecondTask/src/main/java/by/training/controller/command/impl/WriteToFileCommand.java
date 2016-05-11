@@ -22,14 +22,14 @@ public class WriteToFileCommand implements Command {
         LOG.trace(">> execute(Request req)");
         Response response = new Response();
 
-        if (req.getArguments().length == 0) {
+        if (req.getArguments().isEmpty()) {
             LOG.warn("Not enough arguments for this command");
             response.setErrorMessage("Not enough arguments!");
             return response;
         }
 
         try {
-            ServiceFactory.getInstance().getNoteBookService().writeToFile(req.getArguments()[0]);
+            ServiceFactory.getInstance().getNoteBookService().writeToFile(req.getArguments());
             response.setMessage("File was successfully written!");
             LOG.trace("<< execute(Request req)");
             return response;

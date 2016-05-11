@@ -1,7 +1,7 @@
 package by.training.view;
 
-import by.training.model.Note;
-import by.training.model.NoteBook;
+import by.training.model.Book;
+import by.training.model.Library;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -12,23 +12,23 @@ import java.util.List;
  */
 public class NoteBookConsoleView {
 
-    public static String print(NoteBook nb) {
+    public static String print(Library nb) {
         return print(nb.getNotes());
     }
 
-    public static String print(List<Note> list) {
+    public static String print(List<Book> list) {
         StringBuffer tmp = new StringBuffer();
-        for (Note n : list) {
+        for (Book n : list) {
             tmp.append(print(n));
         }
         return tmp.toString();
     }
 
-    public static String print(Note n) {
+    public static String print(Book n) {
         StringBuffer tmp = new StringBuffer();
-        tmp.append("content: " + n.getNote() + "\n");
+        tmp.append("content: " + n.getTitle() + "\n");
         DateFormat outputFormatter = new SimpleDateFormat("yyyy/MM/dd");
-        tmp.append("date: " + outputFormatter.format(n.getDate()) + "\n");
+        tmp.append("date: " + outputFormatter.format(n.getPublicationDate()) + "\n");
         return tmp.toString();
     }
 

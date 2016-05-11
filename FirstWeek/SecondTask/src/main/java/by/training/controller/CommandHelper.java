@@ -18,7 +18,7 @@ class CommandHelper {
     private Map<CommandName, Command> commandList = new HashMap<>();
 
     public CommandHelper() {
-        commandList.put(CommandName.ADD_NOTE, new AddNoteCommand());
+        commandList.put(CommandName.ADD_NOTE, new AddBookCommand());
         commandList.put(CommandName.SEARCH_BY_CONTENT, new SearchByContentCommand());
         commandList.put(CommandName.SEARCH_BY_DATE, new SearchByDateCommand());
         commandList.put(CommandName.SHOW_NOTEBOOK, new ShowNoteBookCommand());

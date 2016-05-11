@@ -1,6 +1,7 @@
 package by.training.model;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
@@ -8,19 +9,36 @@ import java.util.Arrays;
 public class Request {
 
     private String originalLine;
-    private String[] args;
+    private String commandName;
+    private Map<String, String> args = new HashMap<>();
 
-    public Request(String originalLine, String... args) {
+    public Request(String originalLine) {
         this.originalLine = originalLine;
-        this.args = args;
     }
 
     public String getCommandName() {
-        return args[0];
+        return commandName;
     }
 
-    public String[] getArguments() {
-        return Arrays.copyOfRange(args, 1, args.length);
+    public void setCommandName(String command) {
+        this.commandName = command;
+    }
+
+    public void addArgument(String key, String value) {
+        args.put(key, value);
+    }
+
+    public Map getArguments() {
+        return args;
+    }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "originalLine='" + originalLine + '\'' +
+                ", commandName='" + commandName + '\'' +
+                ", args=" + args +
+                '}';
     }
 
 }

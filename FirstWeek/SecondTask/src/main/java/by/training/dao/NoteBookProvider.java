@@ -1,30 +1,30 @@
 package by.training.dao;
 
-import by.training.model.NoteBook;
+import by.training.model.Library;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
 public class NoteBookProvider {
 
-    private static NoteBook instance = null;
+    private static Library instance = null;
 
     private NoteBookProvider() {
     }
 
-    public static NoteBook getInstance() {
+    public static Library getInstance() {
         if (instance == null) {
-            instance = new NoteBook();
+            instance = new Library();
         }
         return instance;
     }
 
-    public static NoteBook getNew() {
-        instance = new NoteBook();
+    public static Library getNew() {
+        instance = new Library();
         return instance;
     }
 
-    public static void setNew(NoteBook nb) {
+    public static void setNew(Library nb) {
         instance = nb;
     }
 

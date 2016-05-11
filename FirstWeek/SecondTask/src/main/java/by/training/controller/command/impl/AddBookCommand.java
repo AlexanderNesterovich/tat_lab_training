@@ -5,7 +5,6 @@ import by.training.model.Request;
 import by.training.model.Response;
 import by.training.service.NoteBookService;
 import by.training.service.ServiceFactory;
-import by.training.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,7 +13,7 @@ import java.lang.invoke.MethodHandles;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
-public class AddNoteCommand implements Command {
+public class AddBookCommand implements Command {
     private static final Logger LOG = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     @Override
@@ -23,27 +22,21 @@ public class AddNoteCommand implements Command {
         Response response = new Response();
         NoteBookService service = ServiceFactory.getInstance().getNoteBookService();
 
-        if (req.getArguments().length == 0) {
+        if (req.getArguments().isEmpty()) {
             LOG.warn("Not enough arguments for this command");
             response.setErrorMessage("Not enough arguments!");
             return response;
         }
 
-        if (req.getArguments().length == 1) {
-            service.addNote(req.getArguments()[0]);
+        if (req.getArguments().size() == 1) {
+            service.addBook(req.getArguments());
         }
 
-        if (req.getArguments().length >= 2) {
-            try {
-                service.addNote(req.getArguments()[0], req.getArguments()[1]);
-            } catch (ServiceException e) {
-                LOG.error("Cannot add note!", e);
-                response.setErrorMessage(e.getMessage());
-                return response;
-            }
+        if (req.getArguments().size() >= 2) {
+            service.addBook(req.getArguments());
         }
 
-        response.setMessage("Note added successfully!");
+        response.setMessage("Book added successfully!");
         LOG.trace("<< execute(Request req)");
         return response;
     }

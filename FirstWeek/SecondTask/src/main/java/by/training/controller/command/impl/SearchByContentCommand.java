@@ -1,7 +1,7 @@
 package by.training.controller.command.impl;
 
 import by.training.controller.command.Command;
-import by.training.model.Note;
+import by.training.model.Book;
 import by.training.model.Request;
 import by.training.model.Response;
 import by.training.service.ServiceFactory;
@@ -24,13 +24,13 @@ public class SearchByContentCommand implements Command {
 
         Response response = new Response();
 
-        if (req.getArguments().length == 0) {
+        if (req.getArguments().isEmpty()) {
             LOG.warn("Not enough arguments for this command");
             response.setErrorMessage("Not enough arguments!");
             return response;
         }
 
-        List<Note> list = ServiceFactory.getInstance().getNoteBookService().searchByContent(req.getArguments()[0]);
+        List<Book> list = ServiceFactory.getInstance().getNoteBookService().searchByContent(req.getArguments());
         if (list.size() > 0) {
             StringBuffer tmp = new StringBuffer();
             response.setMessage(NoteBookConsoleView.print(list));

@@ -1,7 +1,7 @@
 package by.training.controller.command.impl;
 
 import by.training.controller.command.Command;
-import by.training.model.Note;
+import by.training.model.Book;
 import by.training.model.Request;
 import by.training.model.Response;
 import by.training.service.ServiceFactory;
@@ -25,15 +25,15 @@ public class SearchByDateCommand implements Command {
             LOG.trace(">> execute(Request req)");
         }
         Response response = new Response();
-        if (req.getArguments().length == 0) {
+        if (req.getArguments().isEmpty()) {
             response.setErrorMessage("Not enough arguments!");
             LOG.error("Not enough arguments for this command");
             return response;
         }
 
-        List<Note> list;
+        List<Book> list;
         try {
-            list = ServiceFactory.getInstance().getNoteBookService().searchByDate(req.getArguments()[0]);
+            list = ServiceFactory.getInstance().getNoteBookService().searchByDate(req.getArguments());
         } catch (ServiceException e) {
             response.setMessage(e.getMessage());
             LOG.error(e.getMessage(), e);

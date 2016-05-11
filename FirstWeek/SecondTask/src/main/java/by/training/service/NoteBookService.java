@@ -1,30 +1,29 @@
 package by.training.service;
 
-import by.training.model.Note;
-import by.training.model.NoteBook;
+import by.training.model.Book;
+import by.training.model.Library;
 import by.training.service.exception.ServiceException;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/28/2016.
  */
 public interface NoteBookService {
-    List<Note> searchByContent(String s);
+    List<Book> searchByContent(Map<String, String> args);
 
-    List<Note> searchByDate(String s) throws ServiceException;
+    List<Book> searchByDate(Map<String, String> args) throws ServiceException;
 
-    void addNote(String content, String strDate) throws ServiceException;
-
-    void addNote(String content);
+    void addBook(Map<String, String> args);
 
     void newNoteBook();
 
-    void readFromFile(String name) throws ServiceException;
+    void readFromFile(Map<String, String> args) throws ServiceException;
 
-    void writeToFile(String name) throws ServiceException;
+    void writeToFile(Map<String, String> args) throws ServiceException;
 
-    List<Note> getCatalog();
+    List<Book> getCatalog();
 
-    NoteBook getNotebook();
+    Library getNotebook();
 }
