@@ -6,7 +6,7 @@
 
     <xsd:complexType name="Book">
         <xsd:sequence>
-            <xsd:element name="Name" type="xsd:string" />
+            <xsd:element name="Title" type="xsd:string" />
             <xsd:element name="Author" type="xsd:string"/>
             <xsd:element name="Genre" type="tns:Genre"/>
             <xsd:element name="PublicationDate" type="xsd:date"/>
@@ -17,7 +17,7 @@
             <xsd:element name="Paragraphs">
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="Paragraph" type="tns:Paragraph" minOccurs="1" maxOccurs="unbounded"/>
+                        <xsd:element name="Paragraph" type="tns:Paragraph" minOccurs="0" maxOccurs="unbounded"/>
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
@@ -49,7 +49,7 @@
 
     <xsd:complexType name="Paragraph">
         <xsd:sequence>
-            <xsd:element name="Name" type="xsd:string"/>
+            <xsd:element name="Title" type="xsd:string"/>
             <xsd:element name="PageNumber" type="xsd:positiveInteger"/>
         </xsd:sequence>
     </xsd:complexType>

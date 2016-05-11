@@ -1,13 +1,13 @@
 <lib:Library xmlns:lib="http://www.training.by/Library">
 
-  <lib:Name>string</lib:Name>
-  <lib:Date>2008-09-29</lib:Date>
+  <lib:Name>My Super Library</lib:Name>
+  <lib:Date>2016-05-11</lib:Date>
 
   <lib:Books>
 
     <lib:Book>
 
-      <lib:Name>The Colour of Magic</lib:Name>
+      <lib:Title>The Colour of Magic</lib:Title>
       <lib:Author>Terry Pratchett</lib:Author>
       <lib:Genre>Fantasy</lib:Genre>
       <lib:PublicationDate>1983-01-01</lib:PublicationDate>
@@ -23,7 +23,7 @@
 
     <lib:Book>
 
-      <lib:Name>American Gods</lib:Name>
+      <lib:Title>American Gods</lib:Title>
       <lib:Author>Neil Gaiman</lib:Author>
       <lib:Genre>Fantasy</lib:Genre>
       <lib:PublicationDate>2001-01-01</lib:PublicationDate>
@@ -39,7 +39,7 @@
 
     <lib:Book>
 
-      <lib:Name>Solaris</lib:Name>
+      <lib:Title>Solaris</lib:Title>
       <lib:Author>Stanislaw Lem</lib:Author>
       <lib:Genre>Sci-Fi</lib:Genre>
       <lib:PublicationDate>1961-01-01</lib:PublicationDate>
@@ -51,72 +51,72 @@
       <lib:Paragraphs>
 
         <lib:Paragraph>
-          <lib:Name>The Arrival</lib:Name>
+          <lib:Title>The Arrival</lib:Title>
           <lib:PageNumber>1</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>The Solarists</lib:Name>
+          <lib:Title>The Solarists</lib:Title>
           <lib:PageNumber>12</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>The Visitors</lib:Name>
+          <lib:Title>The Visitors</lib:Title>
           <lib:PageNumber>29</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>Sartorius</lib:Name>
+          <lib:Title>Sartorius</lib:Title>
           <lib:PageNumber>38</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>Rheya</lib:Name>
+          <lib:Title>Rheya</lib:Title>
           <lib:PageNumber>52</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>"The Little Apocrypha"</lib:Name>
+          <lib:Title>"The Little Apocrypha"</lib:Title>
           <lib:PageNumber>66</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>The Conference</lib:Name>
+          <lib:Title>The Conference</lib:Title>
           <lib:PageNumber>90</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>The Monsters</lib:Name>
+          <lib:Title>The Monsters</lib:Title>
           <lib:PageNumber>106</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>The Liquid Oxygen</lib:Name>
+          <lib:Title>The Liquid Oxygen</lib:Title>
           <lib:PageNumber>132</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>Conversation</lib:Name>
+          <lib:Title>Conversation</lib:Title>
           <lib:PageNumber>147</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>The Thinkers</lib:Name>
+          <lib:Title>The Thinkers</lib:Title>
           <lib:PageNumber>158</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>The Dreams</lib:Name>
+          <lib:Title>The Dreams</lib:Title>
           <lib:PageNumber>176</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>Victory</lib:Name>
+          <lib:Title>Victory</lib:Title>
           <lib:PageNumber>186</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>The Old Mimoid</lib:Name>
+          <lib:Title>The Old Mimoid</lib:Title>
           <lib:PageNumber>195</lib:PageNumber>
         </lib:Paragraph>
 
@@ -126,7 +126,7 @@
 
     <lib:Book>
 
-      <lib:Name>The Moon is a Harsh Mistress</lib:Name>
+      <lib:Title>The Moon is a Harsh Mistress</lib:Title>
       <lib:Author>Robert A. Heinlein</lib:Author>
       <lib:Genre>Sci-Fi</lib:Genre>
       <lib:PublicationDate>1966-01-01</lib:PublicationDate>
@@ -138,17 +138,17 @@
       <lib:Paragraphs>
 
         <lib:Paragraph>
-          <lib:Name>That Dinkum Thinkum</lib:Name>
+          <lib:Title>That Dinkum Thinkum</lib:Title>
           <lib:PageNumber>9</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>A Rabble in Arms</lib:Name>
+          <lib:Title>A Rabble in Arms</lib:Title>
           <lib:PageNumber>185</lib:PageNumber>
         </lib:Paragraph>
 
         <lib:Paragraph>
-          <lib:Name>"TANSTAAFL!"</lib:Name>
+          <lib:Title>"TANSTAAFL!"</lib:Title>
           <lib:PageNumber>305</lib:PageNumber>
         </lib:Paragraph>
 
