@@ -1,24 +1,24 @@
 package by.training.dao;
 
-import by.training.dao.localdisk_persistance.FilesDao;
-import by.training.dao.localdisk_persistance.impl.LocalFilesDao;
+import by.training.dao.localdisk_persistance.FilesDAO;
+import by.training.dao.localdisk_persistance.impl.SerializationDAO;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/28/2016.
  */
-public class DaoFactory {
-    private static final DaoFactory factory = new DaoFactory();
+public class DAOFactory {
+    private static final DAOFactory factory = new DAOFactory();
 
-    private final FilesDao localFilesDao = new LocalFilesDao();
+    private final FilesDAO localFilesDao = new SerializationDAO();
 
-    private DaoFactory() {
+    private DAOFactory() {
     }
 
-    public static DaoFactory getInstance() {
+    public static DAOFactory getInstance() {
         return factory;
     }
 
-    public FilesDao getLocalFilesDao() {
+    public FilesDAO getLocalFilesDao() {
         return localFilesDao;
     }
 

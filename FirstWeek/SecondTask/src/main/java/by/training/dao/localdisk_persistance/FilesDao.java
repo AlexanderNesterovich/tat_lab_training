@@ -6,7 +6,7 @@ import by.training.model.Library;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/26/2016.
  */
-public interface FilesDao {
+public interface FilesDAO {
 
     Library readFromFile(String name) throws DAOException;
 

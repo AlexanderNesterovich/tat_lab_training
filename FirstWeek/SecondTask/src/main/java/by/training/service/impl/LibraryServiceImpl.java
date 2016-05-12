@@ -1,9 +1,9 @@
 package by.training.service.impl;
 
-import by.training.dao.DaoFactory;
+import by.training.dao.DAOFactory;
 import by.training.dao.NoteBookProvider;
 import by.training.dao.exception.DAOException;
-import by.training.dao.localdisk_persistance.FilesDao;
+import by.training.dao.localdisk_persistance.FilesDAO;
 import by.training.model.*;
 import by.training.service.LibraryService;
 import by.training.service.exception.ServiceException;
@@ -25,7 +25,7 @@ import java.util.Map;
 public class LibraryServiceImpl implements LibraryService {
 
     private static final Logger LOG = LogManager.getLogger(MethodHandles.lookup().lookupClass());
-    private FilesDao filesDao = DaoFactory.getInstance().getLocalFilesDao();
+    private FilesDAO filesDao = DAOFactory.getInstance().getLocalFilesDao();
     private DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override

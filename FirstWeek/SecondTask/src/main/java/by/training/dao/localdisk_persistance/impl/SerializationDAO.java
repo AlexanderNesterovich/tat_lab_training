@@ -1,7 +1,7 @@
 package by.training.dao.localdisk_persistance.impl;
 
 import by.training.dao.exception.DAOException;
-import by.training.dao.localdisk_persistance.FilesDao;
+import by.training.dao.localdisk_persistance.FilesDAO;
 import by.training.model.Library;
 import by.training.service.ServiceFactory;
 import org.apache.logging.log4j.LogManager;
@@ -13,7 +13,7 @@ import java.lang.invoke.MethodHandles;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/26/2016.
  */
-public class LocalFilesDao implements FilesDao {
+public class SerializationDAO implements FilesDAO {
     private static final Logger LOG = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     public Library readFromFile(String path) throws DAOException {
