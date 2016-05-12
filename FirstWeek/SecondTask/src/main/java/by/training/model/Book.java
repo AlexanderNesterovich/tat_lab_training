@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
@@ -14,17 +15,17 @@ public class Book implements Serializable {
     private Date publicationDate;
     private Date editionDate;
     private String author;
-    private String genre;
+    private Genre genre;
     private String isbn;
-    private Languages languague;
+    private Language languague;
     private int pageCount;
     private List<Paragraph> paragraphList = new ArrayList<>();
 
-    public String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
 
@@ -68,11 +69,11 @@ public class Book implements Serializable {
         this.isbn = isbn;
     }
 
-    public Languages getLanguague() {
+    public Language getLanguague() {
         return languague;
     }
 
-    public void setLanguague(Languages languague) {
+    public void setLanguague(Language languague) {
         this.languague = languague;
     }
 
@@ -92,4 +93,39 @@ public class Book implements Serializable {
         paragraphList.add(p);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return pageCount == book.pageCount &&
+                Objects.equals(title, book.title) &&
+                Objects.equals(publicationDate, book.publicationDate) &&
+                Objects.equals(editionDate, book.editionDate) &&
+                Objects.equals(author, book.author) &&
+                genre == book.genre &&
+                Objects.equals(isbn, book.isbn) &&
+                languague == book.languague &&
+                Objects.equals(paragraphList, book.paragraphList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, publicationDate, editionDate, author, genre, isbn, languague, pageCount, paragraphList);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", publicationDate=" + publicationDate +
+                ", editionDate=" + editionDate +
+                ", author='" + author + '\'' +
+                ", genre=" + genre +
+                ", isbn='" + isbn + '\'' +
+                ", languague=" + languague +
+                ", pageCount=" + pageCount +
+                ", paragraphList=" + paragraphList +
+                '}';
+    }
 }

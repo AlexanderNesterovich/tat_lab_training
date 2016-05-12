@@ -39,7 +39,7 @@ public class Library implements Serializable {
         bookList.add(book);
     }
 
-    public List<Book> getNotes() {
+    public List<Book> getBooks() {
         return bookList;
     }
 

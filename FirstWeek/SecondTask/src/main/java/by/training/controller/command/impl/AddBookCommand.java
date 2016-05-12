@@ -5,6 +5,7 @@ import by.training.model.Request;
 import by.training.model.Response;
 import by.training.service.LibraryService;
 import by.training.service.ServiceFactory;
+import by.training.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,6 +26,14 @@ public class AddBookCommand implements Command {
         if (req.getArguments().isEmpty()) {
             LOG.warn("Not enough arguments for this command");
             response.setErrorMessage("Not enough arguments!");
+            return response;
+        }
+
+        try {
+            service.addBook(req.getArguments());
+        } catch (ServiceException e) {
+            LOG.error(e.getMessage(), e);
+            response.setErrorMessage(e.getMessage());
             return response;
         }
 

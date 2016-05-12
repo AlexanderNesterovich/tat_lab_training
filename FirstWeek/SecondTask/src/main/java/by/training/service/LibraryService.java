@@ -11,11 +11,13 @@ import java.util.Map;
  * Created by Aliaksandr_Nestsiarovich on 4/28/2016.
  */
 public interface LibraryService {
-    List<Book> searchByContent(Map<String, String> args);
+    List<Book> searchByTitle(Map<String, String> args);
 
     List<Book> searchByDate(Map<String, String> args) throws ServiceException;
 
-    void addBook(Map<String, String> args);
+    void addBook(Map<String, String> args) throws ServiceException;
+
+    void addParagraph(Map<String, String> args) throws ServiceException;
 
     void newLibrary();
 

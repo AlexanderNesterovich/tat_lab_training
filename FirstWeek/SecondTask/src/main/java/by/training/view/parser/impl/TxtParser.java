@@ -62,9 +62,9 @@ public class TxtParser implements Parser {
                 }
             }
             commandList.add(request);
+        } else {
+            commandList.add(request);
         }
-
-        System.out.println(request);
     }
 
     public List<Request> getRequestList() {

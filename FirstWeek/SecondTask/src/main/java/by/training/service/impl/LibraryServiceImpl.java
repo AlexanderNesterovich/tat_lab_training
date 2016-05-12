@@ -4,8 +4,7 @@ import by.training.dao.DaoFactory;
 import by.training.dao.NoteBookProvider;
 import by.training.dao.exception.DAOException;
 import by.training.dao.localdisk_persistance.FilesDao;
-import by.training.model.Book;
-import by.training.model.Library;
+import by.training.model.*;
 import by.training.service.LibraryService;
 import by.training.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
@@ -30,8 +29,8 @@ public class LibraryServiceImpl implements LibraryService {
     private DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
-    public List<Book> searchByContent(Map<String, String> args) {
-        LOG.trace(">> searchByContent(String s)");
+    public List<Book> searchByTitle(Map<String, String> args) {
+        LOG.trace(">> searchByTitle(String s)");
         LOG.debug("Argument: " + getStringArgument(args, "keyword"));
         List<Book> tmp = new ArrayList<>();
         for (Book n : getCatalog()) {
@@ -39,7 +38,7 @@ public class LibraryServiceImpl implements LibraryService {
                 tmp.add(n);
             }
         }
-        LOG.trace("<< searchByContent(String s)");
+        LOG.trace("<< searchByTitle(String s)");
         return tmp;
     }
 
@@ -47,37 +46,52 @@ public class LibraryServiceImpl implements LibraryService {
     public List<Book> searchByDate(Map<String, String> args) throws ServiceException {
         LOG.trace(">> searchByDate(String s)");
         LOG.debug("Argument: " + getStringArgument(args, "date"));
-        try {
-            List<Book> tmp = new ArrayList<>();
-            for (Book n : getCatalog()) {
-                if (format.parse(format.format(n.getPublicationDate())).compareTo(d) == 0) {
-                    tmp.add(n);
-                }
+        List<Book> tmp = new ArrayList<>();
+        for (Book n : getCatalog()) {
+            if (n.getPublicationDate().compareTo(getDateArgument(args, "date")) == 0) {
+                tmp.add(n);
             }
-            LOG.trace("<< searchByDate(String s)");
-            return tmp;
-        } catch (ParseException e) {
-            throw new ServiceException("Failed Search by date! Incorrect date format!", e);
         }
-
+        LOG.trace("<< searchByDate(String s)");
+        return tmp;
     }
 
     @Override
-    public void addBook(Map<String, String> args) {
+    public void addBook(Map<String, String> args) throws ServiceException {
         LOG.trace(">> addBook(String content)");
         LOG.debug("Argument: " + args);
+
         Book book = new Book();
+
         book.setTitle(getStringArgument(args, "title"));
-        book.setLanguague(getStringArgument(args, "lang"));
         book.setAuthor(getStringArgument(args, "author"));
-        book.setGenre(getStringArgument(args, "genre"));
+        book.setIsbn(getStringArgument(args, "ISBN"));
+
         book.setPublicationDate(getDateArgument(args, "publDate"));
         book.setEditionDate(getDateArgument(args, "editionDate"));
-        book.setIsbn(getStringArgument(args, "ISBN"));
+
+        book.setLanguague(Language.fromFriendlyName(getStringArgument(args, "lang")));
+        book.setGenre(Genre.fromFriendlyName(getStringArgument(args, "genre")));
+
         book.setPageCount(getIntArgument(args, "pageCount"));
 
-        NoteBookProvider.getInstance().addBook(new Book());
+        NoteBookProvider.getInstance().addBook(book);
+
         LOG.trace("<< addBook(String content)");
+    }
+
+    @Override
+    public void addParagraph(Map<String, String> args) throws ServiceException {
+        for (Book n : getCatalog()) {
+            if (n.getTitle().contains(getStringArgument(args, "book"))) {
+                Paragraph p = new Paragraph();
+                p.setTitle(getStringArgument(args, "title"));
+                p.setPage(getIntArgument(args, "page"));
+                n.addParagraph(p);
+                return;
+            }
+        }
+        throw new ServiceException("Book not found!");
     }
 
     @Override
@@ -114,7 +128,7 @@ public class LibraryServiceImpl implements LibraryService {
     @Override
     public List<Book> getCatalog() {
         LOG.trace(">> getCatalog()");
-        List<Book> result = NoteBookProvider.getInstance().getNotes();
+        List<Book> result = NoteBookProvider.getInstance().getBooks();
         LOG.trace("<< getCatalog()");
         return result;
     }
@@ -154,16 +168,16 @@ public class LibraryServiceImpl implements LibraryService {
 
     private int getIntArgument(Map<String, String> arguments, String key) {
         if (arguments.containsKey(key)) {
-            String tmp = arguments.get(key);
+            String original = arguments.get(key);
             int tmp;
             try {
-                tmp = Integer.parseInt(tmp);
+                tmp = Integer.parseInt(original);
             } catch (NumberFormatException e) {
-                LOG.warn("Incorrect Date!");
+                LOG.warn("Incorrect Date Format!");
                 return 0;
             }
-            if (isbn > 0) {
-                return isbn;
+            if (tmp > 0) {
+                return tmp;
             }
             return 0;
         } else {

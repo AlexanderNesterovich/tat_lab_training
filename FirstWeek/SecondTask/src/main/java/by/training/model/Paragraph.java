@@ -1,9 +1,12 @@
 package by.training.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  * Created by Aliaksandr_Nestsiarovich on 5/11/2016.
  */
-public class Paragraph {
+public class Paragraph implements Serializable {
 
     private String title;
     private int page;
@@ -25,11 +28,24 @@ public class Paragraph {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Paragraph paragraph = (Paragraph) o;
+        return page == paragraph.page &&
+                Objects.equals(title, paragraph.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, page);
+    }
+
+    @Override
     public String toString() {
         return "Paragraph{" +
                 "title='" + title + '\'' +
                 ", page=" + page +
                 '}';
     }
-
 }
