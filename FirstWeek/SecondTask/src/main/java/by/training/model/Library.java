@@ -15,7 +15,27 @@ public class Library implements Serializable {
     private String name;
     private Date date;
 
-    public void addNote(Book book) {
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void addBook(Book book) {
         bookList.add(book);
     }
 
@@ -32,7 +52,6 @@ public class Library implements Serializable {
                 Objects.equals(name, library.name) &&
                 Objects.equals(date, library.date);
     }
-
 
     @Override
     public int hashCode() {

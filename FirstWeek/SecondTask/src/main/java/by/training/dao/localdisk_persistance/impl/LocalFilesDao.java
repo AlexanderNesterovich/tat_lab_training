@@ -35,7 +35,7 @@ public class LocalFilesDao implements FilesDao {
         LOG.trace(">> writeToFile(String path)");
         try (FileOutputStream fileOut = new FileOutputStream(path);
              ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
-            out.writeObject(ServiceFactory.getInstance().getNoteBookService().getNotebook());
+            out.writeObject(ServiceFactory.getInstance().getLibraryService().getLibrary());
         } catch (IOException e) {
             throw new DAOException("Input/Output exception!", e);
         }

@@ -10,14 +10,14 @@ import java.util.Map;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/28/2016.
  */
-public interface NoteBookService {
+public interface LibraryService {
     List<Book> searchByContent(Map<String, String> args);
 
     List<Book> searchByDate(Map<String, String> args) throws ServiceException;
 
     void addBook(Map<String, String> args);
 
-    void newNoteBook();
+    void newLibrary();
 
     void readFromFile(Map<String, String> args) throws ServiceException;
 
@@ -25,5 +25,5 @@ public interface NoteBookService {
 
     List<Book> getCatalog();
 
-    Library getNotebook();
+    Library getLibrary();
 }

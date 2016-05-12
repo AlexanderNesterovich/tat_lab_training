@@ -30,7 +30,7 @@ public class SearchByContentCommand implements Command {
             return response;
         }
 
-        List<Book> list = ServiceFactory.getInstance().getNoteBookService().searchByContent(req.getArguments());
+        List<Book> list = ServiceFactory.getInstance().getLibraryService().searchByContent(req.getArguments());
         if (list.size() > 0) {
             StringBuffer tmp = new StringBuffer();
             response.setMessage(NoteBookConsoleView.print(list));

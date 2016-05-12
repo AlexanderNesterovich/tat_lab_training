@@ -2,6 +2,7 @@ package by.training.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
@@ -41,4 +42,18 @@ public class Request {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Request request = (Request) o;
+        return Objects.equals(originalLine, request.originalLine) &&
+                Objects.equals(commandName, request.commandName) &&
+                Objects.equals(args, request.args);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(originalLine, commandName, args);
+    }
 }

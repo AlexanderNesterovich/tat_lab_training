@@ -29,7 +29,7 @@ public class WriteToFileCommand implements Command {
         }
 
         try {
-            ServiceFactory.getInstance().getNoteBookService().writeToFile(req.getArguments());
+            ServiceFactory.getInstance().getLibraryService().writeToFile(req.getArguments());
             response.setMessage("File was successfully written!");
             LOG.trace("<< execute(Request req)");
             return response;

@@ -21,8 +21,8 @@ class CommandHelper {
         commandList.put(CommandName.ADD_NOTE, new AddBookCommand());
         commandList.put(CommandName.SEARCH_BY_CONTENT, new SearchByContentCommand());
         commandList.put(CommandName.SEARCH_BY_DATE, new SearchByDateCommand());
-        commandList.put(CommandName.SHOW_NOTEBOOK, new ShowNoteBookCommand());
-        commandList.put(CommandName.NEW_NOTEBOOK, new NewNoteBookCommand());
+        commandList.put(CommandName.SHOW_NOTEBOOK, new ShowLibraryCommand());
+        commandList.put(CommandName.NEW_NOTEBOOK, new NewLibraryCommand());
         commandList.put(CommandName.WRITE_TO_FILE, new WriteToFileCommand());
         commandList.put(CommandName.READ_FROM_FILE, new ReadFromFileCommand());
     }

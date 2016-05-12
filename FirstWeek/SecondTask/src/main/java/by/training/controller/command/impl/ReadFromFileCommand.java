@@ -27,7 +27,7 @@ public class ReadFromFileCommand implements Command {
         }
 
         try {
-            ServiceFactory.getInstance().getNoteBookService().readFromFile(req.getArguments());
+            ServiceFactory.getInstance().getLibraryService().readFromFile(req.getArguments());
             response.setMessage("File was successfully read!");
             LOG.trace("<< execute(Request req)");
             return response;

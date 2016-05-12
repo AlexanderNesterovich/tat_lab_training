@@ -33,7 +33,7 @@ public class SearchByDateCommand implements Command {
 
         List<Book> list;
         try {
-            list = ServiceFactory.getInstance().getNoteBookService().searchByDate(req.getArguments());
+            list = ServiceFactory.getInstance().getLibraryService().searchByDate(req.getArguments());
         } catch (ServiceException e) {
             response.setMessage(e.getMessage());
             LOG.error(e.getMessage(), e);

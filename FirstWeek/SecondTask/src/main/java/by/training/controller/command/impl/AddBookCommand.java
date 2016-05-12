@@ -3,7 +3,7 @@ package by.training.controller.command.impl;
 import by.training.controller.command.Command;
 import by.training.model.Request;
 import by.training.model.Response;
-import by.training.service.NoteBookService;
+import by.training.service.LibraryService;
 import by.training.service.ServiceFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,20 +20,12 @@ public class AddBookCommand implements Command {
     public Response execute(Request req) {
         LOG.trace(">> execute(Request req)");
         Response response = new Response();
-        NoteBookService service = ServiceFactory.getInstance().getNoteBookService();
+        LibraryService service = ServiceFactory.getInstance().getLibraryService();
 
         if (req.getArguments().isEmpty()) {
             LOG.warn("Not enough arguments for this command");
             response.setErrorMessage("Not enough arguments!");
             return response;
-        }
-
-        if (req.getArguments().size() == 1) {
-            service.addBook(req.getArguments());
-        }
-
-        if (req.getArguments().size() >= 2) {
-            service.addBook(req.getArguments());
         }
 
         response.setMessage("Book added successfully!");

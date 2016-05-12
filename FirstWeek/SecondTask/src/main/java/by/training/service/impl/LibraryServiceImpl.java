@@ -6,7 +6,7 @@ import by.training.dao.exception.DAOException;
 import by.training.dao.localdisk_persistance.FilesDao;
 import by.training.model.Book;
 import by.training.model.Library;
-import by.training.service.NoteBookService;
+import by.training.service.LibraryService;
 import by.training.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,18 +23,19 @@ import java.util.Map;
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/22/2016.
  */
-public class NoteBookServiceImpl implements NoteBookService {
+public class LibraryServiceImpl implements LibraryService {
 
     private static final Logger LOG = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private FilesDao filesDao = DaoFactory.getInstance().getLocalFilesDao();
+    private DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
     public List<Book> searchByContent(Map<String, String> args) {
         LOG.trace(">> searchByContent(String s)");
-        LOG.debug("Argument: " + args.get("path"));
+        LOG.debug("Argument: " + getStringArgument(args, "keyword"));
         List<Book> tmp = new ArrayList<>();
         for (Book n : getCatalog()) {
-            if (n.getTitle().contains(args.get("path"))) {
+            if (n.getTitle().contains(args.get("keyword"))) {
                 tmp.add(n);
             }
         }
@@ -45,10 +46,8 @@ public class NoteBookServiceImpl implements NoteBookService {
     @Override
     public List<Book> searchByDate(Map<String, String> args) throws ServiceException {
         LOG.trace(">> searchByDate(String s)");
-        LOG.debug("Argument: " + args.get("path"));
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        LOG.debug("Argument: " + getStringArgument(args, "date"));
         try {
-            Date d = format.parse(args.get("path"));
             List<Book> tmp = new ArrayList<>();
             for (Book n : getCatalog()) {
                 if (format.parse(format.format(n.getPublicationDate())).compareTo(d) == 0) {
@@ -67,15 +66,25 @@ public class NoteBookServiceImpl implements NoteBookService {
     public void addBook(Map<String, String> args) {
         LOG.trace(">> addBook(String content)");
         LOG.debug("Argument: " + args);
-        NoteBookProvider.getInstance().addNote(new Book.Builder().build());
+        Book book = new Book();
+        book.setTitle(getStringArgument(args, "title"));
+        book.setLanguague(getStringArgument(args, "lang"));
+        book.setAuthor(getStringArgument(args, "author"));
+        book.setGenre(getStringArgument(args, "genre"));
+        book.setPublicationDate(getDateArgument(args, "publDate"));
+        book.setEditionDate(getDateArgument(args, "editionDate"));
+        book.setIsbn(getStringArgument(args, "ISBN"));
+        book.setPageCount(getIntArgument(args, "pageCount"));
+
+        NoteBookProvider.getInstance().addBook(new Book());
         LOG.trace("<< addBook(String content)");
     }
 
     @Override
-    public void newNoteBook() {
-        LOG.trace(">> newNoteBook()");
+    public void newLibrary() {
+        LOG.trace(">> newLibrary()");
         NoteBookProvider.getNew();
-        LOG.trace("<< newNoteBook()");
+        LOG.trace("<< newLibrary()");
     }
 
     @Override
@@ -111,11 +120,55 @@ public class NoteBookServiceImpl implements NoteBookService {
     }
 
     @Override
-    public Library getNotebook() {
-        LOG.trace(">> getNotebook()");
+    public Library getLibrary() {
+        LOG.trace(">> getLibrary()");
         Library library = NoteBookProvider.getInstance();
-        LOG.trace("<< getNotebook()");
+        LOG.trace("<< getLibrary()");
         return library;
+    }
+
+    private String getStringArgument(Map<String, String> arguments, String key) {
+        if (arguments.containsKey(key)) {
+            return arguments.get(key);
+        } else {
+            LOG.warn("Incorrect Argument!");
+            return "Warning: Not Assigned";
+        }
+    }
+
+    private Date getDateArgument(Map<String, String> arguments, String key) {
+        if (arguments.containsKey(key)) {
+            String tmp = arguments.get(key);
+            Date d = null;
+            try {
+                d = format.parse(tmp);
+            } catch (ParseException e) {
+                LOG.warn("Incorrect Date!");
+                return new Date(0000, 0, 0);
+            }
+            return d;
+        } else {
+            return new Date(0000, 0, 0);
+        }
+    }
+
+    private int getIntArgument(Map<String, String> arguments, String key) {
+        if (arguments.containsKey(key)) {
+            String tmp = arguments.get(key);
+            int tmp;
+            try {
+                tmp = Integer.parseInt(tmp);
+            } catch (NumberFormatException e) {
+                LOG.warn("Incorrect Date!");
+                return 0;
+            }
+            if (isbn > 0) {
+                return isbn;
+            }
+            return 0;
+        } else {
+            return 0;
+        }
     }
 
 }
