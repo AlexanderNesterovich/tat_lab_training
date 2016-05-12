@@ -7,7 +7,7 @@ import by.training.model.Library;
 /**
  * Created by Aliaksandr_Nestsiarovich on 5/12/2016.
  */
-public class XMLDAO implements FilesDAO {
+public class XMLDAOSAX implements FilesDAO {
     @Override
     public Library readFromFile(String name) throws DAOException {
         return null;
