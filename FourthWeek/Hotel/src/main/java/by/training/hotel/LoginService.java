@@ -1,8 +1,11 @@
 package by.training.hotel;
 
+import org.springframework.stereotype.Service;
+
 /**
  * Created by Aliaksandr_Nestsiarovich on 15.05.2016.
  */
+@Service
 public class LoginService {
 
     public Customer loginCustomer(String userId, String password) {

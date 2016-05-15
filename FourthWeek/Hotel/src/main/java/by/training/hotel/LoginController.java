@@ -1,5 +1,6 @@
 package by.training.hotel;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
-    private LoginService loginService = new LoginService();
+    @Autowired
+    private LoginService loginService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLoginForm() {
