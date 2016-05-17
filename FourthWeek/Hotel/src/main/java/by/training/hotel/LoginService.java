@@ -11,9 +11,6 @@ public class LoginService {
     public Customer loginCustomer(String userId, String password) {
         if (userId.equals("top") && password.equals("kek")) {
             Customer tmp = new Customer();
-            tmp.setId("1");
-            tmp.setFirstName("Vova");
-            tmp.setLastName("kek");
             return tmp;
         }
         return null;

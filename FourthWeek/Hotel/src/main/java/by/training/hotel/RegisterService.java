@@ -14,8 +14,6 @@ public class RegisterService {
         }
         Customer tmp = new Customer();
         tmp.setId("1");
-        tmp.setFirstName(name);
-        tmp.setLastName(name2);
         tmp.setEmail(email);
         tmp.setPassword(password);
         return tmp;

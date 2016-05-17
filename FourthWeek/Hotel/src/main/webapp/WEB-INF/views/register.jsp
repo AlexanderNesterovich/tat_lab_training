@@ -72,13 +72,13 @@
 				</ul>
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane fade in active" id="login">
-						<form class="form-horizontal" method="post" action="form1.do">
+						<form class="form-horizontal" method="post" action="/login.do" modelAttribute="customer">
 							<div class="form-group ">
 								<div class="input-group">
 									<div class="input-group-addon">
 										<i class="fa fa-user"></i>
 									</div>
-									<input type="text" name="login_email" class="form-control"
+									<input type="text" name="email" class="form-control"
 										placeholder="Username or email" required="required" value="">
 								</div>
 							</div>
@@ -87,7 +87,7 @@
 									<div class="input-group-addon">
 										<i class="fa fa-key"></i>
 									</div>
-									<input type="password" name="login_password"
+									<input type="password" name="password"
 										class="form-control" placeholder="Password"
 										required="required">
 								</div>
@@ -99,7 +99,7 @@
 										<i class="fa fa-user"></i>
 									</div>
 									<div>
-									<select class="form-control" id="type">
+									<select class="form-control" name="type">
 										<option>Customer</option>
 										<option>Staff</option>
 										<option>Admin</option>
@@ -119,7 +119,7 @@
 						</form>
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="register">
-						<form class="form-horizontal" method="post" action="form2.do">
+						<form class="form-horizontal" method="post" action="/register.do">
 							<div class="form-group ">
 								<div class="input-group">
 									<div class="input-group-addon">
