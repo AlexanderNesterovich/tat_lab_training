@@ -72,7 +72,7 @@
 				</ul>
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane fade in active" id="login">
-						<form class="form-horizontal" method="post" action="/login.do" modelAttribute="customer">
+						<form class="form-horizontal" method="post" action="login" modelAttribute="customer">
 							<div class="form-group ">
 								<div class="input-group">
 									<div class="input-group-addon">
@@ -119,7 +119,7 @@
 						</form>
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="register">
-						<form class="form-horizontal" method="post" action="/register.do">
+						<form class="form-horizontal" method="post" action="register">
 							<div class="form-group ">
 								<div class="input-group">
 									<div class="input-group-addon">

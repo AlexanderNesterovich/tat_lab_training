@@ -16,14 +16,14 @@
 				<legend>Employee Details</legend>
 				    <table class="table table-striped">
 					    <tr>
-					    	<td>First Name</td>
+					    	<td>Email</td>
 					    	<td>Last Name</td>
 					    	<td>Email</td>
 					    </tr>
 					    <tr>
-				    	<td>${loggedUser.getFirstName()}</td>
-				    	<td>${loggedUser.getLastName()}</td>
 				    	<td>${loggedUser.getEmail()}</td>
+				    	<td>${loggedUser.getPassword()}</td>
+				    	<td>${loggedUser.getType()}</td>
 				    </tr>
     				</table>
 				</fieldset>
