@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,12 +20,14 @@
 					    	<td>Number</td>
 					    	<td>Type</td>
 					    	<td>Price</td>
+							<td>Offer</td>
 					    </tr>
 						<c:forEach items="${roomsList}" var="room">
 							<tr>
 								<td>${room.getNumber()}</td>
 								<td>${room.getType()}</td>
 								<td>${room.getPrice()}</td>
+								<form:form><td><button name="bookButton" class="btn btn-success btn-custom" value=${room.getNumber()}>Book</button></td></form:form>
 							</tr>
 						</c:forEach>
     				</table>
