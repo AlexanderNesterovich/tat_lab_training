@@ -26,11 +26,10 @@ public class RegisterController {
     @Autowired
     private LoginService loginService;
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = {"/register", "/login"}, method = RequestMethod.GET)
     public ModelAndView showLoginForm() {
         logger.info("OPEN PAGE");
-        return new ModelAndView("register", "command", new Customer());
-
+        return new ModelAndView("register");
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -48,14 +47,15 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView register(@ModelAttribute("customer")Customer customer,
-                           ModelMap model, RedirectAttributes redirectAttrs) {
+    public ModelAndView register(@ModelAttribute("customer")Customer customer) {
 
-        logger.info("------------------------------------------");
+        logger.info("registration");
         logger.info(customer.getEmail());
         logger.info(customer.getPassword());
         logger.info(customer.getType());
         logger.info("------------------------------------------");
-        return new ModelAndView("redirect:/success");
+        Singletone.registerUser(customer);
+        ModelAndView modelAndView = new ModelAndView("redirect:/successfulregistration");
+        return modelAndView;
     }
 }

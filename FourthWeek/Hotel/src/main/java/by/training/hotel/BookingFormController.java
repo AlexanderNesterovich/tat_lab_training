@@ -17,10 +17,20 @@ public class BookingFormController {
     public ModelAndView showBookingForm(@ModelAttribute("logged")Customer customer) {
     	logger.info("BOOKINGFORM");
     	logger.info(customer.getEmail());
-        ModelAndView modelAndView = new ModelAndView("success");
-        modelAndView.addObject("loggedUser", customer);
-        return modelAndView;
+        if(Singletone.loginUser(customer)) {
+            ModelAndView modelAndView = new ModelAndView("success");
+            modelAndView.addObject("roomsList", Singletone.getFreeRooms());
+            return modelAndView;
+        }
+        return new ModelAndView("error");
 
+
+    }
+
+    @RequestMapping(value = "/successfulregistration", method = RequestMethod.GET)
+    public ModelAndView successfulRegistration(@ModelAttribute("logged")Customer customer) {
+        logger.info("SUCCESFUL REG");
+        return new ModelAndView("registered");
     }
 
 }

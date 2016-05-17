@@ -12,23 +12,7 @@
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
-				<fieldset>
-				<legend>Availiable Rooms</legend>
-				    <table class="table table-striped">
-					    <tr>
-					    	<td>Number</td>
-					    	<td>Type</td>
-					    	<td>Price</td>
-					    </tr>
-						<c:forEach items="${roomsList}" var="room">
-							<tr>
-								<td>${room.getNumber()}</td>
-								<td>${room.getType()}</td>
-								<td>${room.getPrice()}</td>
-							</tr>
-						</c:forEach>
-    				</table>
-				</fieldset>
+				<legend>ERROR</legend>
 			</div>
 		</div>
 	</div>

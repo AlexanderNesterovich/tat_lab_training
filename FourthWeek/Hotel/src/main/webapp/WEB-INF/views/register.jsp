@@ -119,13 +119,13 @@
 						</form>
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="register">
-						<form class="form-horizontal" method="post" action="register">
+						<form class="form-horizontal" method="post" action="register" modelAttribute="customer">
 							<div class="form-group ">
 								<div class="input-group">
 									<div class="input-group-addon">
 										<i class="fa fa-user"></i>
 									</div>
-									<input type="text" name="register_username"
+									<input type="text" name="firstName"
 										class="form-control" placeholder="Username"
 										required="required" value="">
 								</div>
@@ -135,7 +135,7 @@
 									<div class="input-group-addon">
 										<i class="fa fa-male"></i>
 									</div>
-									<input type="text" name="register_fullname"
+									<input type="text" name="lastName"
 										class="form-control" placeholder="Full name"
 										required="required" value="">
 								</div>
@@ -145,7 +145,7 @@
 									<div class="input-group-addon">
 										<i class="fa fa-envelope"></i>
 									</div>
-									<input type="email" name="register_email" class="form-control"
+									<input type="email" name="email" class="form-control"
 										placeholder="Email" required="required" value="">
 								</div>
 							</div>
@@ -154,7 +154,7 @@
 									<div class="input-group-addon">
 										<i class="fa fa-lock"></i>
 									</div>
-									<input type="password" name="register_password"
+									<input type="password" name="password"
 										class="form-control" placeholder="Password"
 										required="required">
 								</div>
@@ -164,7 +164,7 @@
 									<div class="input-group-addon">
 										<i class="fa fa-lock"></i>
 									</div>
-									<input type="password" name="register_cpassword"
+									<input type="password" name="cpassword"
 										class="form-control" placeholder="Confirm Password"
 										required="required">
 								</div>
