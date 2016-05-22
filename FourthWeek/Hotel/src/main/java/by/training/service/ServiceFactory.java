@@ -1,6 +1,6 @@
 package by.training.service;
 
-import by.training.service.impl.LibraryServiceImpl;
+import by.training.service.impl.UserServiceImpl;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/25/2016.
@@ -9,7 +9,7 @@ public class ServiceFactory {
 
     private static final ServiceFactory factory = new ServiceFactory();
 
-    private final LibraryService libraryService = new LibraryServiceImpl();
+    private final UserService userService = new UserServiceImpl();
 
     private ServiceFactory() {
     }
@@ -19,8 +19,8 @@ public class ServiceFactory {
         return factory;
     }
 
-    public LibraryService getLibraryService() {
-        return libraryService;
+    public UserService getUserService() {
+        return userService;
     }
 
 }

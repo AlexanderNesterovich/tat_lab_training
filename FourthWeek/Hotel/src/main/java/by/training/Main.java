@@ -1,8 +1,8 @@
 package by.training;
 
+import by.training.bean.Request;
+import by.training.bean.Response;
 import by.training.controller.CommandInvoker;
-import by.training.model.Request;
-import by.training.model.Response;
 import by.training.view.parser.Parser;
 import by.training.view.parser.impl.TxtParser;
 
@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         Parser parser = new TxtParser();
-        parser.parseByPath("C:/tmp/script.txt");
+        parser.parseByPath("C:/tmp/testingDB.txt");
 
         CommandInvoker invoker = new CommandInvoker();
         Response response;

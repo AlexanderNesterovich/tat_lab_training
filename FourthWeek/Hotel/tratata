@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lib:library xmlns:lib="http://www.training.by/Library">
+    <lib:name>National Library</lib:name>
+    <lib:date>1996-10-10</lib:date>
+    <lib:books>
+        <lib:book>
+            <lib:title>The Colour of Magic</lib:title>
+            <lib:author>Terry Pratchett</lib:author>
+            <lib:genre>FANTASY</lib:genre>
+            <lib:publicationDate>1994-10-10</lib:publicationDate>
+            <lib:editionDate>1993-01-01</lib:editionDate>
+            <lib:isbn>0333333333</lib:isbn>
+            <lib:language>ENGLISH</lib:language>
+            <lib:pageCount>200</lib:pageCount>
+            <lib:paragraphs>
+                <lib:paragraph>
+                    <lib:title>Hello world</lib:title>
+                    <lib:page>102</lib:page>
+                </lib:paragraph>
+                <lib:paragraph>
+                    <lib:title>1231231as23</lib:title>
+                    <lib:page>103</lib:page>
+                </lib:paragraph>
+                <lib:paragraph>
+                    <lib:title>aHaaaaaaasaa</lib:title>
+                    <lib:page>99</lib:page>
+                </lib:paragraph>
+            </lib:paragraphs>
+        </lib:book>
+        <lib:book>
+            <lib:title>The Colour of Magic 2</lib:title>
+            <lib:author>Terry Pratchett</lib:author>
+            <lib:genre>FANTASY</lib:genre>
+            <lib:publicationDate>1994-10-10</lib:publicationDate>
+            <lib:editionDate>1993-01-01</lib:editionDate>
+            <lib:isbn>0333333333</lib:isbn>
+            <lib:language>ENGLISH</lib:language>
+            <lib:pageCount>200</lib:pageCount>
+            <lib:paragraphs>
+                <lib:paragraph>
+                    <lib:title>Hello world</lib:title>
+                    <lib:page>102</lib:page>
+                </lib:paragraph>
+                <lib:paragraph>
+                    <lib:title>1231231as23</lib:title>
+                    <lib:page>103</lib:page>
+                </lib:paragraph>
+                <lib:paragraph>
+                    <lib:title>aHaaaaaaasaa</lib:title>
+                    <lib:page>99</lib:page>
+                </lib:paragraph>
+            </lib:paragraphs>
+        </lib:book>
+        <lib:book>
+            <lib:title>The Colour of Magic 3</lib:title>
+            <lib:author>Terry Pratchett</lib:author>
+            <lib:genre>FANTASY</lib:genre>
+            <lib:publicationDate>1994-10-10</lib:publicationDate>
+            <lib:editionDate>1993-01-01</lib:editionDate>
+            <lib:isbn>0333333333</lib:isbn>
+            <lib:language>ENGLISH</lib:language>
+            <lib:pageCount>200</lib:pageCount>
+            <lib:paragraphs>
+                <lib:paragraph>
+                    <lib:title>Hello world</lib:title>
+                    <lib:page>102</lib:page>
+                </lib:paragraph>
+                <lib:paragraph>
+                    <lib:title>1231231as23</lib:title>
+                    <lib:page>103</lib:page>
+                </lib:paragraph>
+                <lib:paragraph>
+                    <lib:title>aHaaaaaaasaa</lib:title>
+                    <lib:page>99</lib:page>
+                </lib:paragraph>
+            </lib:paragraphs>
+        </lib:book>
+    </lib:books>
+</lib:library>

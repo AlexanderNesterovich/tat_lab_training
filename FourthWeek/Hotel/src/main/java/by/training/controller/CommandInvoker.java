@@ -1,9 +1,9 @@
 package by.training.controller;
 
+import by.training.bean.Request;
+import by.training.bean.Response;
 import by.training.controller.command.Command;
 import by.training.controller.exception.UnsupportedCommandException;
-import by.training.model.Request;
-import by.training.model.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,7 +14,7 @@ import java.lang.invoke.MethodHandles;
  */
 public class CommandInvoker {
 
-    private static final Logger LOG = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOG = LogManager.getLogger(CommandInvoker.class);
     private CommandHelper helper = new CommandHelper();
 
     public CommandInvoker() {

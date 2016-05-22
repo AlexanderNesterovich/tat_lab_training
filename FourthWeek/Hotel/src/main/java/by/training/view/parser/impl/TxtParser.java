@@ -1,6 +1,6 @@
 package by.training.view.parser.impl;
 
-import by.training.model.Request;
+import by.training.bean.Request;
 import by.training.view.parser.Parser;
 
 import java.io.*;

@@ -1,7 +1,6 @@
 package by.training.dao;
 
-import by.training.dao.localdisk_persistance.FilesDAO;
-import by.training.dao.localdisk_persistance.impl.SerializationDAO;
+import by.training.dao.mysql_impl.UserDaoImpl;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/28/2016.
@@ -9,7 +8,7 @@ import by.training.dao.localdisk_persistance.impl.SerializationDAO;
 public class DAOFactory {
     private static final DAOFactory factory = new DAOFactory();
 
-    private final FilesDAO localFilesDao = new SerializationDAO();
+    private final UserDao userDao = new UserDaoImpl();
 
     private DAOFactory() {
     }
@@ -18,8 +17,8 @@ public class DAOFactory {
         return factory;
     }
 
-    public FilesDAO getLocalFilesDao() {
-        return localFilesDao;
+    public UserDao getUserDao() {
+        return userDao;
     }
 
 }

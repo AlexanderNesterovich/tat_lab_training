@@ -18,14 +18,12 @@ class CommandHelper {
     private Map<CommandName, Command> commandList = new HashMap<>();
 
     public CommandHelper() {
-        commandList.put(CommandName.ADD_BOOK, new AddBookCommand());
-        commandList.put(CommandName.SEARCH_BY_TITLE, new SearchByTitleCommand());
-        commandList.put(CommandName.SEARCH_BY_DATE, new SearchByPublicationDateCommand());
-        commandList.put(CommandName.SHOW_LIBRARY, new ShowLibraryCommand());
-        commandList.put(CommandName.NEW_LIBRARY, new NewLibraryCommand());
-        commandList.put(CommandName.WRITE_TO_FILE, new WriteToFileCommand());
-        commandList.put(CommandName.READ_FROM_FILE, new ReadFromFileCommand());
-        commandList.put(CommandName.ADD_PARAGRAPH, new AddParagraphCommand());
+        commandList.put(CommandName.REGISTER_USER, new RegisterUserCommand());
+        commandList.put(CommandName.UPDATE_USER, new UpdateUserCommand());
+        commandList.put(CommandName.LOGIN_USER, new LoginUserCommand());
+        commandList.put(CommandName.GET_FREE_ROOMS, new GetFreeRoomsCommand());
+        commandList.put(CommandName.BOOK_ROOM, new BookRoomCommand());
+        commandList.put(CommandName.ADD_CREDIT_CARD, new AddCreditCardCommand());
     }
 
     public Command getCommand(String commandName) throws UnsupportedCommandException {

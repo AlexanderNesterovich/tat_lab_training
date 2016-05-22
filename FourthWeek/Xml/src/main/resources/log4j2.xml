@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyyMMdd-HHmmss} %M [%t] %msg %c %n"/>
+        </Console>
+        <RollingFile name="file" fileName="C:\logs\trace.log" filePattern="C:\logs\trace-%d{yyyyMMddHHmmss}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss} [%t] %M- %msg %c %n</pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="console" level="all"/>
+            <AppenderRef ref="file" level="all"/>
+        </Root>
+    </Loggers>
+</Configuration>

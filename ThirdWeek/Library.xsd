@@ -4,71 +4,71 @@
             xmlns:tns="http://www.training.by/Library"
             elementFormDefault="qualified">
 
-    <xsd:complexType name="Book">
+    <xsd:complexType name="book">
         <xsd:sequence>
-            <xsd:element name="Title" type="xsd:string" />
-            <xsd:element name="Author" type="xsd:string"/>
-            <xsd:element name="Genre" type="tns:Genre"/>
-            <xsd:element name="PublicationDate" type="xsd:date"/>
-            <xsd:element name="EditionDate" type="xsd:date"/>
-            <xsd:element name="ISBN" type="tns:ISBN"/>
-            <xsd:element name="Language" type="tns:Language"/>
-            <xsd:element name="PageCount" type="xsd:positiveInteger"/>
-            <xsd:element name="Paragraphs">
+            <xsd:element name="title" type="xsd:string" />
+            <xsd:element name="author" type="xsd:string"/>
+            <xsd:element name="genre" type="tns:genre"/>
+            <xsd:element name="publicationDate" type="xsd:date"/>
+            <xsd:element name="editionDate" type="xsd:date"/>
+            <xsd:element name="isbn" type="tns:isbn"/>
+            <xsd:element name="language" type="tns:language"/>
+            <xsd:element name="pageCount" type="xsd:positiveInteger"/>
+            <xsd:element name="paragraphs">
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="Paragraph" type="tns:Paragraph" minOccurs="0" maxOccurs="unbounded"/>
+                        <xsd:element name="paragraph" type="tns:paragraph" minOccurs="0" maxOccurs="unbounded"/>
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:simpleType name="Genre">
+    <xsd:simpleType name="genre">
         <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="Fantasy"/>
-            <xsd:enumeration value="Sci-Fi"/>
-            <xsd:enumeration value="Memoir"/>
-            <xsd:enumeration value="Biography"/>
-            <xsd:enumeration value="Philosophy"/>
+            <xsd:enumeration value="fantasy"/>
+            <xsd:enumeration value="sci-fi"/>
+            <xsd:enumeration value="memoir"/>
+            <xsd:enumeration value="biography"/>
+            <xsd:enumeration value="philosophy"/>
         </xsd:restriction>
     </xsd:simpleType>
 
-    <xsd:simpleType name="ISBN">
+    <xsd:simpleType name="isbn">
         <xsd:restriction base="xsd:integer">
             <xsd:pattern value="[0-9]{10}"/>
         </xsd:restriction>
     </xsd:simpleType>
 
-    <xsd:simpleType name="Language">
+    <xsd:simpleType name="language">
         <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="English"/>
-            <xsd:enumeration value="Russian"/>
-            <xsd:enumeration value="Spanish"/>
+            <xsd:enumeration value="english"/>
+            <xsd:enumeration value="russian"/>
+            <xsd:enumeration value="spanish"/>
         </xsd:restriction>
     </xsd:simpleType>
 
-    <xsd:complexType name="Paragraph">
+    <xsd:complexType name="paragraph">
         <xsd:sequence>
-            <xsd:element name="Title" type="xsd:string"/>
-            <xsd:element name="PageNumber" type="xsd:positiveInteger"/>
+            <xsd:element name="title" type="xsd:string"/>
+            <xsd:element name="pageNumber" type="xsd:positiveInteger"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="LibraryType">
         <xsd:sequence>
-            <xsd:element name="Name" type="xsd:string" />
-            <xsd:element name="Date" type="xsd:date" />
-            <xsd:element name="Books">
+            <xsd:element name="name" type="xsd:string" />
+            <xsd:element name="date" type="xsd:date" />
+            <xsd:element name="books">
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="Book" type="tns:Book" minOccurs="0" maxOccurs="unbounded"/>
+                        <xsd:element name="book" type="tns:book" minOccurs="0" maxOccurs="unbounded"/>
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:element name="Library" type="tns:LibraryType" />
+    <xsd:element name="library" type="tns:LibraryType" />
 
 </xsd:schema>
