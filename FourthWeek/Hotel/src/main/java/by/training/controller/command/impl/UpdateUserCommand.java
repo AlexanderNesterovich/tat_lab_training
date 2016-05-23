@@ -40,7 +40,8 @@ public class UpdateUserCommand implements Command {
             user.setAddress("Rafieva");
             user.setPassport("MC123123123123");
             user.setPhoneNumber("+375293123123");
-            service.updateUser(user);
+
+            service.editUserInfo(user);
         } catch (ServiceException e) {
             LOG.error(e.getMessage(), e);
             response.setErrorMessage(e.getMessage());

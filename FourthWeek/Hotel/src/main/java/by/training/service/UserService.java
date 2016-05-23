@@ -13,11 +13,12 @@ import java.util.List;
  * Created by Aliaksandr_Nestsiarovich on 4/28/2016.
  */
 public interface UserService {
+
     User loginUser(User user) throws ServiceException;
-    void updateUser(User user) throws ServiceException;
+    void editUserInfo(User user) throws ServiceException;
     void registerUser(User user) throws ServiceException;
-    List<Room> getFreeRooms(Booking booking) throws ServiceException;
-    void bookRoom(User user, Booking booking) throws ServiceException;
-    User getUserInfo(User user) throws ServiceException;
-    void addCreditCard(User user, CreditCard card) throws ServiceException;
+    List<Room> getAvailableRooms(Booking booking) throws ServiceException;
+    void addBooking(Booking booking) throws ServiceException;
+    void addCreditCard(CreditCard card) throws ServiceException;
+
 }

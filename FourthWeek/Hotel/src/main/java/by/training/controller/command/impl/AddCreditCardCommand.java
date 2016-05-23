@@ -35,14 +35,15 @@ public class AddCreditCardCommand implements Command {
             creditCard.setNumber(3333222233334444L);
             creditCard.setExpire(new Date("1932/10/10"));
             creditCard.setType(CreditCardType.MASTERCARD);
-            service.addCreditCard(user, creditCard);
+            creditCard.setUser(user);
+            service.addCreditCard(creditCard);
         } catch (ServiceException e) {
             LOG.error(e.getMessage(), e);
             response.setErrorMessage(e.getMessage());
             return response;
         }
 
-        response.setMessage("CreditCard added successfully!");
+        response.setMessage("Credit Card added successfully!");
         LOG.trace("<< execute(Request req)");
         return response;
     }

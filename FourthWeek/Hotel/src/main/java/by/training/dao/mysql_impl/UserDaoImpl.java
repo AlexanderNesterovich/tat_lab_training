@@ -27,13 +27,12 @@ public class UserDaoImpl implements UserDao {
             cp.initPoolData();
         } catch (ConnectionPoolException e) {
             LOG.fatal("");
-            //something
         }
     }
 
 
     @Override
-    public void storeUser(User user) throws DAOException {
+    public void insertUser(User user) throws DAOException {
 
         String firstQuery = "INSERT INTO user (login, password_hash, role_id, token)"
                 + " values (?, ?, (SELECT role_id from role WHERE name=?), ?)";
@@ -62,17 +61,18 @@ public class UserDaoImpl implements UserDao {
                 secondStatement.setString (6, user.getPassport());
                 secondStatement.setString (7, user.getPhoneNumber());
                 secondStatement.executeUpdate();
+                connection.commit();
 
-            } catch(SQLException ex) {
+            } catch(SQLException e) {
                 connection.rollback();
                 connection.setAutoCommit(true);
-                throw ex;
+                throw new DAOException("Statement problem", e);
             }
             connection.setAutoCommit(true);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DAOException("Connection Problem", e);
         } catch (ConnectionPoolException e) {
-            e.printStackTrace();
+            throw new DAOException("Connection Pool Problem", e);
         }
 
     }
@@ -95,19 +95,19 @@ public class UserDaoImpl implements UserDao {
                 secondStatement.executeUpdate();
 
             } catch(SQLException e) {
-                throw e;
+                throw new DAOException("Statement problem", e);
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DAOException("Connection Problem", e);
         } catch (ConnectionPoolException e) {
-            e.printStackTrace();
+            throw new DAOException("Connection Pool Problem", e);
         }
 
     }
 
     @Override
-    public User getUser(User inputUser) throws DAOException {
+    public User readUser(User inputUser) throws DAOException {
         String query = "SELECT u.user_id, u.login, u.password_hash, u.token, ud.firstname, ud.lastname, ud.midname, ud.address, ud.passport, ud.phone_number, r.name as role_name\n" +
                 "FROM user as u JOIN user_data as ud \n" +
                 "ON u.user_id = ud.user_id\n" +
@@ -118,37 +118,38 @@ public class UserDaoImpl implements UserDao {
             try (PreparedStatement statement = connection.prepareStatement(query)) {
 
                 statement.setString (1, inputUser.getLogin());
-                ResultSet rs =statement.executeQuery();
                 User user = new User();
-                while(rs.next()) {
-                    user.setLogin(inputUser.getLogin());
-                    user.setId(rs.getInt("user_id"));
-                    user.setPassport(rs.getString("passport"));
-                    user.setFirstName(rs.getString("firstname"));
-                    user.setLastName(rs.getString("lastname"));
-                    user.setMidName(rs.getString("midname"));
-                    user.setAddress(rs.getString("address"));
-                    user.setPhoneNumber(rs.getString("phone_number"));
-                    user.setToken(rs.getString("token"));
-                    user.setPassword(rs.getString("password_hash"));
-                    user.setRole(Role.valueOf(rs.getString("role_name")));
+                try(ResultSet rs =statement.executeQuery()) {
+                    while(rs.next()) {
+                        user.setLogin(inputUser.getLogin());
+                        user.setId(rs.getInt("user_id"));
+                        user.setPassport(rs.getString("passport"));
+                        user.setFirstName(rs.getString("firstname"));
+                        user.setLastName(rs.getString("lastname"));
+                        user.setMidName(rs.getString("midname"));
+                        user.setAddress(rs.getString("address"));
+                        user.setPhoneNumber(rs.getString("phone_number"));
+                        user.setToken(rs.getString("token"));
+                        user.setPassword(rs.getString("password_hash"));
+                        user.setRole(Role.valueOf(rs.getString("role_name")));
+                    }
                 }
                 return user;
 
 
             } catch(SQLException e) {
-                throw e;
+                throw new DAOException("Statement problem", e);
             }
 
         } catch (SQLException e) {
-            throw new DAOException("", e);
+            throw new DAOException("Connection Problem", e);
         } catch (ConnectionPoolException e) {
-            throw new DAOException("", e);
+            throw new DAOException("Connection Pool Problem", e);
         }
     }
 
     @Override
-    public List<Room> getFreeRooms(Date dateIn, Date dateOut) throws DAOException {
+    public List<Room> readFreeRooms(Date dateIn, Date dateOut) throws DAOException {
         String query = "SELECT room.room_id, room_number, floor, key_number, size, view, type.name as type_name, service_pack.name as sp_name, price " +
                 "FROM room JOIN type ON room.type_id = type.type_id " +
                 "JOIN service_pack ON type.service_pack_id = service_pack.service_pack_id " +
@@ -160,44 +161,97 @@ public class UserDaoImpl implements UserDao {
                 List<Room> roomList = new ArrayList<>();
                 statement.setDate (1, new java.sql.Date(dateOut.getTime()));
                 statement.setDate (2, new java.sql.Date(dateIn.getTime()));
-                ResultSet rs = statement.executeQuery();
-                while(rs.next()) {
-                    Room room = new Room();
-                    room.setId(rs.getInt("room_id"));
-                    room.setRoomNumber(rs.getString("room_number"));
-                    room.setFloor(rs.getInt("floor"));
-                    room.setKeyNumber(rs.getInt("key_number"));
-                    RoomType type = new RoomType();
-                    type.setName(rs.getString("type_name"));
-                    type.setSize(rs.getInt("size"));
-                    type.setView(rs.getString("view"));
-                    RoomServicePack sp = new RoomServicePack();
-                    sp.setName(rs.getString("sp_name"));
-                    sp.setPrice(rs.getInt("price"));
-                    type.setRoomServicePack(sp);
-                    room.setType(type);
-                    roomList.add(room);
+                try(ResultSet rs = statement.executeQuery()) {
+                    while(rs.next()) {
+                        Room room = new Room();
+                        room.setId(rs.getInt("room_id"));
+                        room.setRoomNumber(rs.getString("room_number"));
+                        room.setFloor(rs.getInt("floor"));
+                        room.setKeyNumber(rs.getInt("key_number"));
+                        RoomType type = new RoomType();
+                        type.setName(rs.getString("type_name"));
+                        type.setSize(rs.getInt("size"));
+                        type.setView(rs.getString("view"));
+                        RoomServicePack sp = new RoomServicePack();
+                        sp.setName(rs.getString("sp_name"));
+                        sp.setPrice(rs.getInt("price"));
+                        type.setRoomServicePack(sp);
+                        room.setType(type);
+                        roomList.add(room);
+                    }
                 }
                 return roomList;
-
             } catch(SQLException e) {
-                throw e;
+                throw new DAOException("Statement problem", e);
             }
 
         } catch (SQLException e) {
-            throw new DAOException("", e);
+            throw new DAOException("Connection Problem", e);
         } catch (ConnectionPoolException e) {
-            throw new DAOException("", e);
+            throw new DAOException("Connection Pool Problem", e);
         }
     }
 
     @Override
-    public void bookRoom(User user, Date dateIn, Date dateOut) throws DAOException {
+    public void insertBooking(Booking booking) throws DAOException {
+
+        String firstQuery = "SELECT room.room_id, room_number, floor, key_number, size, view, type.name as type_name, service_pack.name as sp_name, price " +
+                "FROM room JOIN type ON room.type_id = type.type_id " +
+                "JOIN service_pack ON type.service_pack_id = service_pack.service_pack_id " +
+                "WHERE room.room_id NOT IN(SELECT booking.room_id FROM booking " +
+                "WHERE booking.date_in <= ? AND booking.date_out >= ? )";
+
+        String secondQuery = "INSERT INTO booking (`date_in`, `date_out`, `user_id`, `room_id`) " +
+                "VALUES (?, ?, ?, ?);";
+
+        try (Connection connection = cp.takeConnection()) {
+            connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement firstStatement = connection.prepareStatement(firstQuery);
+                 PreparedStatement secondStatement = connection.prepareStatement(secondQuery)) {
+
+                List<Room> roomList = new ArrayList<>();
+                firstStatement.setDate (1, new java.sql.Date(booking.getDateOut().getTime()));
+                firstStatement.setDate (2, new java.sql.Date(booking.getDateIn().getTime()));
+                try(ResultSet rs = firstStatement.executeQuery()) {
+                    while(rs.next()) {
+                        Room room = new Room();
+                        room.setId(rs.getInt("room_id"));
+                        roomList.add(room);
+                    }
+                }
+
+                for(Room room: roomList) {
+                    if(room.getId() == booking.getRoom().getId()) {
+                        secondStatement.setDate (1, new java.sql.Date(booking.getDateIn().getTime()));
+                        secondStatement.setDate (2, new java.sql.Date(booking.getDateOut().getTime()));
+                        secondStatement.setInt (3, booking.getUser().getId());
+                        secondStatement.setInt (4, booking.getRoom().getId());
+                        secondStatement.executeUpdate();
+                        connection.commit();
+                        return;
+                    }
+                }
+
+                connection.setAutoCommit(true);
+                throw new DAOException("Free Room not found!");
+
+            } catch(SQLException e) {
+                connection.rollback();
+                connection.setAutoCommit(true);
+                throw new DAOException("Statement problem", e);
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Connection Problem", e);
+        } catch (ConnectionPoolException e) {
+            throw new DAOException("Connection Pool Problem", e);
+        }
 
     }
 
     @Override
-    public void addCreditCard(User user, CreditCard creditCard) throws DAOException {
+    public void insertCreditCard(CreditCard creditCard) throws DAOException {
         String query = "INSERT INTO credit_card (number, expire, user_id, credit_card_type)"
                 + " values (?, ?, (SELECT user_id from user WHERE login=?), (SELECT id from credit_card_type WHERE name=?))";
 
@@ -206,17 +260,17 @@ public class UserDaoImpl implements UserDao {
 
                 firstStatement.setLong (1, creditCard.getNumber());
                 firstStatement.setDate (2, new java.sql.Date(creditCard.getExpire().getTime()));
-                firstStatement.setString (3, user.getLogin());
+                firstStatement.setString (3, creditCard.getUser().getLogin());
                 firstStatement.setString (4, creditCard.getType().toString());
                 firstStatement.executeUpdate();
 
-            } catch(SQLException ex) {
-                throw ex;
+            } catch(SQLException e) {
+                throw new DAOException("Statement problem", e);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DAOException("Connection Problem", e);
         } catch (ConnectionPoolException e) {
-            e.printStackTrace();
+            throw new DAOException("Connection Pool Problem", e);
         }
     }
 

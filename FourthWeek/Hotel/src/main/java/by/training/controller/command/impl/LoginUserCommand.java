@@ -2,7 +2,6 @@ package by.training.controller.command.impl;
 
 import by.training.bean.Request;
 import by.training.bean.Response;
-import by.training.bean.Role;
 import by.training.bean.User;
 import by.training.controller.command.Command;
 import by.training.service.ServiceFactory;
@@ -35,7 +34,6 @@ public class LoginUserCommand implements Command {
             user.setToken("00000");
             user.setPassword("123456789");
             user = service.loginUser(user);
-            System.out.println(user);
         } catch (ServiceException e) {
             LOG.error(e.getMessage(), e);
             response.setErrorMessage(e.getMessage());

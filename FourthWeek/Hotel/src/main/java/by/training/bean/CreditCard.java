@@ -10,16 +10,8 @@ public class CreditCard {
     private int id;
     private long number;
     private Date expire;
-    private int userId;
+    private User user;
     private CreditCardType type;
-
-    public Date getExpire() {
-        return expire;
-    }
-
-    public void setExpire(Date expire) {
-        this.expire = expire;
-    }
 
     public int getId() {
         return id;
@@ -37,12 +29,20 @@ public class CreditCard {
         this.number = number;
     }
 
-    public int getUserId() {
-        return userId;
+    public Date getExpire() {
+        return expire;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setExpire(Date expire) {
+        this.expire = expire;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public CreditCardType getType() {

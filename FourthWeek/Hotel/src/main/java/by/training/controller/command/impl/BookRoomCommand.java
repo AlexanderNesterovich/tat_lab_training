@@ -30,16 +30,15 @@ public class BookRoomCommand implements Command {
             User user = new User();
             user.setLogin("myemail@gmail.com");
             Booking booking = new Booking();
-
-            service.bookRoom(user, booking);
-
+            booking.setUser(user);
+            service.addBooking(booking);
         } catch (ServiceException e) {
             LOG.error(e.getMessage(), e);
             response.setErrorMessage(e.getMessage());
             return response;
         }
 
-        response.setMessage("User update successfully!");
+        response.setMessage("Room booked successfully!");
         LOG.trace("<< execute(Request req)");
         return response;
     }

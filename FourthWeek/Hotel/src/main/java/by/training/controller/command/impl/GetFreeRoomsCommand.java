@@ -33,8 +33,8 @@ public class GetFreeRoomsCommand implements Command {
             Booking booking = new Booking();
             booking.setDateIn(new Date("2015/12/01"));
             booking.setDateOut(new Date("2015/12/07"));
-            List<Room> rooms = service.getFreeRooms(booking);
-            System.out.println(rooms.size());
+
+            List<Room> rooms = service.getAvailableRooms(booking);
         } catch (ServiceException e) {
             LOG.error(e.getMessage(), e);
             response.setErrorMessage(e.getMessage());

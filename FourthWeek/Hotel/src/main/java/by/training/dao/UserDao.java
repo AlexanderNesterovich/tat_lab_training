@@ -1,5 +1,6 @@
 package by.training.dao;
 
+import by.training.bean.Booking;
 import by.training.bean.CreditCard;
 import by.training.bean.Room;
 import by.training.bean.User;
@@ -13,11 +14,11 @@ import java.util.List;
  */
 public interface UserDao {
 
-    void storeUser(User user) throws DAOException;
+    void insertUser(User user) throws DAOException;
     void updateUser(User user) throws DAOException;
-    User getUser(User user) throws DAOException;
-    List<Room> getFreeRooms(Date dateIn, Date dateOut) throws DAOException;
-    void bookRoom(User user, Date dateIn, Date dateOut) throws DAOException;
-    void addCreditCard(User user, CreditCard creditCard) throws DAOException;
+    User readUser(User user) throws DAOException;
+    List<Room> readFreeRooms(Date dateIn, Date dateOut) throws DAOException;
+    void insertBooking(Booking booking) throws DAOException;
+    void insertCreditCard(CreditCard creditCard) throws DAOException;
 
 }
