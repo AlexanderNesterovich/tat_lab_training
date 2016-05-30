@@ -1,17 +1,16 @@
 package page_objects;
-import custom_elements.selophane.custom.CustomElementLocatorFactory;
-import custom_elements.selophane.factory.api.ElementFactory;
-import custom_elements.selophane.widget.CheckBox;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import webdriver_stuff.Configuration;
 
 /**
- * Created by Aliaksandr_Nestsiarovich on 5/26/2016.
+ * Created by Alexander Nesterovich on 30.05.2016.
  */
-public class LoginPage extends BasePage{
+public class TestPage extends BasePage{
 
+
+    WebDriver driver;
     private final String URL = "https://mail.google.com/";
 
     @FindBy(id = "Email")
@@ -23,18 +22,14 @@ public class LoginPage extends BasePage{
     @FindBy(id = "signIn")
     private WebElement signInButton;
     @FindBy(id = "PersistentCookie")
-    private CheckBox loggedInCheckBox;
+    private WebElement loggedInCheckBox;
+
+    public TestPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void openPage() {
         driver.get(URL);
-    }
-
-    public LoginPage(WebDriver driver) {
-        super(driver);
-        ElementFactory.initElements(
-                new CustomElementLocatorFactory(driver, Configuration.TIMEOUT),
-                this);
-        this.driver = driver;
     }
 
     public void setUserName(String s) {
@@ -49,13 +44,12 @@ public class LoginPage extends BasePage{
         passwordField.sendKeys(s);
     }
 
-    public MainPage clickSignIn() {
+    public TestPage2 clickSignIn() {
         signInButton.click();
-        waitForJs();
-        return new MainPage(driver);
+        return new TestPage2(driver);
     }
 
     public void uncheckStayLogged() {
-        loggedInCheckBox.uncheck();
+        loggedInCheckBox.click();
     }
 }

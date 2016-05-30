@@ -1,11 +1,13 @@
 package page_objects;
 
-import custom_elements.factory.api.ElementFactory;
+import custom_elements.selophane.custom.CustomElementLocatorFactory;
+import custom_elements.selophane.factory.api.ElementFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import webdriver_stuff.Configuration;
 
 import java.util.List;
 
@@ -42,7 +44,10 @@ public class MainPage extends BasePage {
 
     public MainPage(WebDriver driver) {
         super(driver);
-        ElementFactory.initElements(driver, this);
+        ElementFactory.initElements(
+                new CustomElementLocatorFactory(driver, Configuration.TIMEOUT),
+                this);
+        this.driver = driver;
     }
 
     public void clickCompose() {
@@ -96,7 +101,6 @@ public class MainPage extends BasePage {
     public void openSpamFolder() {
         moreOptionsButton.click();
         goToSpamButton.click();
-        waitForJs();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[text()='Delete all spam messages now']")));
     }
 

@@ -6,6 +6,7 @@ package webdriver_stuff;
 public class Configuration {
 
     public static final int TIMEOUT = 3;
+    public static final int ALERT_TIMEOUT = 1;
 
 
 

@@ -30,11 +30,6 @@ public class GmailTest extends BaseTest{
         steps.login(firstUser);
         steps.sendLetter(firstLetter);
         steps.logout();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         steps.login(secondUser);
         steps.moveToSpam(firstLetter);
         steps.logout();

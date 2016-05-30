@@ -9,13 +9,9 @@ import by.training.dao.exception.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.sql.*;
+import java.util.*;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 4/26/2016.
@@ -23,15 +19,14 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
 
     private static final Logger LOG = LogManager.getLogger(UserDaoImpl.class);
-    //something ioc, for example spring DI
     private ConnectionPool cp;
 
-    {
+    public UserDaoImpl() {
         this.cp = ConnectionPoolFactory.getInstance().getConnectionPool();
         try {
             cp.initPoolData();
         } catch (ConnectionPoolException e) {
-            LOG.fatal("failed initialization");
+            LOG.fatal("");
         }
     }
 
@@ -158,7 +153,7 @@ public class UserDaoImpl implements UserDao {
         String query = "SELECT room.room_id, room_number, floor, key_number, size, view, type.name as type_name, service_pack.name as sp_name, price " +
                 "FROM room JOIN type ON room.type_id = type.type_id " +
                 "JOIN service_pack ON type.service_pack_id = service_pack.service_pack_id " +
-                "WHERE room.room_id NOT IN(SELECT booking.room_id FROM booking " +
+                "WHERE room.room_id NOT IN(SELECT booking.room_id\n FROM booking " +
                 "WHERE booking.date_in <= ? AND booking.date_out >= ? )";
 
         try (Connection connection = cp.takeConnection()) {

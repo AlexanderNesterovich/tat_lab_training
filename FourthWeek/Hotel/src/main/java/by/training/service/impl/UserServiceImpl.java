@@ -7,6 +7,7 @@ import by.training.bean.User;
 import by.training.dao.DAOFactory;
 import by.training.dao.UserDao;
 import by.training.dao.exception.DAOException;
+import by.training.dao.mysql_impl.UserDaoImpl;
 import by.training.service.UserService;
 import by.training.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
@@ -17,6 +18,8 @@ import javax.mail.internet.InternetAddress;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -31,6 +34,7 @@ public class UserServiceImpl implements UserService {
 
     UserDao userDao = DAOFactory.getInstance().getUserDao();
 
+    @Override
     public User loginUser(User user) throws ServiceException {
         LOG.trace(">> loginUser(User user)");
         User dbUser = null;
@@ -56,7 +60,7 @@ public class UserServiceImpl implements UserService {
         }
 
         if (user.getToken() != null && user.getToken().equals(dbUser.getToken())) {
-            LOG.trace("<< loginUser(User user) token");
+            LOG.trace("<< loginUser(User user)");
             return dbUser;
         }
 
@@ -65,25 +69,23 @@ public class UserServiceImpl implements UserService {
         String dbPassword = salt[0];
 
         if (inputPassword.equals(dbPassword)) {
-            LOG.trace("<< loginUser(User user) password");
+            LOG.trace("<< loginUser(User user)");
             return dbUser;
         }else{
-            LOG.warn("Sql exception");
             throw new ServiceException("Incorrect password");
         }
     }
 
+    @Override
     public void editUserInfo(User user) throws ServiceException {
-        LOG.trace(">> editUserInfo(User user)");
         try {
             userDao.updateUser(user);
         } catch (DAOException e) {
-            LOG.warn("Sql exception");
             throw new ServiceException(e.getMessage(), e);
         }
-        LOG.trace("<< editUserInfo(User user)");
     }
 
+    @Override
     public void registerUser(User user) throws ServiceException {
         Pattern pattern = Pattern.compile("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})");
         if(user.getLogin() == null || user.getPassword() == null) {
@@ -109,11 +111,11 @@ public class UserServiceImpl implements UserService {
         try {
             userDao.insertUser(user);
         } catch (DAOException e) {
-            LOG.warn("Sql exception");
             e.printStackTrace();
         }
     }
 
+    @Override
     public List<Room> getAvailableRooms(Booking booking) throws ServiceException {
 
         if(booking.getDateIn() == null || booking.getDateOut() == null) {
@@ -127,11 +129,11 @@ public class UserServiceImpl implements UserService {
         try {
             return userDao.readFreeRooms(booking.getDateIn(), booking.getDateOut());
         } catch (DAOException e) {
-            LOG.warn("Sql exception");
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
+    @Override
     public void addBooking(Booking booking) throws ServiceException {
 
         if(booking.getDateIn() == null || booking.getDateOut() == null || booking.getUser() == null) {
@@ -153,6 +155,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public void addCreditCard(CreditCard card) throws ServiceException {
 
         if(card.getExpire() == null || card.getNumber() == 0) {
@@ -209,9 +212,13 @@ public class UserServiceImpl implements UserService {
     {
         String generatedPassword = null;
         try {
+            // Create MessageDigest instance for MD5
             MessageDigest md = MessageDigest.getInstance("MD5");
+            //Add password bytes to digest
             md.update(salt.getBytes());
+            //Get the hash's bytes
             byte[] bytes = md.digest(passwordToHash.getBytes());
+
             StringBuilder sb = new StringBuilder();
             for(int i=0; i< bytes.length ;i++)
             {
