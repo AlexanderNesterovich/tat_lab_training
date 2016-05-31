@@ -1,45 +1,45 @@
-import Utils.StringRandomizer;
-import objects.Letter;
-import objects.User;
-import org.testng.Assert;
+import beans.Letter;
+import beans.User;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import steps.GmailSteps;
+import step.GmailSteps;
+import util.StringRandomizer;
+import static org.testng.Assert.*;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 5/24/2016.
  */
 public class GmailTest extends BaseTest{
 
-    private GmailSteps steps = new GmailSteps(driver);
+    private GmailSteps gmailSteps;
     private User firstUser = new User("potato.labs.first@gmail.com", "nicepotato");
     private User secondUser = new User("tomato.labs.second@gmail.com", "nicetomato");
     private Letter firstLetter = new Letter(firstUser, secondUser, StringRandomizer.generateString(5), StringRandomizer.generateString(15));
     private Letter secondLetter = new Letter(firstUser, secondUser, StringRandomizer.generateString(5), StringRandomizer.generateString(15));
-    /*@Test
-    public void testGoogleSearch(){
-        page.visit();
-        page.search("Selenium");
-        assertThat(listNthElementHasText(page.results, 0, "Then you want to use Selenium WebDriver"));
-        assertThat(textIn(page.resultsStats, "26,200,000"));
-    }*/
 
+    @BeforeClass
+    public void stepsInitialize() {
+       gmailSteps = new GmailSteps(driver);
+    }
 
     @Test
     public void testGoogleLogin(){
-        steps.openLoginPage();
-        steps.login(firstUser);
-        steps.sendLetter(firstLetter);
-        steps.logout();
-        steps.login(secondUser);
-        steps.moveToSpam(firstLetter);
-        steps.logout();
+        gmailSteps.openLoginPage();
 
-        steps.login(firstUser);
-        steps.sendLetter(secondLetter);
-        steps.logout();
+        gmailSteps.login(firstUser);
+        gmailSteps.sendLetter(firstLetter);
+        gmailSteps.logout();
 
-        steps.login(secondUser);
-        Assert.assertTrue(steps.isLetterInSpam(secondLetter));
+        gmailSteps.login(secondUser);
+        gmailSteps.moveToSpam(firstLetter);
+        gmailSteps.logout();
+
+        gmailSteps.login(firstUser);
+        gmailSteps.sendLetter(secondLetter);
+        gmailSteps.logout();
+
+        gmailSteps.login(secondUser);
+        assertTrue(gmailSteps.isLetterInSpam(secondLetter));
     }
 
 }

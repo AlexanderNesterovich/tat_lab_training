@@ -1,50 +1,45 @@
-import org.openqa.selenium.UnexpectedAlertBehaviour;
+import config.Browser;
+import config.CaptureScreenShot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Aliaksandr_Nestsiarovich on 5/25/2016.
  */
 abstract public class BaseTest {
 
-    protected static final WebDriver driver;
+    protected WebDriver driver;
 
-    static{
-        System.setProperty("webdriver.chrome.driver", "C:/tmp/chromedriver.exe");
-        DesiredCapabilities dc = new DesiredCapabilities();
-        dc.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
-        driver = new ChromeDriver(dc);
-/*        driver.manage().timeouts().implicitlyWait(Configuration.TIMEOUT, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(Configuration.TIMEOUT, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(Configuration.TIMEOUT, TimeUnit.SECONDS);*/
-        driver.manage().window().maximize();
+    @BeforeClass
+    protected void setUp() {
+        driver = Browser.CHROME.create();
     }
-
 
     @AfterMethod
-    public void TearDown(ITestResult result) throws IOException
-    {
-        //If the Testcase fail then only it enters to if condition block
-
-        //.getStatus will return Test "Pass" or "Fail"
-
-        System.out.println("Testcase status is"+result.getStatus());
-        System.out.println("Iresult status is"+result.FAILURE);
-
-        if(result.FAILURE == result.getStatus())
-        {
-            //Now we need to capture Screenshot
-            //use CaptureScreenshot Class to Take Screenshot
-
-            CaptureScreenShot.takescreenshot(driver, "Titlefailed");
-
+    protected void screenShotTearDown(ITestResult result) throws IOException {
+        if(result.FAILURE == result.getStatus()) {
+            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH-mm");
+            Date resultdate = new Date(result.getStartMillis());
+            CaptureScreenShot.takescreenshot(driver, result.getInstanceName() + " - " + result.getMethod().getMethodName() + " - " + sdf.format(resultdate));
         }
+    }
+
+    @BeforeMethod
+    protected void cleanCookiesSetUp() {
+        driver.manage().deleteAllCookies();
+    }
+
+    @AfterClass
+    protected void tearDown() {
         driver.quit();
     }
+
 }
