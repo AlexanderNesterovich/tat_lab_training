@@ -1,4 +1,4 @@
-package config;
+package util.browser_instantiator;
 
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;

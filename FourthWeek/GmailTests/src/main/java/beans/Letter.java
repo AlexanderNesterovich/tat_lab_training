@@ -45,4 +45,14 @@ public class Letter {
         this.body = body;
         this.to = to;
     }
+
+    @Override
+    public String toString() {
+        return "Letter{" +
+                "subject='" + subject + '\'' +
+                ", body='" + body + '\'' +
+                ", to=" + to +
+                ", from=" + from +
+                '}';
+    }
 }

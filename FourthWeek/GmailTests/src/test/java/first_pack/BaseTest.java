@@ -1,11 +1,15 @@
-import config.Browser;
-import config.CaptureScreenShot;
+package first_pack;
+
+import util.browser_instantiator.Browser;
+import util.logging.CaptureScreenShot;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.IInvokedMethod;
+import org.testng.IInvokedMethodListener;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
+import util.logging.TracingWebDriver;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -14,13 +18,15 @@ import java.util.Date;
 /**
  * Created by Aliaksandr_Nestsiarovich on 5/25/2016.
  */
+@Listeners({BaseTest.LogListener.class})
 abstract public class BaseTest {
 
+    private static final Logger LOG = LoggerFactory.getLogger(BaseTest.class);
     protected WebDriver driver;
 
     @BeforeClass
     protected void setUp() {
-        driver = Browser.CHROME.create();
+        driver = new TracingWebDriver(Browser.CHROME.create());
     }
 
     @AfterMethod
@@ -40,6 +46,20 @@ abstract public class BaseTest {
     @AfterClass
     protected void tearDown() {
         driver.quit();
+    }
+
+    public static class LogListener implements IInvokedMethodListener {
+
+        @Override
+        public void afterInvocation(IInvokedMethod m, ITestResult res) {
+            LOG.info("<<< @Test " + m);
+        }
+
+        @Override
+        public void beforeInvocation(IInvokedMethod m, ITestResult res) {
+            LOG.info(">>> @Test " + m);
+        }
+
     }
 
 }

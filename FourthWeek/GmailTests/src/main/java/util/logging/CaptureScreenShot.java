@@ -1,4 +1,4 @@
-package config; /**
+package util.logging; /**
  * Created by Aliaksandr_Nestsiarovich on 5/30/2016.
  */
 

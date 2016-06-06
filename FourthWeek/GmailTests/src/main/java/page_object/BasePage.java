@@ -1,7 +1,7 @@
 package page_object;
 
 import com.google.common.base.Predicate;
-import custom_element.selophane.custom.CustomElementLocatorFactory;
+import util.wait.CustomElementLocatorFactory;
 import custom_element.selophane.factory.api.ElementFactory;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import config.Configuration;
+import util.wait.Configuration;
 
 import java.util.concurrent.TimeUnit;
 

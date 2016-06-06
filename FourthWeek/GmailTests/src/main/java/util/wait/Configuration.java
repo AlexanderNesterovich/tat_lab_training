@@ -1,4 +1,4 @@
-package config;
+package util.wait;
 
 /**
  * Created by yashaka on 7/16/15.

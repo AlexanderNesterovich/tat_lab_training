@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+
+    <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+        <connectionSource	class="ch.qos.logback.core.db.DataSourceConnectionSource">
+            <dataSource class="com.mysql.cj.jdbc.MysqlDataSource">
+                <serverName>localhost</serverName>
+                <port>3306</port>
+                <databaseName>logging_db</databaseName>
+                <user>root</user>
+                <password>root</password>
+            </dataSource>
+        </connectionSource>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+
+    <root level="debug">
+        <appender-ref ref="DB"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>

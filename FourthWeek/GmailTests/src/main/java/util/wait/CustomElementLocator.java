@@ -1,4 +1,4 @@
-package custom_element.selophane.custom;
+package util.wait;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

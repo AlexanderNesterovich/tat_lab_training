@@ -1,3 +1,5 @@
+package first_pack;
+
 import beans.Letter;
 import beans.User;
 import org.testng.annotations.BeforeClass;
@@ -9,7 +11,7 @@ import static org.testng.Assert.*;
 /**
  * Created by Aliaksandr_Nestsiarovich on 5/24/2016.
  */
-public class GmailTest extends BaseTest{
+public class GmailTest extends BaseTest {
 
     private GmailSteps gmailSteps;
     private User firstUser = new User("potato.labs.first@gmail.com", "nicepotato");
@@ -39,7 +41,7 @@ public class GmailTest extends BaseTest{
         gmailSteps.logout();
 
         gmailSteps.login(secondUser);
-        assertTrue(gmailSteps.isLetterInSpam(secondLetter));
+        assertFalse(gmailSteps.isLetterInSpam(secondLetter));
     }
 
 }
